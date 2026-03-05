@@ -27,22 +27,7 @@ export default function BackgroundRemovePage() {
   const [progress, setProgress] = useState(0);
   const [result, setResult] = useState<string | null>(null);
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    const file = acceptedFiles[0];
-    if (file) {
-      setUploadedFile(file);
-      const reader = new FileReader();
-      reader.onload = () => {
-        setUploadedImage(reader.result as string);
-        handleRemove(file);
-      };
-      reader.readAsDataURL(file);
-    }
-  }, []);
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: { "image/*": [] }, maxFiles: 1 });
-
-  const handleRemove = async (file: File) => {
+  const handleRemove = useCallback(async (file: File, bg: string = selectedBg) => {
     setProcessing(true);
     setProgress(0);
     setMode("create");
@@ -52,7 +37,7 @@ export default function BackgroundRemovePage() {
     try {
       const formData = new FormData();
       formData.append("image", file);
-      formData.append("background", selectedBg);
+      formData.append("background", bg);
 
       const response = await fetch("/api/remove-bg", { method: "POST", body: formData });
       const data = await response.json();
@@ -65,7 +50,22 @@ export default function BackgroundRemovePage() {
       clearInterval(interval);
       setProcessing(false);
     }
-  };
+  }, [selectedBg]);
+
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
+    if (file) {
+      setUploadedFile(file);
+      const reader = new FileReader();
+      reader.onload = () => {
+        setUploadedImage(reader.result as string);
+        handleRemove(file, selectedBg);
+      };
+      reader.readAsDataURL(file);
+    }
+  }, [handleRemove, selectedBg]);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: { "image/*": [] }, maxFiles: 1 });
 
   if (mode === "landing" && !uploadedImage) {
     return (
