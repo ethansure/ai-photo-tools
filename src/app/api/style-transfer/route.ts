@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getReplicateClient, fileToDataUrl, demoImages } from "@/lib/replicate";
+import { getReplicateClient, fileToDataUrl, demoImages, runModel, models } from "@/lib/replicate";
 
 export const maxDuration = 120;
 
@@ -39,26 +39,19 @@ export async function POST(request: NextRequest) {
 
     if (replicate) {
       const dataUrl = await fileToDataUrl(image);
-
-      // Use img2img with SDXL for style transfer
       const enhancedPrompt = `Transform this image ${stylePrompt}, artistic masterpiece, highly detailed, professional quality`;
       
-      const output = await replicate.run(
-        "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
-        {
-          input: {
-            prompt: enhancedPrompt,
-            image: dataUrl,
-            num_outputs: 1,
-            guidance_scale: 7.5,
-            prompt_strength: strength,
-            num_inference_steps: 40,
-            scheduler: "K_EULER",
-          },
-        }
-      );
+      const output = await runModel(replicate, models.sdxl, {
+        prompt: enhancedPrompt,
+        image: dataUrl,
+        num_outputs: 1,
+        guidance_scale: 7.5,
+        prompt_strength: strength,
+        num_inference_steps: 40,
+        scheduler: "K_EULER",
+      });
 
-      const images = output as unknown[];
+      const images = Array.isArray(output) ? output : [output];
       
       return NextResponse.json({
         success: true,
