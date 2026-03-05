@@ -3,6 +3,8 @@
 import { useState, useCallback } from "react";
 import Link from "next/link";
 import { useDropzone } from "react-dropzone";
+import { toast } from "sonner";
+import { SoftwareApplicationJsonLd, FAQJsonLd } from "@/components/JsonLd";
 
 // Real AI-generated examples
 const realExamples = [
@@ -53,7 +55,7 @@ export default function PetPortraitPage() {
     setProcessing(true);
     setProgress(0);
 
-    const interval = setInterval(() => setProgress(p => Math.min(p + 5, 90)), 300);
+    const interval = setInterval(() => setProgress(p => Math.min(p + 3, 90)), 500);
 
     try {
       const formData = new FormData();
@@ -63,11 +65,32 @@ export default function PetPortraitPage() {
       const res = await fetch("/api/pet-portrait", { method: "POST", body: formData });
       const data = await res.json();
       clearInterval(interval);
-      setProgress(100);
-      if (data.success) setResults(data.images);
+      
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to generate portrait");
+      }
+      
+      if (data.success && data.images && data.images.length > 0) {
+        // Verify images are valid URLs
+        const validImages = data.images.filter((img: string) => 
+          typeof img === "string" && img.startsWith("http")
+        );
+        
+        if (validImages.length > 0) {
+          setProgress(100);
+          setResults(validImages);
+          toast.success("Your pet portraits are ready! 🎨");
+        } else {
+          throw new Error("No valid images generated");
+        }
+      } else {
+        throw new Error(data.error || "Generation failed");
+      }
     } catch (e) {
-      console.error(e);
+      console.error("Generation error:", e);
       clearInterval(interval);
+      toast.error(e instanceof Error ? e.message : "Something went wrong. Please try again.");
+      setProgress(0);
     }
     setProcessing(false);
   };
@@ -318,6 +341,27 @@ export default function PetPortraitPage() {
         </div>
       </section>
 
+      {/* FAQ Section for SEO */}
+      <section className="py-20 px-6 border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {[
+              { q: "What pets can I use with the AI pet portrait generator?", a: "Our AI pet portrait generator works with all types of pets including dogs, cats, birds, hamsters, rabbits, fish, reptiles, and more. Simply upload a clear photo of your pet and choose your favorite art style." },
+              { q: "How long does it take to generate a pet portrait?", a: "Most pet portraits are generated within 30-60 seconds. Complex styles may take slightly longer. You'll receive 4 unique variations to choose from." },
+              { q: "What art styles are available?", a: "We offer 70+ art styles including Royal Portrait, Disney Pixar, Oil Painting, Watercolor, Anime, Pop Art, Renaissance, Van Gogh, Sketch, and many more artistic styles." },
+              { q: "What image formats are supported?", a: "We support JPG, PNG, and WebP formats. For best results, use a clear, well-lit photo where your pet's face is clearly visible." },
+              { q: "Can I use the pet portraits commercially?", a: "Yes! All generated pet portraits are yours to use as you wish, including for personal projects, gifts, prints, and commercial purposes." },
+            ].map((faq, i) => (
+              <div key={i} className="bg-white/5 rounded-2xl p-6 border border-white/10">
+                <h3 className="font-semibold text-lg mb-2">{faq.q}</h3>
+                <p className="text-gray-400">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-sm text-gray-600">
@@ -325,6 +369,21 @@ export default function PetPortraitPage() {
           <span>© 2026 PhotoICU</span>
         </div>
       </footer>
+
+      {/* JSON-LD */}
+      <SoftwareApplicationJsonLd
+        name="AI Pet Portrait Generator"
+        description="Transform your pet photos into stunning artwork with AI. 70+ art styles including Royal, Disney, Oil Painting & more."
+        url="https://aiphotos.icu/pet-portrait"
+        image="https://aiphotos.icu/examples/pet-royal-real.png"
+      />
+      <FAQJsonLd
+        faqs={[
+          { question: "What pets can I use with the AI pet portrait generator?", answer: "Our AI pet portrait generator works with all types of pets including dogs, cats, birds, hamsters, rabbits, fish, reptiles, and more." },
+          { question: "How long does it take to generate a pet portrait?", answer: "Most pet portraits are generated within 30-60 seconds. You'll receive 4 unique variations to choose from." },
+          { question: "What art styles are available?", answer: "We offer 70+ art styles including Royal Portrait, Disney Pixar, Oil Painting, Watercolor, Anime, Pop Art, Renaissance, Van Gogh, and more." },
+        ]}
+      />
     </main>
   );
 }
