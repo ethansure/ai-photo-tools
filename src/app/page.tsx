@@ -79,9 +79,9 @@ export default function Home() {
       <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <span className="text-3xl">🖼️</span>
+            <span className="text-3xl">📸</span>
             <span className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-              AI Photo Tools
+              PhotoICU
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
@@ -237,8 +237,8 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">🖼️</span>
-                <span className="text-xl font-bold text-white">AI Photo Tools</span>
+                <span className="text-2xl">📸</span>
+                <span className="text-xl font-bold text-white">PhotoICU</span>
               </div>
               <p className="text-sm">Professional AI-powered photo editing tools for everyone.</p>
             </div>
@@ -268,7 +268,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-sm">
-            © 2026 AI Photo Tools. All rights reserved.
+            © 2026 PhotoICU. All rights reserved.
           </div>
         </div>
       </footer>

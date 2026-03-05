@@ -9,8 +9,8 @@ const GA_ID = "G-2MGGL7RQ3H";
 export const metadata: Metadata = {
   metadataBase: new URL("https://aiphotos.icu"),
   title: {
-    default: "AI Photo Tools - Pet Portraits, Photo Restoration & Enhancement",
-    template: "%s | AI Photo Tools",
+    default: "PhotoICU - Pet Portraits, Photo Restoration & Enhancement",
+    template: "%s | PhotoICU",
   },
   description:
     "Professional AI photo tools suite. Create stunning pet portraits, restore old photos, enhance image quality, remove backgrounds. Free to try!",
@@ -24,19 +24,19 @@ export const metadata: Metadata = {
     "pet art generator",
     "old photo repair",
   ],
-  authors: [{ name: "AI Photo Tools" }],
+  authors: [{ name: "PhotoICU" }],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://aiphotos.icu",
-    siteName: "AI Photo Tools",
-    title: "AI Photo Tools - Transform Your Photos with AI Magic",
+    siteName: "PhotoICU",
+    title: "PhotoICU - Transform Your Photos with AI Magic",
     description:
       "Professional AI photo tools for everyone. Pet portraits, restoration, enhancement & more.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Photo Tools - Transform Your Photos with AI",
+    title: "PhotoICU - Transform Your Photos with AI",
     description:
       "Professional AI photo tools. Pet portraits, restoration, enhancement & more.",
   },
