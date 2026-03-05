@@ -11,8 +11,7 @@ const tools = [
     features: ["50+ Art Styles", "Royal, Disney, Oil Painting", "Print-Ready HD"],
     gradient: "from-amber-500 to-orange-500",
     bgGradient: "from-amber-50 to-orange-50",
-    href: "/create",
-    status: "live",
+    href: "/pet-portrait",
     popular: true,
   },
   {
@@ -23,8 +22,7 @@ const tools = [
     features: ["Scratch Removal", "AI Colorization", "Face Enhancement"],
     gradient: "from-blue-500 to-cyan-500",
     bgGradient: "from-blue-50 to-cyan-50",
-    href: "#",
-    status: "coming",
+    href: "/photo-restore",
   },
   {
     id: "photo-enhance",
@@ -34,8 +32,7 @@ const tools = [
     features: ["4x Upscaling", "Noise Reduction", "Detail Enhancement"],
     gradient: "from-purple-500 to-pink-500",
     bgGradient: "from-purple-50 to-pink-50",
-    href: "#",
-    status: "coming",
+    href: "/photo-enhance",
   },
   {
     id: "background-remove",
@@ -45,8 +42,7 @@ const tools = [
     features: ["1-Click Remove", "Custom Backgrounds", "Batch Processing"],
     gradient: "from-green-500 to-emerald-500",
     bgGradient: "from-green-50 to-emerald-50",
-    href: "#",
-    status: "coming",
+    href: "/background-remove",
   },
   {
     id: "style-transfer",
@@ -56,19 +52,17 @@ const tools = [
     features: ["Van Gogh, Monet", "Anime & Cartoon", "Abstract Art"],
     gradient: "from-red-500 to-rose-500",
     bgGradient: "from-red-50 to-rose-50",
-    href: "#",
-    status: "coming",
+    href: "/style-transfer",
   },
   {
-    id: "headshot",
+    id: "ai-headshots",
     name: "AI Headshots",
     emoji: "👔",
     description: "Professional headshots for LinkedIn & business",
     features: ["Professional Lighting", "Multiple Outfits", "Corporate Ready"],
     gradient: "from-slate-600 to-slate-800",
     bgGradient: "from-slate-50 to-gray-100",
-    href: "#",
-    status: "coming",
+    href: "/ai-headshots",
   },
 ];
 
@@ -78,18 +72,18 @@ export default function Home() {
       {/* Header */}
       <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <span className="text-3xl">📸</span>
             <span className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
               PhotoICU
             </span>
-          </div>
+          </Link>
           <nav className="hidden md:flex items-center gap-6">
             <a href="#tools" className="text-gray-600 hover:text-violet-600 transition">Tools</a>
             <Link href="/blog" className="text-gray-600 hover:text-violet-600 transition">Blog</Link>
           </nav>
           <Link 
-            href="/create"
+            href="/pet-portrait"
             className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-5 py-2 rounded-full font-medium hover:shadow-lg transition"
           >
             Get Started
@@ -101,7 +95,7 @@ export default function Home() {
       <section className="pt-32 pb-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-violet-100 text-violet-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <span>🚀</span> AI-Powered Photo Tools Suite
+            <span>🚀</span> 6 Professional AI Photo Tools
           </div>
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
             Transform Your Photos
@@ -145,18 +139,14 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {tools.map((tool) => (
-              <div
+              <Link
                 key={tool.id}
-                className={`relative rounded-3xl p-6 bg-gradient-to-br ${tool.bgGradient} border border-gray-100 hover:shadow-xl transition-all hover:scale-[1.02] group`}
+                href={tool.href}
+                className={`relative rounded-3xl p-6 bg-gradient-to-br ${tool.bgGradient} border border-gray-100 hover:shadow-xl transition-all hover:scale-[1.02] group block`}
               >
                 {tool.popular && (
                   <div className="absolute -top-3 -right-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                     🔥 POPULAR
-                  </div>
-                )}
-                {tool.status === "coming" && (
-                  <div className="absolute -top-3 -right-3 bg-gray-800 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    COMING SOON
                   </div>
                 )}
                 
@@ -173,22 +163,10 @@ export default function Home() {
                   ))}
                 </ul>
 
-                {tool.status === "live" ? (
-                  <Link
-                    href={tool.href}
-                    className={`block w-full text-center py-3 rounded-xl bg-gradient-to-r ${tool.gradient} text-white font-semibold hover:shadow-lg transition`}
-                  >
-                    Try Now — Free
-                  </Link>
-                ) : (
-                  <button
-                    disabled
-                    className="block w-full text-center py-3 rounded-xl bg-gray-200 text-gray-500 font-semibold cursor-not-allowed"
-                  >
-                    Coming Soon
-                  </button>
-                )}
-              </div>
+                <div className={`w-full text-center py-3 rounded-xl bg-gradient-to-r ${tool.gradient} text-white font-semibold group-hover:shadow-lg transition`}>
+                  Try Now — Free
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -201,7 +179,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               { step: 1, icon: "📤", title: "Upload Photo", desc: "Drop your image or paste a URL" },
-              { step: 2, icon: "🎯", title: "Choose Tool", desc: "Select the AI tool you need" },
+              { step: 2, icon: "🎯", title: "Choose Options", desc: "Select style, quality & settings" },
               { step: 3, icon: "✨", title: "Get Results", desc: "Download your transformed image" },
             ].map((item) => (
               <div key={item.step} className="text-center">
@@ -221,13 +199,27 @@ export default function Home() {
       <section className="py-20 px-4 bg-gradient-to-r from-violet-600 to-indigo-600">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Photos?</h2>
-          <p className="text-xl mb-8 opacity-90">Start with our most popular tool — Pet Portrait AI</p>
-          <Link 
-            href="/create"
-            className="inline-block bg-white text-violet-600 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition"
-          >
-            🐾 Create Pet Portrait — Free
-          </Link>
+          <p className="text-xl mb-8 opacity-90">Start with any of our 6 professional AI tools</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link 
+              href="/pet-portrait"
+              className="bg-white text-violet-600 px-6 py-3 rounded-full font-semibold hover:shadow-xl hover:scale-105 transition"
+            >
+              🐾 Pet Portrait
+            </Link>
+            <Link 
+              href="/photo-restore"
+              className="bg-white/20 text-white px-6 py-3 rounded-full font-semibold hover:bg-white/30 transition"
+            >
+              📸 Photo Restore
+            </Link>
+            <Link 
+              href="/photo-enhance"
+              className="bg-white/20 text-white px-6 py-3 rounded-full font-semibold hover:bg-white/30 transition"
+            >
+              ✨ Enhance
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -245,18 +237,18 @@ export default function Home() {
             <div>
               <h4 className="font-semibold text-white mb-4">Tools</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/create" className="hover:text-white transition">Pet Portrait AI</Link></li>
-                <li><span className="opacity-50">Photo Restoration</span></li>
-                <li><span className="opacity-50">Photo Enhancer</span></li>
-                <li><span className="opacity-50">Background Remover</span></li>
+                <li><Link href="/pet-portrait" className="hover:text-white transition">Pet Portrait AI</Link></li>
+                <li><Link href="/photo-restore" className="hover:text-white transition">Photo Restoration</Link></li>
+                <li><Link href="/photo-enhance" className="hover:text-white transition">Photo Enhancer</Link></li>
+                <li><Link href="/background-remove" className="hover:text-white transition">Background Remover</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-white mb-4">Company</h4>
+              <h4 className="font-semibold text-white mb-4">More Tools</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white transition">About</a></li>
+                <li><Link href="/style-transfer" className="hover:text-white transition">Style Transfer</Link></li>
+                <li><Link href="/ai-headshots" className="hover:text-white transition">AI Headshots</Link></li>
                 <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
-                <li><a href="#" className="hover:text-white transition">Contact</a></li>
               </ul>
             </div>
             <div>
@@ -264,11 +256,12 @@ export default function Home() {
               <ul className="space-y-2 text-sm">
                 <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
                 <li><a href="#" className="hover:text-white transition">Terms of Service</a></li>
+                <li><a href="#" className="hover:text-white transition">Contact</a></li>
               </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-sm">
-            © 2026 PhotoICU. All rights reserved.
+            © 2026 PhotoICU. All rights reserved. | <a href="https://aiphotos.icu" className="text-violet-400 hover:text-violet-300">aiphotos.icu</a>
           </div>
         </div>
       </footer>

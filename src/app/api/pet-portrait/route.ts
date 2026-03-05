@@ -3,8 +3,6 @@ import { getReplicateClient, fileToDataUrl, demoImages } from "@/lib/replicate";
 
 export const maxDuration = 120;
 
-// This route is maintained for backward compatibility with the /create page
-
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -67,7 +65,7 @@ export async function POST(request: NextRequest) {
       });
     }
   } catch (error) {
-    console.error("Generation error:", error);
+    console.error("Pet portrait generation error:", error);
     return NextResponse.json(
       { error: "Failed to generate portraits" },
       { status: 500 }

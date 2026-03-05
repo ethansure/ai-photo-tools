@@ -3,19 +3,17 @@ import { getReplicateClient, fileToDataUrl, demoImages } from "@/lib/replicate";
 
 export const maxDuration = 120;
 
-// This route is maintained for backward compatibility with the /create page
-
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const image = formData.get("image") as File;
     const style = formData.get("style") as string;
-    const petType = formData.get("petType") as string;
-    const prompt = formData.get("prompt") as string;
+    const stylePrompt = formData.get("stylePrompt") as string;
+    const strength = parseFloat(formData.get("strength") as string) || 0.75;
 
     if (!image || !style) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { error: "Missing image or style" },
         { status: 400 }
       );
     }
@@ -25,51 +23,49 @@ export async function POST(request: NextRequest) {
     if (replicate) {
       const dataUrl = await fileToDataUrl(image);
 
-      // Build enhanced prompt for pet portrait
-      const enhancedPrompt = `${prompt}, portrait of a ${petType}, high quality, detailed, professional art, 8k resolution`;
+      // Use img2img with SDXL for style transfer
+      const enhancedPrompt = `Transform this image ${stylePrompt}, artistic masterpiece, high quality`;
       
-      // Use SDXL with img2img approach
       const output = await replicate.run(
         "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
         {
           input: {
             prompt: enhancedPrompt,
             image: dataUrl,
-            num_outputs: 4,
+            num_outputs: 1,
             guidance_scale: 7.5,
-            prompt_strength: 0.8,
-            num_inference_steps: 50,
+            prompt_strength: strength,
+            num_inference_steps: 40,
             scheduler: "K_EULER",
-            refine: "expert_ensemble_refiner",
-            high_noise_frac: 0.8,
           },
         }
       );
 
+      const images = output as unknown[];
+      
       return NextResponse.json({
         success: true,
-        images: output,
+        image: images[0],
         style,
-        petType,
+        strength,
       });
     } else {
       // Demo mode
-      console.log("Demo mode: Replicate API not configured");
+      console.log("Demo mode: Style transfer");
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       return NextResponse.json({
         success: true,
-        images: demoImages.petPortrait,
+        image: demoImages.styleTransfer,
         style,
-        petType,
         demo: true,
-        message: "Demo mode - Set REPLICATE_API_TOKEN for real AI generation",
+        message: "Demo mode - Set REPLICATE_API_TOKEN for real style transfer",
       });
     }
   } catch (error) {
-    console.error("Generation error:", error);
+    console.error("Style transfer error:", error);
     return NextResponse.json(
-      { error: "Failed to generate portraits" },
+      { error: "Failed to apply style" },
       { status: 500 }
     );
   }

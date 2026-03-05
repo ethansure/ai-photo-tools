@@ -15,7 +15,10 @@ export type StyleCategory =
   | "fantasy"
   | "cartoon"
   | "seasonal"
-  | "artistic";
+  | "artistic"
+  | "profession"
+  | "sports"
+  | "cultural";
 
 export const styleCategories: Record<StyleCategory, { name: string; description: string }> = {
   classic: {
@@ -42,10 +45,22 @@ export const styleCategories: Record<StyleCategory, { name: string; description:
     name: "Fine Art Styles",
     description: "Inspired by famous artists and movements",
   },
+  profession: {
+    name: "Professions & Jobs",
+    description: "Your pet in various careers",
+  },
+  sports: {
+    name: "Sports & Activities",
+    description: "Athletic and action-packed styles",
+  },
+  cultural: {
+    name: "Cultural & World",
+    description: "Styles from around the globe",
+  },
 };
 
 export const artStyles: ArtStyle[] = [
-  // Classic & Royal
+  // Classic & Royal (8 styles)
   {
     id: "royal-portrait",
     name: "Royal Portrait",
@@ -71,8 +86,49 @@ export const artStyles: ArtStyle[] = [
     category: "classic",
     preview: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400",
   },
-  
-  // Modern Art
+  {
+    id: "queen-elizabeth",
+    name: "Royal Queen",
+    description: "Majestic queen with crown and jewels",
+    prompt: "Regal portrait of a pet as a queen, wearing elaborate royal gown and diamond tiara, holding scepter, throne room background, classic oil painting, baroque style",
+    category: "classic",
+    preview: "https://images.unsplash.com/photo-1558788353-f76d92427f16?w=400",
+  },
+  {
+    id: "duke-lord",
+    name: "Duke/Lord",
+    description: "Distinguished aristocratic nobleman",
+    prompt: "Noble portrait of a pet as a duke or lord, wearing fancy coat with cravat, sitting in leather armchair, library background with books, classical portrait style",
+    category: "classic",
+    preview: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=400",
+  },
+  {
+    id: "napoleonic",
+    name: "Napoleonic Era",
+    description: "Napoleon-style military leader",
+    prompt: "Napoleonic portrait of a pet as emperor, bicorn hat, ornate military jacket with medals, dramatic pose on horseback, epic battle scene background, neoclassical style",
+    category: "classic",
+    preview: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=400",
+  },
+  {
+    id: "renaissance-merchant",
+    name: "Renaissance Merchant",
+    description: "Wealthy Renaissance trader",
+    prompt: "Renaissance portrait of a pet as wealthy merchant, fine silk robes, gold jewelry, counting coins at desk, Flemish painting style, warm candlelight",
+    category: "classic",
+    preview: "https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?w=400",
+  },
+  {
+    id: "baroque-royal",
+    name: "Baroque Royal",
+    description: "Dramatic baroque court portrait",
+    prompt: "Baroque style royal portrait of a pet, dramatic lighting, velvet and gold clothing, ornate frame effect, Rembrandt-inspired chiaroscuro, opulent palace setting",
+    category: "classic",
+    preview: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400",
+    new: true,
+  },
+
+  // Modern Art (8 styles)
   {
     id: "pop-art",
     name: "Pop Art",
@@ -99,8 +155,49 @@ export const artStyles: ArtStyle[] = [
     preview: "https://images.unsplash.com/photo-1544568100-847a948585b9?w=400",
     new: true,
   },
-  
-  // Cartoon & Animation
+  {
+    id: "neon-glow",
+    name: "Neon Glow",
+    description: "Vibrant neon light effects",
+    prompt: "Neon portrait of a pet, glowing neon outlines, cyberpunk aesthetic, dark background with bright neon colors, synthwave style, futuristic look",
+    category: "modern",
+    preview: "https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=400",
+    popular: true,
+  },
+  {
+    id: "graffiti",
+    name: "Street Graffiti",
+    description: "Urban street art style",
+    prompt: "Graffiti art portrait of a pet, spray paint style, brick wall background, bold colors, street art aesthetic, urban hip hop culture",
+    category: "modern",
+    preview: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400",
+  },
+  {
+    id: "vaporwave",
+    name: "Vaporwave",
+    description: "Retro 80s aesthetic",
+    prompt: "Vaporwave portrait of a pet, pink and blue gradients, retro grid background, palm trees, sunset, glitch effects, 80s aesthetic",
+    category: "modern",
+    preview: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=400",
+  },
+  {
+    id: "abstract-cubism",
+    name: "Abstract Cubism",
+    description: "Picasso-style cubist art",
+    prompt: "Cubist portrait of a pet in Picasso style, fragmented geometric shapes, multiple perspectives, bold colors, abstract modern art",
+    category: "modern",
+    preview: "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?w=400",
+  },
+  {
+    id: "digital-glitch",
+    name: "Digital Glitch",
+    description: "Glitchy digital art effect",
+    prompt: "Glitch art portrait of a pet, pixel distortion, RGB color separation, scan lines, corrupted data aesthetic, cyberpunk style",
+    category: "modern",
+    preview: "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=400",
+  },
+
+  // Cartoon & Animation (10 styles)
   {
     id: "disney-pixar",
     name: "Disney/Pixar",
@@ -135,8 +232,58 @@ export const artStyles: ArtStyle[] = [
     category: "cartoon",
     preview: "https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?w=400",
   },
-  
-  // Fine Art Styles
+  {
+    id: "studio-ghibli",
+    name: "Studio Ghibli",
+    description: "Miyazaki-inspired animation",
+    prompt: "Studio Ghibli style portrait of a pet, soft watercolor look, whimsical magical atmosphere, lush nature background, Hayao Miyazaki aesthetic",
+    category: "cartoon",
+    preview: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400",
+    popular: true,
+  },
+  {
+    id: "simpsons",
+    name: "Simpsons Style",
+    description: "Yellow cartoon family style",
+    prompt: "The Simpsons style portrait of a pet, yellow skin tone, overbite, Matt Groening art style, Springfield background, classic cartoon",
+    category: "cartoon",
+    preview: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400",
+  },
+  {
+    id: "south-park",
+    name: "South Park",
+    description: "Paper cutout animation style",
+    prompt: "South Park style portrait of a pet, simple paper cutout look, construction paper aesthetic, flat colors, bold outlines",
+    category: "cartoon",
+    preview: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400",
+  },
+  {
+    id: "rick-morty",
+    name: "Rick and Morty",
+    description: "Adult Swim cartoon style",
+    prompt: "Rick and Morty style portrait of a pet, squiggly lines, pastel colors, interdimensional background, Adult Swim aesthetic",
+    category: "cartoon",
+    preview: "https://images.unsplash.com/photo-1558788353-f76d92427f16?w=400",
+  },
+  {
+    id: "pokemon",
+    name: "Pokemon Style",
+    description: "Turn your pet into a Pokemon",
+    prompt: "Pokemon style portrait of a pet as a new Pokemon creature, Ken Sugimori art style, dynamic pose, elemental effects, game card aesthetic",
+    category: "cartoon",
+    preview: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=400",
+    new: true,
+  },
+  {
+    id: "comic-book",
+    name: "Comic Book Hero",
+    description: "Marvel/DC comic style",
+    prompt: "Comic book style portrait of a pet, bold ink lines, halftone dots, dynamic action pose, speech bubble, superhero comic aesthetic",
+    category: "cartoon",
+    preview: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=400",
+  },
+
+  // Fine Art Styles (10 styles)
   {
     id: "oil-painting",
     name: "Oil Painting",
@@ -188,8 +335,40 @@ export const artStyles: ArtStyle[] = [
     preview: "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?w=400",
     new: true,
   },
-  
-  // Fantasy & Adventure
+  {
+    id: "acrylic-pour",
+    name: "Acrylic Pour",
+    description: "Fluid acrylic art style",
+    prompt: "Acrylic pour art portrait of a pet, swirling fluid colors, organic cell patterns, vibrant color mixing, abstract background, modern art technique",
+    category: "artistic",
+    preview: "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=400",
+  },
+  {
+    id: "charcoal",
+    name: "Charcoal Drawing",
+    description: "Dramatic charcoal portrait",
+    prompt: "Charcoal drawing portrait of a pet, dramatic black and white, rich shadows, expressive strokes, textured paper, fine art quality",
+    category: "artistic",
+    preview: "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400",
+  },
+  {
+    id: "art-deco",
+    name: "Art Deco",
+    description: "1920s geometric elegance",
+    prompt: "Art Deco portrait of a pet, geometric patterns, gold and black colors, 1920s aesthetic, elegant lines, Gatsby era styling",
+    category: "artistic",
+    preview: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400",
+  },
+  {
+    id: "pointillism",
+    name: "Pointillism",
+    description: "Seurat-style dot painting",
+    prompt: "Pointillist portrait of a pet, composed of small colored dots, Georges Seurat style, vibrant optical color mixing, neo-impressionist technique",
+    category: "artistic",
+    preview: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400",
+  },
+
+  // Fantasy & Adventure (8 styles)
   {
     id: "wizard",
     name: "Wizard",
@@ -232,8 +411,32 @@ export const artStyles: ArtStyle[] = [
     category: "fantasy",
     preview: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400",
   },
-  
-  // Seasonal & Holiday
+  {
+    id: "dragon-rider",
+    name: "Dragon Rider",
+    description: "Epic fantasy dragon companion",
+    prompt: "Fantasy portrait of a pet as dragon rider, flying on dragon back, epic mountain landscape, dramatic clouds, fantasy game art style",
+    category: "fantasy",
+    preview: "https://images.unsplash.com/photo-1558788353-f76d92427f16?w=400",
+  },
+  {
+    id: "viking-warrior",
+    name: "Viking Warrior",
+    description: "Norse warrior with battle gear",
+    prompt: "Viking portrait of a pet as fierce warrior, horned helmet, battle axe, fur cloak, longship background, Norse mythology aesthetic",
+    category: "fantasy",
+    preview: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=400",
+  },
+  {
+    id: "pirate-captain",
+    name: "Pirate Captain",
+    description: "Swashbuckling sea captain",
+    prompt: "Pirate portrait of a pet as ship captain, tricorn hat, eye patch, treasure map, pirate ship background, Caribbean adventure style",
+    category: "fantasy",
+    preview: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=400",
+  },
+
+  // Seasonal & Holiday (8 styles)
   {
     id: "christmas",
     name: "Christmas",
@@ -241,6 +444,7 @@ export const artStyles: ArtStyle[] = [
     prompt: "Cozy Christmas portrait of a pet, wearing Santa hat, surrounded by presents and Christmas tree, warm fireplace glow, snow falling outside window, festive atmosphere",
     category: "seasonal",
     preview: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=400",
+    popular: true,
   },
   {
     id: "halloween",
@@ -266,6 +470,206 @@ export const artStyles: ArtStyle[] = [
     category: "seasonal",
     preview: "https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=400",
   },
+  {
+    id: "autumn-harvest",
+    name: "Autumn Harvest",
+    description: "Fall foliage and pumpkins",
+    prompt: "Autumn portrait of a pet, surrounded by colorful fall leaves, pumpkins, harvest corn, warm golden light, cozy fall sweater, rustic farm background",
+    category: "seasonal",
+    preview: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400",
+  },
+  {
+    id: "winter-wonderland",
+    name: "Winter Wonderland",
+    description: "Snowy winter scene",
+    prompt: "Winter portrait of a pet in snowy landscape, wearing cozy scarf, snowflakes falling, pine trees, warm breath vapor, magical winter atmosphere",
+    category: "seasonal",
+    preview: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=400",
+  },
+  {
+    id: "valentines",
+    name: "Valentine's Day",
+    description: "Romantic hearts and love",
+    prompt: "Valentine portrait of a pet, surrounded by red roses and hearts, romantic pink background, cupid wings, love letter, sweet romantic atmosphere",
+    category: "seasonal",
+    preview: "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?w=400",
+  },
+  {
+    id: "st-patricks",
+    name: "St. Patrick's Day",
+    description: "Lucky Irish celebration",
+    prompt: "St. Patrick's Day portrait of a pet, wearing green top hat, clover field, pot of gold rainbow, Irish pub background, festive green colors",
+    category: "seasonal",
+    preview: "https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?w=400",
+  },
+
+  // Professions (8 styles)
+  {
+    id: "chef",
+    name: "Master Chef",
+    description: "Culinary genius in the kitchen",
+    prompt: "Portrait of a pet as a master chef, wearing chef hat and white coat, professional kitchen background, cooking utensils, gourmet food presentation",
+    category: "profession",
+    preview: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400",
+  },
+  {
+    id: "doctor",
+    name: "Doctor",
+    description: "Medical professional with stethoscope",
+    prompt: "Portrait of a pet as a doctor, wearing white lab coat and stethoscope, hospital background, medical equipment, professional caring expression",
+    category: "profession",
+    preview: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400",
+  },
+  {
+    id: "pilot",
+    name: "Airline Pilot",
+    description: "Captain of the skies",
+    prompt: "Portrait of a pet as airline pilot, wearing captain uniform and aviator sunglasses, cockpit background, confident pose, professional aviation aesthetic",
+    category: "profession",
+    preview: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400",
+  },
+  {
+    id: "detective",
+    name: "Private Detective",
+    description: "Noir-style mystery solver",
+    prompt: "Film noir portrait of a pet as detective, trench coat and fedora, magnifying glass, rainy city background, black and white with dramatic shadows",
+    category: "profession",
+    preview: "https://images.unsplash.com/photo-1558788353-f76d92427f16?w=400",
+  },
+  {
+    id: "scientist",
+    name: "Mad Scientist",
+    description: "Genius inventor in the lab",
+    prompt: "Portrait of a pet as mad scientist, wild hair, lab coat, bubbling test tubes, laboratory background, colorful chemical reactions, crazy genius expression",
+    category: "profession",
+    preview: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=400",
+  },
+  {
+    id: "firefighter",
+    name: "Firefighter",
+    description: "Brave hero saving lives",
+    prompt: "Portrait of a pet as firefighter, wearing helmet and gear, fire truck background, heroic pose, dramatic fire scene, brave expression",
+    category: "profession",
+    preview: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=400",
+  },
+  {
+    id: "musician",
+    name: "Rock Star",
+    description: "Famous musician on stage",
+    prompt: "Portrait of a pet as rock star musician, holding electric guitar, concert stage background, spotlights, crowd silhouettes, rock and roll attitude",
+    category: "profession",
+    preview: "https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?w=400",
+    popular: true,
+  },
+  {
+    id: "ceo",
+    name: "CEO Boss",
+    description: "Powerful business executive",
+    prompt: "Portrait of a pet as CEO, wearing expensive suit and tie, corner office background, city skyline view, power pose, luxury business aesthetic",
+    category: "profession",
+    preview: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400",
+  },
+
+  // Sports (6 styles)
+  {
+    id: "soccer-player",
+    name: "Soccer Champion",
+    description: "World cup winning player",
+    prompt: "Portrait of a pet as soccer player, wearing team jersey, holding trophy, stadium background, confetti celebration, championship victory moment",
+    category: "sports",
+    preview: "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=400",
+  },
+  {
+    id: "basketball",
+    name: "Basketball Star",
+    description: "NBA style basketball player",
+    prompt: "Portrait of a pet as basketball player, slam dunk pose, basketball court background, NBA style jersey, dynamic action shot",
+    category: "sports",
+    preview: "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400",
+  },
+  {
+    id: "tennis",
+    name: "Tennis Pro",
+    description: "Grand Slam tennis champion",
+    prompt: "Portrait of a pet as tennis player, holding racket, Wimbledon grass court background, white tennis outfit, athletic pose, championship match",
+    category: "sports",
+    preview: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400",
+  },
+  {
+    id: "boxer",
+    name: "Boxing Champion",
+    description: "Heavyweight boxing legend",
+    prompt: "Portrait of a pet as boxer, wearing boxing gloves and robe, championship belt, boxing ring background, dramatic lighting, victorious pose",
+    category: "sports",
+    preview: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400",
+  },
+  {
+    id: "surfer",
+    name: "Pro Surfer",
+    description: "Catching the perfect wave",
+    prompt: "Portrait of a pet as surfer, riding surfboard on big wave, tropical beach background, sunset colors, dynamic action shot, surf culture aesthetic",
+    category: "sports",
+    preview: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400",
+  },
+  {
+    id: "yoga",
+    name: "Yoga Master",
+    description: "Zen meditation guru",
+    prompt: "Portrait of a pet as yoga master, meditation pose, peaceful zen garden background, incense smoke, soft morning light, serene expression",
+    category: "sports",
+    preview: "https://images.unsplash.com/photo-1558788353-f76d92427f16?w=400",
+  },
+
+  // Cultural (6 styles)
+  {
+    id: "samurai",
+    name: "Samurai Warrior",
+    description: "Japanese feudal warrior",
+    prompt: "Portrait of a pet as samurai, traditional armor and katana, cherry blossom garden, Japanese temple background, honorable warrior pose",
+    category: "cultural",
+    preview: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=400",
+    popular: true,
+  },
+  {
+    id: "pharaoh",
+    name: "Egyptian Pharaoh",
+    description: "Ancient Egyptian royalty",
+    prompt: "Portrait of a pet as Egyptian pharaoh, golden headdress and jewelry, pyramid and sphinx background, hieroglyphics, ancient Egypt aesthetic",
+    category: "cultural",
+    preview: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=400",
+  },
+  {
+    id: "geisha",
+    name: "Geisha",
+    description: "Traditional Japanese elegance",
+    prompt: "Portrait of a pet as geisha, elaborate kimono and hair ornaments, traditional Japanese room, paper screens, elegant and refined aesthetic",
+    category: "cultural",
+    preview: "https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?w=400",
+  },
+  {
+    id: "bollywood",
+    name: "Bollywood Star",
+    description: "Glamorous Indian cinema style",
+    prompt: "Portrait of a pet as Bollywood star, colorful traditional Indian costume, ornate jewelry, elaborate stage background, dance pose, vibrant colors",
+    category: "cultural",
+    preview: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400",
+  },
+  {
+    id: "aztec-warrior",
+    name: "Aztec Warrior",
+    description: "Ancient Mesoamerican fighter",
+    prompt: "Portrait of a pet as Aztec warrior, feathered headdress and shield, ancient temple pyramid background, ceremonial costume, powerful stance",
+    category: "cultural",
+    preview: "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=400",
+  },
+  {
+    id: "scottish-highlander",
+    name: "Scottish Highlander",
+    description: "Traditional Scottish warrior",
+    prompt: "Portrait of a pet as Scottish highlander, tartan kilt and sporran, bagpipes, misty Scottish highlands background, castle in distance",
+    category: "cultural",
+    preview: "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400",
+  },
 ];
 
 export const petTypes = [
@@ -287,4 +691,44 @@ export const backgroundOptions = [
   { id: "home", name: "Home", description: "Cozy indoor home setting" },
   { id: "fantasy", name: "Fantasy", description: "Magical fantasy landscape" },
   { id: "transparent", name: "Transparent", description: "No background (PNG)" },
+];
+
+// Style transfer styles for the style-transfer tool
+export const styleTransferStyles = [
+  { id: "van-gogh", name: "Van Gogh", preview: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=400", prompt: "in the style of Vincent van Gogh, swirling brushstrokes, Starry Night aesthetic" },
+  { id: "monet", name: "Monet", preview: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400", prompt: "in the style of Claude Monet, impressionist water lilies, soft dappled light" },
+  { id: "picasso", name: "Picasso", preview: "https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=400", prompt: "in the style of Pablo Picasso, cubist fragmented geometry, bold colors" },
+  { id: "anime", name: "Anime", preview: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400", prompt: "anime style, Studio Ghibli aesthetic, cel shaded, vibrant colors" },
+  { id: "cartoon-3d", name: "3D Cartoon", preview: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400", prompt: "3D animated movie style, Pixar Disney aesthetic, smooth render" },
+  { id: "watercolor", name: "Watercolor", preview: "https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?w=400", prompt: "watercolor painting, soft washes, artistic splashes, paper texture" },
+  { id: "oil-painting", name: "Oil Painting", preview: "https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=400", prompt: "classical oil painting, rich textures, museum quality, Renaissance style" },
+  { id: "pop-art", name: "Pop Art", preview: "https://images.unsplash.com/photo-1561839561-b13bcfe95249?w=400", prompt: "pop art style, Andy Warhol aesthetic, bold colors, halftone dots" },
+  { id: "sketch", name: "Pencil Sketch", preview: "https://images.unsplash.com/photo-1572128021190-f02a0e5e57b6?w=400", prompt: "pencil sketch, graphite drawing, detailed shading, paper texture" },
+  { id: "cyberpunk", name: "Cyberpunk", preview: "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=400", prompt: "cyberpunk style, neon colors, futuristic, sci-fi aesthetic, glowing lights" },
+  { id: "renaissance", name: "Renaissance", preview: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=400", prompt: "Renaissance painting style, classical composition, dramatic lighting, old master technique" },
+  { id: "comic", name: "Comic Book", preview: "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=400", prompt: "comic book style, bold outlines, halftone shading, speech bubbles aesthetic" },
+];
+
+// Headshot styles
+export const headshotStyles = [
+  { id: "corporate", name: "Corporate Professional", description: "Classic business headshot", prompt: "professional corporate headshot, business attire, neutral background, studio lighting" },
+  { id: "linkedin", name: "LinkedIn Ready", description: "Perfect for LinkedIn profile", prompt: "linkedin profile photo, friendly professional smile, soft lighting, clean background" },
+  { id: "creative", name: "Creative Professional", description: "Modern artistic headshot", prompt: "creative professional headshot, artistic lighting, modern background, stylish appearance" },
+  { id: "executive", name: "Executive Portrait", description: "C-suite level portrait", prompt: "executive portrait, power pose, luxury office background, confident expression" },
+  { id: "startup", name: "Startup Founder", description: "Modern tech industry style", prompt: "startup founder headshot, casual but professional, modern office, approachable" },
+  { id: "actor", name: "Actor Headshot", description: "Hollywood casting style", prompt: "actor headshot, dramatic lighting, expressive, cinematic quality" },
+];
+
+// Background options for remove-bg tool
+export const customBackgrounds = [
+  { id: "transparent", name: "Transparent", color: null, preview: "transparent" },
+  { id: "white", name: "White", color: "#ffffff", preview: "#ffffff" },
+  { id: "black", name: "Black", color: "#000000", preview: "#000000" },
+  { id: "blue", name: "Corporate Blue", color: "#1e40af", preview: "#1e40af" },
+  { id: "gradient-purple", name: "Purple Gradient", color: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", preview: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
+  { id: "gradient-sunset", name: "Sunset", color: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)", preview: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" },
+  { id: "office", name: "Modern Office", color: null, preview: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400", isImage: true },
+  { id: "nature", name: "Nature", color: null, preview: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400", isImage: true },
+  { id: "city", name: "City Skyline", color: null, preview: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400", isImage: true },
+  { id: "studio-gray", name: "Studio Gray", color: "#6b7280", preview: "#6b7280" },
 ];
