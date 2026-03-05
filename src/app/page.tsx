@@ -1,170 +1,261 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+
+// Example images for each tool
+const examples = {
+  petPortrait: [
+    { before: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400", after: "https://images.unsplash.com/photo-1558788353-f76d92427f16?w=400", style: "Royal" },
+    { before: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400", after: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400", style: "Oil Painting" },
+    { before: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400", after: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=400", style: "Disney" },
+  ],
+  restore: [
+    { before: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&sat=-100&blur=1", after: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400" },
+  ],
+  headshot: [
+    { before: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400", after: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400" },
+  ],
+};
 
 const tools = [
   {
     id: "pet-portrait",
     name: "Pet Portrait AI",
+    tagline: "Turn your pet into art",
     emoji: "🐾",
-    description: "Transform your pet into stunning artwork",
-    features: ["50+ Art Styles", "Royal, Disney, Oil Painting", "Print-Ready HD"],
-    gradient: "from-amber-500 to-orange-500",
-    bgGradient: "from-amber-50 to-orange-50",
+    description: "70+ stunning art styles from Royal to Disney",
+    image: "https://images.unsplash.com/photo-1558788353-f76d92427f16?w=600",
+    gradient: "from-amber-500 via-orange-500 to-red-500",
     href: "/pet-portrait",
-    popular: true,
+    hot: true,
+    stats: "50K+ pets transformed",
   },
   {
     id: "photo-restore",
-    name: "Photo Restoration",
+    name: "Photo Restore",
+    tagline: "Bring old photos back to life",
     emoji: "📸",
-    description: "Restore and colorize old damaged photos",
-    features: ["Scratch Removal", "AI Colorization", "Face Enhancement"],
-    gradient: "from-blue-500 to-cyan-500",
-    bgGradient: "from-blue-50 to-cyan-50",
+    description: "Fix scratches, enhance faces, colorize B&W",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600",
+    gradient: "from-blue-500 via-cyan-500 to-teal-500",
     href: "/photo-restore",
+    stats: "Restore any era",
   },
   {
     id: "photo-enhance",
-    name: "Photo Enhancer",
+    name: "Photo Enhance",
+    tagline: "4x sharper, clearer, better",
     emoji: "✨",
-    description: "Upscale and enhance image quality",
-    features: ["4x Upscaling", "Noise Reduction", "Detail Enhancement"],
-    gradient: "from-purple-500 to-pink-500",
-    bgGradient: "from-purple-50 to-pink-50",
+    description: "AI upscaling with noise reduction",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600",
+    gradient: "from-purple-500 via-violet-500 to-indigo-500",
     href: "/photo-enhance",
+    stats: "Up to 4x resolution",
   },
   {
     id: "background-remove",
-    name: "Background Remover",
-    emoji: "🎭",
-    description: "Remove or replace image backgrounds instantly",
-    features: ["1-Click Remove", "Custom Backgrounds", "Batch Processing"],
-    gradient: "from-green-500 to-emerald-500",
-    bgGradient: "from-green-50 to-emerald-50",
+    name: "Background Remove",
+    tagline: "One click, clean cut",
+    emoji: "✂️",
+    description: "Instant removal, custom backgrounds",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600",
+    gradient: "from-green-500 via-emerald-500 to-teal-500",
     href: "/background-remove",
+    stats: "< 5 seconds",
   },
   {
     id: "style-transfer",
     name: "Style Transfer",
+    tagline: "Your photo, famous style",
     emoji: "🎨",
-    description: "Apply artistic styles to your photos",
-    features: ["Van Gogh, Monet", "Anime & Cartoon", "Abstract Art"],
-    gradient: "from-red-500 to-rose-500",
-    bgGradient: "from-red-50 to-rose-50",
+    description: "Van Gogh, Monet, Anime & more",
+    image: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=600",
+    gradient: "from-pink-500 via-rose-500 to-red-500",
     href: "/style-transfer",
+    stats: "12 art styles",
   },
   {
     id: "ai-headshots",
     name: "AI Headshots",
+    tagline: "LinkedIn-ready in seconds",
     emoji: "👔",
-    description: "Professional headshots for LinkedIn & business",
-    features: ["Professional Lighting", "Multiple Outfits", "Corporate Ready"],
-    gradient: "from-slate-600 to-slate-800",
-    bgGradient: "from-slate-50 to-gray-100",
+    description: "Professional portraits for business",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600",
+    gradient: "from-slate-600 via-gray-700 to-zinc-800",
     href: "/ai-headshots",
+    stats: "6 pro styles",
   },
+];
+
+const testimonials = [
+  { name: "Sarah K.", text: "My dog looks like royalty! 👑", avatar: "🐕", tool: "Pet Portrait" },
+  { name: "Mike T.", text: "Restored my grandma's 1950s photo perfectly", avatar: "👴", tool: "Photo Restore" },
+  { name: "Lisa M.", text: "Got my LinkedIn headshot in 2 minutes", avatar: "👩‍💼", tool: "AI Headshots" },
+  { name: "James R.", text: "4x upscale made my old photos printable!", avatar: "📷", tool: "Photo Enhance" },
 ];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <main className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Header */}
-      <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+      <header className="fixed top-0 w-full bg-black/80 backdrop-blur-xl z-50 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-3xl">📸</span>
-            <span className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-              PhotoICU
-            </span>
+          <Link href="/" className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-xl">
+              📸
+            </div>
+            <span className="text-2xl font-bold">PhotoICU</span>
           </Link>
-          <nav className="hidden md:flex items-center gap-6">
-            <a href="#tools" className="text-gray-600 hover:text-violet-600 transition">Tools</a>
-            <Link href="/blog" className="text-gray-600 hover:text-violet-600 transition">Blog</Link>
+          <nav className="hidden md:flex items-center gap-6 text-sm text-gray-400">
+            <a href="#tools" className="hover:text-white transition">Tools</a>
+            <a href="#examples" className="hover:text-white transition">Examples</a>
+            <Link href="/blog" className="hover:text-white transition">Blog</Link>
           </nav>
           <Link 
             href="/pet-portrait"
-            className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-5 py-2 rounded-full font-medium hover:shadow-lg transition"
+            className="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-violet-500/25 transition"
           >
-            Get Started
+            Try Free →
           </Link>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-violet-100 text-violet-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <span>🚀</span> 6 Professional AI Photo Tools
+      <section className="pt-32 pb-24 px-4 relative">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-violet-950/50 via-black to-black pointer-events-none" />
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-r from-violet-600/30 via-fuchsia-600/30 to-pink-600/30 blur-3xl rounded-full pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto relative">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6 border border-white/10">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              6 Professional AI Tools
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              Transform Photos with
+              <br />
+              <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
+                AI Magic ✨
+              </span>
+            </h1>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+              Pet portraits, photo restoration, enhancement, headshots & more.
+              Professional results in seconds.
+            </p>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap justify-center gap-4 mb-16">
+              <Link 
+                href="/pet-portrait"
+                className="group bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 py-4 rounded-2xl font-semibold text-lg hover:shadow-xl hover:shadow-violet-500/25 hover:scale-105 transition-all"
+              >
+                🐾 Create Pet Portrait
+                <span className="ml-2 group-hover:ml-3 transition-all">→</span>
+              </Link>
+              <a 
+                href="#tools"
+                className="px-8 py-4 rounded-2xl font-semibold text-lg border border-white/20 hover:bg-white/10 transition"
+              >
+                View All Tools
+              </a>
+            </div>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-            Transform Your Photos
-            <br />
-            <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-              With AI Magic
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-12">
-            Professional AI photo tools for everyone. Pet portraits, photo restoration, 
-            enhancement, and more — all in one place.
-          </p>
 
-          {/* Stats */}
-          <div className="flex justify-center items-center gap-12 mb-16 flex-wrap">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-gray-900">100K+</div>
-              <div className="text-gray-500">Photos Created</div>
+          {/* Hero Example Gallery */}
+          <div className="relative">
+            <div className="flex justify-center gap-4 md:gap-6">
+              {examples.petPortrait.map((ex, i) => (
+                <div 
+                  key={i} 
+                  className={`relative rounded-2xl overflow-hidden shadow-2xl transform transition-all hover:scale-105 hover:z-10 ${
+                    i === 1 ? "w-48 h-64 md:w-64 md:h-80" : "w-36 h-48 md:w-48 md:h-64 opacity-80"
+                  }`}
+                >
+                  <img src={ex.after} alt={ex.style} className="w-full h-full object-cover" />
+                  <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                    <span className="text-xs font-medium bg-white/20 px-2 py-1 rounded-full">{ex.style}</span>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="hidden sm:block w-px h-12 bg-gray-200"></div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-gray-900">6</div>
-              <div className="text-gray-500">AI Tools</div>
-            </div>
-            <div className="hidden sm:block w-px h-12 bg-gray-200"></div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-gray-900">4.9⭐</div>
-              <div className="text-gray-500">User Rating</div>
-            </div>
+            <p className="text-center text-gray-500 text-sm mt-6">↑ Real examples from Pet Portrait AI</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Bar */}
+      <section className="py-8 border-y border-white/10 bg-white/5">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+            {[
+              { value: "100K+", label: "Photos Created" },
+              { value: "70+", label: "Art Styles" },
+              { value: "6", label: "AI Tools" },
+              { value: "4.9★", label: "User Rating" },
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-gray-500">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Tools Grid */}
-      <section id="tools" className="py-20 px-4 bg-white">
+      <section id="tools" className="py-24 px-4">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-4">Our AI Tools</h2>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Choose the perfect tool for your photo editing needs
-          </p>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">All AI Tools</h2>
+            <p className="text-gray-400 text-lg">Choose your transformation</p>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {tools.map((tool) => (
               <Link
                 key={tool.id}
                 href={tool.href}
-                className={`relative rounded-3xl p-6 bg-gradient-to-br ${tool.bgGradient} border border-gray-100 hover:shadow-xl transition-all hover:scale-[1.02] group block`}
+                className="group relative rounded-3xl overflow-hidden bg-gradient-to-b from-white/10 to-white/5 border border-white/10 hover:border-white/20 transition-all hover:scale-[1.02] hover:shadow-2xl"
               >
-                {tool.popular && (
-                  <div className="absolute -top-3 -right-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                    🔥 POPULAR
+                {tool.hot && (
+                  <div className="absolute top-4 right-4 z-10 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                    🔥 HOT
                   </div>
                 )}
                 
-                <div className="text-5xl mb-4">{tool.emoji}</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{tool.name}</h3>
-                <p className="text-gray-600 mb-4">{tool.description}</p>
-                
-                <ul className="space-y-2 mb-6">
-                  {tool.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
-                      <span className={`w-5 h-5 rounded-full bg-gradient-to-r ${tool.gradient} flex items-center justify-center text-white text-xs`}>✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                {/* Tool Image */}
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={tool.image} 
+                    alt={tool.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${tool.gradient} opacity-60 mix-blend-multiply`} />
+                </div>
 
-                <div className={`w-full text-center py-3 rounded-xl bg-gradient-to-r ${tool.gradient} text-white font-semibold group-hover:shadow-lg transition`}>
-                  Try Now — Free
+                {/* Tool Info */}
+                <div className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-3xl">{tool.emoji}</span>
+                    <div>
+                      <h3 className="text-xl font-bold">{tool.name}</h3>
+                      <p className="text-sm text-gray-400">{tool.tagline}</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 text-sm mb-4">{tool.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-500">{tool.stats}</span>
+                    <span className={`text-sm font-semibold bg-gradient-to-r ${tool.gradient} bg-clip-text text-transparent group-hover:translate-x-1 transition-transform`}>
+                      Try Now →
+                    </span>
+                  </div>
                 </div>
               </Link>
             ))}
@@ -172,96 +263,140 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-20 px-4 bg-gradient-to-b from-violet-50 to-white">
+      {/* Before/After Examples */}
+      <section id="examples" className="py-24 px-4 bg-gradient-to-b from-transparent via-violet-950/20 to-transparent">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">How It Works</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { step: 1, icon: "📤", title: "Upload Photo", desc: "Drop your image or paste a URL" },
-              { step: 2, icon: "🎯", title: "Choose Options", desc: "Select style, quality & settings" },
-              { step: 3, icon: "✨", title: "Get Results", desc: "Download your transformed image" },
-            ].map((item) => (
-              <div key={item.step} className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-violet-500 to-indigo-500 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-4 shadow-lg">
-                  {item.icon}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">See the Magic</h2>
+            <p className="text-gray-400 text-lg">Real transformations, real results</p>
+          </div>
+
+          {/* Pet Portrait Examples */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold mb-8 text-center">🐾 Pet Portrait Transformations</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {examples.petPortrait.map((ex, i) => (
+                <div key={i} className="bg-white/5 rounded-2xl p-4 border border-white/10">
+                  <div className="flex gap-3">
+                    <div className="flex-1 relative">
+                      <img src={ex.before} alt="Before" className="w-full aspect-square object-cover rounded-xl" />
+                      <span className="absolute bottom-2 left-2 text-xs bg-black/70 px-2 py-1 rounded-full">Original</span>
+                    </div>
+                    <div className="flex items-center text-2xl">→</div>
+                    <div className="flex-1 relative">
+                      <img src={ex.after} alt="After" className="w-full aspect-square object-cover rounded-xl" />
+                      <span className="absolute bottom-2 left-2 text-xs bg-gradient-to-r from-violet-600 to-fuchsia-600 px-2 py-1 rounded-full">{ex.style}</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="text-sm text-violet-600 font-medium mb-2">Step {item.step}</div>
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <Link 
+              href="/pet-portrait"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 py-4 rounded-2xl font-semibold text-lg hover:shadow-xl hover:shadow-violet-500/25 transition"
+            >
+              Try Pet Portrait Free →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Loved by Users</h2>
+            <p className="text-gray-400 text-lg">Join thousands of happy customers</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {testimonials.map((t, i) => (
+              <div key={i} className="bg-white/5 rounded-2xl p-6 border border-white/10">
+                <div className="text-4xl mb-4">{t.avatar}</div>
+                <p className="text-gray-300 mb-4">&ldquo;{t.text}&rdquo;</p>
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold">{t.name}</span>
+                  <span className="text-xs text-gray-500 bg-white/10 px-2 py-1 rounded-full">{t.tool}</span>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 px-4 bg-gradient-to-r from-violet-600 to-indigo-600">
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Photos?</h2>
-          <p className="text-xl mb-8 opacity-90">Start with any of our 6 professional AI tools</p>
+      {/* Final CTA */}
+      <section className="py-24 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-violet-600/20 via-fuchsia-600/20 to-pink-600/20 blur-3xl pointer-events-none" />
+        <div className="max-w-4xl mx-auto text-center relative">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform?</h2>
+          <p className="text-xl text-gray-400 mb-10">Start creating amazing AI-powered photos today</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link 
               href="/pet-portrait"
-              className="bg-white text-violet-600 px-6 py-3 rounded-full font-semibold hover:shadow-xl hover:scale-105 transition"
+              className="bg-white text-black px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-gray-100 transition"
             >
               🐾 Pet Portrait
             </Link>
             <Link 
               href="/photo-restore"
-              className="bg-white/20 text-white px-6 py-3 rounded-full font-semibold hover:bg-white/30 transition"
+              className="bg-white/10 border border-white/20 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/20 transition"
             >
               📸 Photo Restore
             </Link>
             <Link 
-              href="/photo-enhance"
-              className="bg-white/20 text-white px-6 py-3 rounded-full font-semibold hover:bg-white/30 transition"
+              href="/ai-headshots"
+              className="bg-white/10 border border-white/20 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/20 transition"
             >
-              ✨ Enhance
+              👔 AI Headshots
             </Link>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 bg-gray-900 text-gray-400">
+      <footer className="py-12 px-4 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">📸</span>
-                <span className="text-xl font-bold text-white">PhotoICU</span>
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-sm">
+                  📸
+                </div>
+                <span className="text-lg font-bold">PhotoICU</span>
               </div>
-              <p className="text-sm">Professional AI-powered photo editing tools for everyone.</p>
+              <p className="text-sm text-gray-500">Professional AI photo tools for everyone.</p>
             </div>
             <div>
-              <h4 className="font-semibold text-white mb-4">Tools</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/pet-portrait" className="hover:text-white transition">Pet Portrait AI</Link></li>
-                <li><Link href="/photo-restore" className="hover:text-white transition">Photo Restoration</Link></li>
-                <li><Link href="/photo-enhance" className="hover:text-white transition">Photo Enhancer</Link></li>
-                <li><Link href="/background-remove" className="hover:text-white transition">Background Remover</Link></li>
+              <h4 className="font-semibold mb-4">Tools</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><Link href="/pet-portrait" className="hover:text-white transition">Pet Portrait</Link></li>
+                <li><Link href="/photo-restore" className="hover:text-white transition">Photo Restore</Link></li>
+                <li><Link href="/photo-enhance" className="hover:text-white transition">Photo Enhance</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-white mb-4">More Tools</h4>
-              <ul className="space-y-2 text-sm">
+              <h4 className="font-semibold mb-4">More</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><Link href="/background-remove" className="hover:text-white transition">Background Remove</Link></li>
                 <li><Link href="/style-transfer" className="hover:text-white transition">Style Transfer</Link></li>
                 <li><Link href="/ai-headshots" className="hover:text-white transition">AI Headshots</Link></li>
-                <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-white mb-4">Legal</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-white transition">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-white transition">Contact</a></li>
+              <h4 className="font-semibold mb-4">Company</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
+                <li><a href="#" className="hover:text-white transition">Privacy</a></li>
+                <li><a href="#" className="hover:text-white transition">Terms</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-sm">
-            © 2026 PhotoICU. All rights reserved. | <a href="https://aiphotos.icu" className="text-violet-400 hover:text-violet-300">aiphotos.icu</a>
+          <div className="border-t border-white/10 pt-8 text-center text-sm text-gray-500">
+            © 2026 PhotoICU. All rights reserved.
           </div>
         </div>
       </footer>
