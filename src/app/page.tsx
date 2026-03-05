@@ -3,276 +3,288 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-const tools = [
-  { id: "pet-portrait", name: "Pet Portrait", emoji: "🐾", color: "from-amber-500 to-orange-600", image: "/examples/pet-royal-real.png" },
-  { id: "photo-restore", name: "Photo Restore", emoji: "📸", color: "from-blue-500 to-cyan-600", image: "/examples/restore-after.png" },
-  { id: "photo-enhance", name: "Photo Enhance", emoji: "✨", color: "from-purple-500 to-pink-600", image: "/examples/enhance-after.png" },
-  { id: "background-remove", name: "BG Remove", emoji: "✂️", color: "from-green-500 to-emerald-600", image: "/examples/bg-remove-after.png" },
-  { id: "style-transfer", name: "Style Transfer", emoji: "🎨", color: "from-rose-500 to-red-600", image: "/examples/style-after.png" },
-  { id: "ai-headshots", name: "AI Headshots", emoji: "👔", color: "from-slate-500 to-zinc-700", image: "/examples/headshot-after.png" },
-];
-
-const showcaseImages = [
-  { before: "/examples/pet-original.jpg", after: "/examples/pet-royal-real.png", label: "Pet → Royal Portrait" },
-  { before: "/examples/pet-original.jpg", after: "/examples/pet-disney-real.png", label: "Pet → Disney Style" },
-  { before: "/examples/style-before.jpg", after: "/examples/style-after.png", label: "Photo → Van Gogh" },
+const toolSections = [
+  {
+    id: "pet-portrait",
+    name: "Pet Portrait AI",
+    tagline: "Turn your pet into art",
+    description: "Transform photos of your dog, cat, or any pet into stunning artwork. Royal portraits, Disney style, oil paintings, and 70+ artistic styles.",
+    emoji: "🐾",
+    color: "from-amber-500 to-orange-600",
+    bgColor: "from-amber-950/50 to-orange-950/30",
+    before: "/examples/pet-original.jpg",
+    after: "/examples/pet-royal-real.png",
+    afterAlt: "/examples/pet-disney-real.png",
+    afterAlt2: "/examples/pet-oil-real.png",
+    features: ["70+ Art Styles", "HD Quality", "30 Seconds"],
+  },
+  {
+    id: "photo-restore",
+    name: "Photo Restoration",
+    tagline: "Bring old photos back to life",
+    description: "Repair scratched, faded, and damaged photos with AI. Enhance faces, fix imperfections, and restore precious memories.",
+    emoji: "📸",
+    color: "from-blue-500 to-cyan-600",
+    bgColor: "from-blue-950/50 to-cyan-950/30",
+    before: "/examples/restore-before.jpg",
+    after: "/examples/restore-after.png",
+    features: ["Face Enhancement", "Scratch Removal", "Color Restore"],
+  },
+  {
+    id: "photo-enhance",
+    name: "AI Image Upscaler",
+    tagline: "4x resolution upgrade",
+    description: "Upscale low-resolution images to stunning HD quality. Remove noise, sharpen details, and enhance clarity with AI.",
+    emoji: "✨",
+    color: "from-purple-500 to-pink-600",
+    bgColor: "from-purple-950/50 to-pink-950/30",
+    before: "/examples/enhance-before.jpg",
+    after: "/examples/enhance-after.png",
+    features: ["4x Upscale", "Noise Removal", "Detail Enhancement"],
+  },
+  {
+    id: "background-remove",
+    name: "Background Remover",
+    tagline: "One-click background removal",
+    description: "Remove backgrounds from any image instantly. Perfect for product photos, portraits, and design projects. Export as transparent PNG.",
+    emoji: "✂️",
+    color: "from-green-500 to-emerald-600",
+    bgColor: "from-green-950/50 to-emerald-950/30",
+    before: "/examples/bg-remove-before.jpg",
+    after: "/examples/bg-remove-after.png",
+    features: ["Instant Removal", "Transparent PNG", "Clean Edges"],
+  },
+  {
+    id: "style-transfer",
+    name: "AI Style Transfer",
+    tagline: "Transform photos into masterpieces",
+    description: "Apply famous art styles to your photos. Van Gogh, Monet, Picasso, anime, and more. Turn any image into a work of art.",
+    emoji: "🎨",
+    color: "from-rose-500 to-red-600",
+    bgColor: "from-rose-950/50 to-red-950/30",
+    before: "/examples/style-before.jpg",
+    after: "/examples/style-after.png",
+    features: ["Van Gogh", "Monet", "20+ Styles"],
+  },
+  {
+    id: "ai-headshots",
+    name: "AI Professional Headshots",
+    tagline: "LinkedIn-ready in seconds",
+    description: "Generate professional headshots from any selfie. Perfect for LinkedIn, corporate profiles, and business cards.",
+    emoji: "👔",
+    color: "from-slate-400 to-zinc-600",
+    bgColor: "from-slate-950/50 to-zinc-950/30",
+    before: "/examples/headshot-before.jpg",
+    after: "/examples/headshot-after.png",
+    features: ["Professional Look", "Multiple Styles", "HD Quality"],
+  },
 ];
 
 export default function Home() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [hoveredTool, setHoveredTool] = useState<number | null>(null);
+  const [activeShowcase, setActiveShowcase] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % showcaseImages.length);
-    }, 4000);
+      setActiveShowcase((prev) => (prev + 1) % 3);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <main className="min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Dramatic Background */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-violet-900/20 via-black to-black" />
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-50" />
-      </div>
-
+    <main className="min-h-screen bg-black text-white">
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
+      <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-lg shadow-lg shadow-violet-500/25">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-lg">
               📸
             </div>
-            <span className="text-xl font-bold tracking-tight">AI Photo Tools</span>
+            <span className="text-xl font-bold">AI Photo Tools</span>
           </Link>
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <Link href="/pet-portrait" className="text-gray-400 hover:text-white transition">Pet Portrait</Link>
-            <Link href="/photo-restore" className="text-gray-400 hover:text-white transition">Restore</Link>
-            <Link href="/style-transfer" className="text-gray-400 hover:text-white transition">Style Transfer</Link>
+          <nav className="hidden md:flex items-center gap-6 text-sm text-gray-400">
+            <a href="#pet-portrait" className="hover:text-white transition">Pet Portrait</a>
+            <a href="#photo-restore" className="hover:text-white transition">Restore</a>
+            <a href="#style-transfer" className="hover:text-white transition">Style Transfer</a>
+            <a href="#ai-headshots" className="hover:text-white transition">Headshots</a>
           </nav>
         </div>
       </header>
 
-      {/* Hero - Full Screen Visual */}
-      <section className="relative min-h-screen flex items-center">
-        <div className="w-full max-w-7xl mx-auto px-6 pt-24 pb-12 grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Text */}
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-sm mb-8">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
-              </span>
-              Powered by AI
-            </div>
-
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6">
-              Turn Photos Into
-              <span className="block mt-2 bg-gradient-to-r from-violet-400 via-fuchsia-400 to-amber-400 bg-clip-text text-transparent">
-                Magic ✨
-              </span>
-            </h1>
-
-            <p className="text-xl text-gray-400 mb-10 max-w-lg">
-              Pet portraits, photo restoration, AI enhancement, 
-              style transfer — professional results in seconds.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/pet-portrait"
-                className="group px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-2xl font-semibold text-lg hover:shadow-2xl hover:shadow-violet-500/25 hover:scale-105 transition-all"
-              >
-                🐾 Try Pet Portrait
-              </Link>
-              <Link
-                href="#tools"
-                className="px-8 py-4 bg-white/5 border border-white/10 rounded-2xl font-medium hover:bg-white/10 transition"
-              >
-                View All Tools
-              </Link>
-            </div>
+      {/* Hero */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-violet-950/30 via-black to-black" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-[128px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-fuchsia-600/20 rounded-full blur-[128px]" />
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm mb-8">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            6 AI Tools • Free to Try
           </div>
 
-          {/* Right - Showcase */}
-          <div className="relative">
-            {/* Main showcase card */}
-            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-white/10 to-white/5 border border-white/10 p-2 shadow-2xl">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                {/* Before/After slider effect */}
-                <div className="absolute inset-0 flex">
-                  <div className="w-1/2 overflow-hidden border-r-2 border-white/50">
-                    <img 
-                      src={showcaseImages[activeIndex].before} 
-                      alt="Before" 
-                      className="w-[200%] h-full object-cover"
-                    />
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-black/70 rounded-full text-xs font-medium">
-                      Before
-                    </div>
-                  </div>
-                  <div className="w-1/2 overflow-hidden">
-                    <img 
-                      src={showcaseImages[activeIndex].after} 
-                      alt="After" 
-                      className="w-[200%] h-full object-cover -ml-full"
-                    />
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-violet-600/90 rounded-full text-xs font-medium">
-                      After
-                    </div>
-                  </div>
-                </div>
-                {/* Center divider */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full flex items-center justify-center text-black font-bold shadow-xl">
-                  ↔
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold mb-6 leading-[1.1]">
+            Transform Any Photo
+            <br />
+            <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-amber-400 bg-clip-text text-transparent">
+              With AI Magic
+            </span>
+          </h1>
+
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12">
+            Professional photo editing powered by AI. Pet portraits, restoration, 
+            enhancement, style transfer, and more.
+          </p>
+
+          {/* Quick showcase */}
+          <div className="flex justify-center gap-4 mb-12">
+            {[
+              { b: "/examples/pet-original.jpg", a: "/examples/pet-royal-real.png" },
+              { b: "/examples/style-before.jpg", a: "/examples/style-after.png" },
+              { b: "/examples/restore-before.jpg", a: "/examples/restore-after.png" },
+            ].map((item, i) => (
+              <div 
+                key={i} 
+                className={`relative rounded-2xl overflow-hidden border-2 transition-all duration-300 ${
+                  activeShowcase === i ? "border-violet-500 scale-105" : "border-white/10 opacity-60"
+                }`}
+                style={{ width: activeShowcase === i ? 200 : 80 }}
+              >
+                <div className="flex">
+                  <img src={item.b} alt="" className="w-1/2 h-24 object-cover" />
+                  <img src={item.a} alt="" className="w-1/2 h-24 object-cover" />
                 </div>
               </div>
-              {/* Label */}
-              <div className="mt-3 px-2 pb-1 text-center">
-                <span className="text-sm text-gray-400">{showcaseImages[activeIndex].label}</span>
-              </div>
-            </div>
-
-            {/* Floating cards */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl overflow-hidden border border-white/20 shadow-xl animate-float-slow">
-              <img src="/examples/pet-disney-real.png" alt="" className="w-full h-full object-cover" />
-            </div>
-            <div className="absolute -bottom-4 -left-4 w-20 h-20 rounded-2xl overflow-hidden border border-white/20 shadow-xl animate-float-slow delay-1000">
-              <img src="/examples/pet-oil-real.png" alt="" className="w-full h-full object-cover" />
-            </div>
-
-            {/* Indicators */}
-            <div className="flex justify-center gap-2 mt-6">
-              {showcaseImages.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveIndex(i)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    i === activeIndex ? "w-6 bg-violet-500" : "bg-white/20 hover:bg-white/40"
-                  }`}
-                />
-              ))}
-            </div>
+            ))}
           </div>
+
+          <a
+            href="#pet-portrait"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-2xl font-semibold text-lg hover:shadow-2xl hover:shadow-violet-500/25 hover:scale-105 transition-all"
+          >
+            Explore Tools ↓
+          </a>
         </div>
       </section>
 
-      {/* Tools Grid */}
-      <section id="tools" className="py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">6 Powerful AI Tools</h2>
-            <p className="text-gray-400 text-lg">Click any tool to start transforming</p>
-          </div>
+      {/* Tool Sections */}
+      {toolSections.map((tool, index) => (
+        <section 
+          key={tool.id} 
+          id={tool.id}
+          className={`relative py-24 lg:py-32 overflow-hidden ${index % 2 === 0 ? "" : "bg-white/[0.02]"}`}
+        >
+          {/* Background gradient */}
+          <div className={`absolute inset-0 bg-gradient-to-br ${tool.bgColor} opacity-50`} />
+          
+          <div className="relative max-w-7xl mx-auto px-6">
+            <div className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${index % 2 === 1 ? "lg:grid-flow-dense" : ""}`}>
+              
+              {/* Text Content */}
+              <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
+                <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${tool.color} text-sm font-medium mb-6`}>
+                  {tool.emoji} {tool.name}
+                </div>
+                
+                <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+                  {tool.tagline}
+                </h2>
+                
+                <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+                  {tool.description}
+                </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {tools.map((tool, i) => (
+                {/* Features */}
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {tool.features.map((f, i) => (
+                    <span key={i} className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">
+                      {f}
+                    </span>
+                  ))}
+                </div>
+
+                <Link
+                  href={`/${tool.id}`}
+                  className={`inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r ${tool.color} rounded-2xl font-semibold text-lg hover:scale-105 hover:shadow-xl transition-all`}
+                >
+                  Try {tool.name.split(" ")[0]} Now →
+                </Link>
+              </div>
+
+              {/* Visual Showcase */}
+              <div className={`relative ${index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
+                <div className="relative">
+                  {/* Main before/after */}
+                  <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                    <div className="grid grid-cols-2">
+                      <div className="relative">
+                        <img 
+                          src={tool.before} 
+                          alt="Before" 
+                          className="w-full aspect-square object-cover"
+                        />
+                        <div className="absolute bottom-3 left-3 px-3 py-1 bg-black/70 backdrop-blur rounded-full text-xs font-medium">
+                          Before
+                        </div>
+                      </div>
+                      <div className="relative">
+                        <img 
+                          src={tool.after} 
+                          alt="After" 
+                          className="w-full aspect-square object-cover"
+                        />
+                        <div className={`absolute bottom-3 right-3 px-3 py-1 bg-gradient-to-r ${tool.color} rounded-full text-xs font-medium`}>
+                          After
+                        </div>
+                      </div>
+                    </div>
+                    {/* Center arrow */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-bold shadow-xl text-xl">
+                      →
+                    </div>
+                  </div>
+
+                  {/* Extra examples for pet portrait */}
+                  {tool.afterAlt && (
+                    <div className="absolute -right-4 top-1/4 flex flex-col gap-3">
+                      <div className="w-20 h-20 rounded-xl overflow-hidden border border-white/20 shadow-lg transform rotate-6 hover:rotate-0 transition-transform">
+                        <img src={tool.afterAlt} alt="" className="w-full h-full object-cover" />
+                      </div>
+                      {tool.afterAlt2 && (
+                        <div className="w-16 h-16 rounded-xl overflow-hidden border border-white/20 shadow-lg transform -rotate-6 hover:rotate-0 transition-transform">
+                          <img src={tool.afterAlt2} alt="" className="w-full h-full object-cover" />
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      {/* Final CTA */}
+      <section className="py-32 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-violet-950/30 to-transparent" />
+        <div className="relative max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+            Ready to Transform?
+          </h2>
+          <p className="text-xl text-gray-400 mb-12">
+            Pick any tool and start creating in seconds
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            {toolSections.map((tool) => (
               <Link
                 key={tool.id}
                 href={`/${tool.id}`}
-                className="group relative rounded-3xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-[1.02]"
-                onMouseEnter={() => setHoveredTool(i)}
-                onMouseLeave={() => setHoveredTool(null)}
+                className={`px-6 py-3 bg-gradient-to-r ${tool.color} rounded-xl font-medium hover:scale-105 transition-transform shadow-lg`}
               >
-                {/* Background image */}
-                <div className="absolute inset-0">
-                  <img 
-                    src={tool.image} 
-                    alt={tool.name}
-                    className={`w-full h-full object-cover transition-all duration-500 ${
-                      hoveredTool === i ? "scale-110 opacity-60" : "scale-100 opacity-40"
-                    }`}
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${tool.color} opacity-50 mix-blend-overlay`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                </div>
-
-                {/* Content */}
-                <div className="relative p-8 min-h-[240px] flex flex-col justify-end">
-                  <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform">
-                    {tool.emoji}
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">{tool.name}</h3>
-                  <p className="text-gray-300 text-sm opacity-80">
-                    {tool.id === "pet-portrait" && "70+ art styles for your pets"}
-                    {tool.id === "photo-restore" && "Fix old & damaged photos"}
-                    {tool.id === "photo-enhance" && "4x upscale & sharpen"}
-                    {tool.id === "background-remove" && "One-click BG removal"}
-                    {tool.id === "style-transfer" && "Van Gogh, Monet & more"}
-                    {tool.id === "ai-headshots" && "Professional portraits"}
-                  </p>
-                  <div className={`mt-4 inline-flex items-center gap-2 text-sm font-medium transition-all ${
-                    hoveredTool === i ? "gap-3" : ""
-                  }`}>
-                    Try Now <span>→</span>
-                  </div>
-                </div>
+                {tool.emoji} {tool.name.split(" ")[0]}
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Before/After Gallery */}
-      <section className="py-24 px-6 border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Real AI Results</h2>
-            <p className="text-gray-400 text-lg">Actual transformations from our tools</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { before: "/examples/pet-original.jpg", after: "/examples/pet-royal-real.png", tool: "Pet Portrait", style: "Royal" },
-              { before: "/examples/restore-before.jpg", after: "/examples/restore-after.png", tool: "Photo Restore", style: "Enhanced" },
-              { before: "/examples/style-before.jpg", after: "/examples/style-after.png", tool: "Style Transfer", style: "Van Gogh" },
-            ].map((item, i) => (
-              <div key={i} className="bg-white/5 rounded-3xl p-4 border border-white/10">
-                <div className="flex gap-2 mb-3">
-                  <div className="flex-1 relative rounded-xl overflow-hidden">
-                    <img src={item.before} alt="Before" className="w-full aspect-square object-cover" />
-                    <span className="absolute bottom-2 left-2 px-2 py-0.5 bg-black/70 rounded text-xs">Before</span>
-                  </div>
-                  <div className="flex items-center text-gray-500">→</div>
-                  <div className="flex-1 relative rounded-xl overflow-hidden">
-                    <img src={item.after} alt="After" className="w-full aspect-square object-cover" />
-                    <span className="absolute bottom-2 right-2 px-2 py-0.5 bg-violet-600/90 rounded text-xs">After</span>
-                  </div>
-                </div>
-                <div className="text-center">
-                  <span className="text-sm text-gray-400">{item.tool}</span>
-                  <span className="mx-2 text-gray-600">•</span>
-                  <span className="text-sm text-violet-400">{item.style}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block p-1 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 mb-8">
-            <div className="px-6 py-2 bg-black rounded-full">
-              <span className="text-sm font-medium bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-                Free to try • No sign-up required
-              </span>
-            </div>
-          </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Start Transforming
-          </h2>
-          <p className="text-xl text-gray-400 mb-10">
-            Pick a tool and see the magic happen
-          </p>
-          <Link
-            href="/pet-portrait"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-2xl font-semibold text-xl hover:shadow-2xl hover:shadow-violet-500/30 hover:scale-105 transition-all"
-          >
-            🐾 Start with Pet Portrait
-          </Link>
         </div>
       </section>
 
@@ -283,27 +295,16 @@ export default function Home() {
             <span className="text-2xl">📸</span>
             <span className="font-semibold">AI Photo Tools</span>
           </div>
-          <div className="flex gap-6 text-sm text-gray-500">
-            {tools.slice(0, 4).map(t => (
-              <Link key={t.id} href={`/${t.id}`} className="hover:text-white transition">{t.name}</Link>
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
+            {toolSections.map((tool) => (
+              <Link key={tool.id} href={`/${tool.id}`} className="hover:text-white transition">
+                {tool.name.split(" ")[0]}
+              </Link>
             ))}
           </div>
           <div className="text-sm text-gray-600">© 2026</div>
         </div>
       </footer>
-
-      <style jsx>{`
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        .animate-float-slow {
-          animation: float-slow 4s ease-in-out infinite;
-        }
-        .delay-1000 {
-          animation-delay: 1s;
-        }
-      `}</style>
     </main>
   );
 }
