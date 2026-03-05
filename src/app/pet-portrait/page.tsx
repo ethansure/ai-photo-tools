@@ -78,17 +78,28 @@ export default function PetPortraitPage() {
       formData.append("image", uploadedFile);
       formData.append("style", selectedStyle);
 
+      console.log("[Pet Portrait] Sending request...", { 
+        fileSize: uploadedFile.size, 
+        fileType: uploadedFile.type,
+        style: selectedStyle 
+      });
+      
       const res = await fetch("/api/pet-portrait", { method: "POST", body: formData });
+      
+      console.log("[Pet Portrait] Response status:", res.status, res.statusText);
       
       // Handle non-JSON responses (e.g., "Request Entity Too Large")
       const contentType = res.headers.get("content-type");
+      console.log("[Pet Portrait] Content-Type:", contentType);
+      
       if (!contentType?.includes("application/json")) {
         const text = await res.text();
-        console.error("Non-JSON response:", text);
-        throw new Error(text.includes("Too Large") ? "Image too large! Please use a smaller image." : `Server error: ${text.substring(0, 100)}`);
+        console.error("[Pet Portrait] Non-JSON response:", text);
+        throw new Error(text.includes("Too Large") ? "Image too large! Please use a smaller image (under 4MB)." : `Server error: ${text.substring(0, 100)}`);
       }
       
       const data = await res.json();
+      console.log("[Pet Portrait] Response data:", { success: data.success, imageCount: data.images?.length });
       clearInterval(interval);
       
       if (!res.ok) {
