@@ -36,32 +36,74 @@ export default function PetPortraitPage() {
   const [progress, setProgress] = useState(0);
   const [results, setResults] = useState<string[]>([]);
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
+  // Compress image if needed
+  const compressImage = async (file: File): Promise<File> => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const maxSize = 1024; // Max 1024px
+        let { width, height } = img;
+        
+        if (width > maxSize || height > maxSize) {
+          if (width > height) {
+            height = (height / width) * maxSize;
+            width = maxSize;
+          } else {
+            width = (width / height) * maxSize;
+            height = maxSize;
+          }
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d")!;
+        ctx.drawImage(img, 0, 0, width, height);
+        
+        canvas.toBlob((blob) => {
+          if (blob) {
+            resolve(new File([blob], file.name.replace(/\.[^.]+$/, ".jpg"), { type: "image/jpeg" }));
+          } else {
+            resolve(file);
+          }
+        }, "image/jpeg", 0.85);
+      };
+      img.src = URL.createObjectURL(file);
+    });
+  };
+
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
     if (file) {
-      // Check file size (max 4MB for Vercel)
-      if (file.size > 4 * 1024 * 1024) {
-        toast.error("Image too large! Please use an image under 4MB.");
-        return;
+      toast.info("Processing image...");
+      
+      // Compress large images
+      let processedFile = file;
+      if (file.size > 2 * 1024 * 1024) { // > 2MB
+        console.log("[Pet Portrait] Compressing large image:", file.size);
+        processedFile = await compressImage(file);
+        console.log("[Pet Portrait] Compressed to:", processedFile.size);
+        toast.success("Image optimized!");
       }
-      setUploadedFile(file);
+      
+      setUploadedFile(processedFile);
       const reader = new FileReader();
       reader.onload = () => setUploadedImage(reader.result as string);
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(processedFile);
     }
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop, 
-    accept: { "image/*": [".jpg", ".jpeg", ".png", ".webp"] }, 
+    accept: { "image/*": [".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif"] }, 
     maxFiles: 1,
-    maxSize: 4 * 1024 * 1024, // 4MB
+    maxSize: 10 * 1024 * 1024, // 10MB (will compress before sending)
     onDropRejected: (rejections) => {
       const error = rejections[0]?.errors[0];
       if (error?.code === "file-too-large") {
-        toast.error("Image too large! Max 4MB allowed.");
+        toast.error("Image too large! Max 10MB allowed.");
       } else {
-        toast.error(error?.message || "Invalid file");
+        toast.error(error?.message || "Invalid file. Use JPG, PNG, or WebP.");
       }
     },
   });
@@ -123,9 +165,10 @@ export default function PetPortraitPage() {
         throw new Error(data.error || data.details || "Generation failed");
       }
     } catch (e) {
-      console.error("Generation error:", e);
+      console.error("[Pet Portrait] Generation error:", e);
       clearInterval(interval);
-      toast.error(e instanceof Error ? e.message : "Something went wrong. Please try again.");
+      const errorMsg = e instanceof Error ? e.message : "Something went wrong";
+      toast.error(`${errorMsg}. Try a smaller image or different format.`);
       setProgress(0);
     }
     setProcessing(false);
