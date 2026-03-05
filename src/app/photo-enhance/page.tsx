@@ -4,10 +4,11 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { useDropzone } from "react-dropzone";
 
-const examples = [
-  { before: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200", after: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800", scale: "4x" },
-  { before: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=200", after: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800", scale: "4x" },
-  { before: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=200", after: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800", scale: "4x" },
+// Features we offer
+const capabilities = [
+  { icon: "📐", name: "4x Upscale", desc: "Increase resolution up to 4 times original" },
+  { icon: "🔇", name: "Noise Reduction", desc: "Remove grain and compression artifacts" },
+  { icon: "🔍", name: "Detail Enhancement", desc: "Sharpen and enhance fine details" },
 ];
 
 export default function PhotoEnhancePage() {
@@ -99,18 +100,13 @@ export default function PhotoEnhancePage() {
             </div>
             
             <div className="space-y-4">
-              {examples.map((ex, i) => (
+              {capabilities.map((cap, i) => (
                 <div key={i} className="flex items-center gap-4 bg-white/5 rounded-2xl p-4 border border-white/10">
-                  <div className="relative">
-                    <img src={ex.before} alt="Before" className="w-20 h-20 rounded-lg object-cover" />
-                    <span className="absolute -bottom-1 -right-1 text-xs bg-red-500 px-1 rounded">Low</span>
+                  <div className="w-16 h-16 rounded-xl bg-purple-500/20 flex items-center justify-center text-3xl">{cap.icon}</div>
+                  <div>
+                    <div className="font-semibold">{cap.name}</div>
+                    <div className="text-sm text-gray-400">{cap.desc}</div>
                   </div>
-                  <div className="text-2xl">→</div>
-                  <div className="relative">
-                    <img src={ex.after} alt="After" className="w-20 h-20 rounded-lg object-cover" />
-                    <span className="absolute -bottom-1 -right-1 text-xs bg-green-500 px-1 rounded">HD</span>
-                  </div>
-                  <div className="ml-auto text-sm bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full">{ex.scale}</div>
                 </div>
               ))}
             </div>

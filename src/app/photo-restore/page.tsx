@@ -4,10 +4,11 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { useDropzone } from "react-dropzone";
 
-const examples = [
-  { before: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&sat=-100", after: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400", feature: "Colorization" },
-  { before: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&blur=2", after: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400", feature: "Face Restore" },
-  { before: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&sat=-100&blur=1", after: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400", feature: "Full Restore" },
+// Features we offer (not fake before/after)
+const capabilities = [
+  { icon: "👤", name: "Face Enhancement", desc: "AI restores facial details and sharpness" },
+  { icon: "🔧", name: "Scratch Removal", desc: "Automatically removes scratches & damage" },
+  { icon: "🎨", name: "B&W Colorization", desc: "Add realistic color to old photos" },
 ];
 
 const features = [
@@ -112,12 +113,13 @@ export default function PhotoRestorePage() {
             </div>
             
             <div className="space-y-4">
-              {examples.map((ex, i) => (
+              {capabilities.map((cap, i) => (
                 <div key={i} className="flex items-center gap-4 bg-white/5 rounded-2xl p-4 border border-white/10">
-                  <img src={ex.before} alt="Before" className="w-24 h-24 rounded-xl object-cover opacity-70" />
-                  <div className="text-2xl">→</div>
-                  <img src={ex.after} alt="After" className="w-24 h-24 rounded-xl object-cover" />
-                  <div className="ml-auto text-sm bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full">{ex.feature}</div>
+                  <div className="w-16 h-16 rounded-xl bg-blue-500/20 flex items-center justify-center text-3xl">{cap.icon}</div>
+                  <div>
+                    <div className="font-semibold">{cap.name}</div>
+                    <div className="text-sm text-gray-400">{cap.desc}</div>
+                  </div>
                 </div>
               ))}
             </div>

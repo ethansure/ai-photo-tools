@@ -13,10 +13,11 @@ const styles = [
   { id: "actor", name: "Actor", icon: "🎭", desc: "Entertainment industry" },
 ];
 
-const examples = [
-  { before: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400", after: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400", style: "Corporate" },
-  { before: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400", after: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400", style: "LinkedIn" },
-  { before: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400", after: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400", style: "Creative" },
+// Professional headshot examples (real professional photos, not fake transformations)
+const headshotExamples = [
+  { image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400", style: "Corporate", desc: "Formal business" },
+  { image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400", style: "LinkedIn", desc: "Professional networking" },
+  { image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400", style: "Creative", desc: "Modern approachable" },
 ];
 
 export default function AIHeadshotsPage() {
@@ -112,13 +113,14 @@ export default function AIHeadshotsPage() {
               </div>
             </div>
             
-            <div className="space-y-4">
-              {examples.map((ex, i) => (
-                <div key={i} className="flex items-center gap-4 bg-white/5 rounded-2xl p-4 border border-white/10">
-                  <img src={ex.before} alt="Before" className="w-20 h-20 rounded-full object-cover" />
-                  <div className="text-2xl">→</div>
-                  <img src={ex.after} alt="After" className="w-20 h-20 rounded-full object-cover ring-2 ring-slate-500" />
-                  <div className="ml-auto text-sm bg-slate-500/20 text-slate-300 px-3 py-1 rounded-full">{ex.style}</div>
+            <div className="grid grid-cols-3 gap-4">
+              {headshotExamples.map((ex, i) => (
+                <div key={i} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 text-center">
+                  <img src={ex.image} alt={ex.style} className="w-full aspect-square object-cover" />
+                  <div className="p-3">
+                    <div className="font-medium">{ex.style}</div>
+                    <div className="text-xs text-gray-500">{ex.desc}</div>
+                  </div>
                 </div>
               ))}
             </div>

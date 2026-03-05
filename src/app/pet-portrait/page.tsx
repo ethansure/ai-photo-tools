@@ -4,13 +4,14 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { useDropzone } from "react-dropzone";
 
-const examples = [
-  { before: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400", after: "https://images.unsplash.com/photo-1558788353-f76d92427f16?w=400", style: "Royal Portrait", desc: "Majestic & regal" },
-  { before: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400", after: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400", style: "Oil Painting", desc: "Classic fine art" },
-  { before: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400", after: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=400", style: "Disney Pixar", desc: "3D animated" },
-  { before: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=400", after: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=400", style: "Watercolor", desc: "Soft & dreamy" },
-  { before: "https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?w=400", after: "https://images.unsplash.com/photo-1591946614720-90a587da4a36?w=400", style: "Anime", desc: "Japanese style" },
-  { before: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400", after: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400", style: "Pop Art", desc: "Warhol-inspired" },
+// Style gallery - showing what each style looks like (not fake before/after)
+const styleGallery = [
+  { style: "Royal Portrait", emoji: "👑", image: "https://images.unsplash.com/photo-1558788353-f76d92427f16?w=400", desc: "Your pet as royalty" },
+  { style: "Oil Painting", emoji: "🎨", image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400", desc: "Classic fine art style" },
+  { style: "Watercolor", emoji: "💧", image: "https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?w=400", desc: "Soft painted look" },
+  { style: "Pop Art", emoji: "🔴", image: "https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=400", desc: "Bold colors & patterns" },
+  { style: "Anime", emoji: "🌸", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400", desc: "Japanese animation" },
+  { style: "Sketch", emoji: "✏️", image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400", desc: "Hand-drawn pencil" },
 ];
 
 const styleCategories = [
@@ -129,7 +130,7 @@ export default function PetPortraitPage() {
                   </span>
                 </h1>
                 <p className="text-xl text-gray-400 mb-8">
-                  70+ art styles. Royal portraits, Disney, anime, oil paintings & more. 
+                  Upload your pet photo, choose a style, and watch AI transform it into beautiful art. 
                   Perfect for gifts, prints, and memories.
                 </p>
                 <div className="flex flex-wrap gap-4">
@@ -139,8 +140,8 @@ export default function PetPortraitPage() {
                   >
                     🐾 Create Portrait — Free
                   </button>
-                  <a href="#examples" className="px-8 py-4 rounded-2xl font-medium border border-white/20 hover:bg-white/10 transition">
-                    View Examples
+                  <a href="#styles" className="px-8 py-4 rounded-2xl font-medium border border-white/20 hover:bg-white/10 transition">
+                    View Styles
                   </a>
                 </div>
                 <div className="flex items-center gap-6 mt-8 text-sm text-gray-500">
@@ -150,67 +151,63 @@ export default function PetPortraitPage() {
                 </div>
               </div>
               
-              {/* Hero Image Grid */}
-              <div className="relative">
-                <div className="grid grid-cols-2 gap-4">
-                  {examples.slice(0, 4).map((ex, i) => (
-                    <div 
-                      key={i} 
-                      className={`relative rounded-2xl overflow-hidden ${i === 0 ? "col-span-2" : ""}`}
-                    >
-                      <img 
-                        src={ex.after} 
-                        alt={ex.style}
-                        className="w-full aspect-square object-cover"
-                      />
-                      <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur px-3 py-1 rounded-full text-xs">
-                        {ex.style}
-                      </div>
-                    </div>
-                  ))}
+              {/* Sample pets to upload */}
+              <div className="text-center">
+                <p className="text-gray-400 mb-4">Upload any pet photo:</p>
+                <div className="grid grid-cols-3 gap-3">
+                  <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=200" alt="Dog" className="rounded-2xl aspect-square object-cover" />
+                  <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=200" alt="Cat" className="rounded-2xl aspect-square object-cover" />
+                  <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=200" alt="Hamster" className="rounded-2xl aspect-square object-cover" />
                 </div>
+                <p className="text-gray-500 text-sm mt-4">Dogs, cats, birds, hamsters & more!</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Style Categories */}
-        <section className="py-20 px-6 border-t border-white/5">
+        {/* Style Gallery - Real examples of art styles */}
+        <section id="styles" className="py-20 px-6 border-t border-white/5">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">70+ Art Styles</h2>
-            <div className="grid md:grid-cols-4 gap-6">
-              {styleCategories.map((cat, i) => (
-                <div key={i} className="bg-white/5 rounded-2xl p-6 border border-white/10">
-                  <h3 className="font-bold text-lg mb-4">{cat.name}</h3>
-                  <ul className="space-y-2 text-sm text-gray-400">
-                    {cat.styles.map((style, j) => (
-                      <li key={j}>• {style}</li>
-                    ))}
-                  </ul>
+            <h2 className="text-3xl font-bold text-center mb-4">Art Style Examples</h2>
+            <p className="text-gray-400 text-center mb-12">See what each style looks like</p>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              {styleGallery.map((item, i) => (
+                <div key={i} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-amber-500/30 transition group">
+                  <div className="aspect-square overflow-hidden">
+                    <img 
+                      src={item.image} 
+                      alt={item.style}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xl">{item.emoji}</span>
+                      <span className="font-semibold">{item.style}</span>
+                    </div>
+                    <p className="text-sm text-gray-500">{item.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Examples */}
-        <section id="examples" className="py-20 px-6 bg-gradient-to-b from-transparent via-amber-950/20 to-transparent">
+        {/* All Style Categories */}
+        <section className="py-20 px-6 bg-gradient-to-b from-transparent via-amber-950/10 to-transparent">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-4">Before & After</h2>
-            <p className="text-gray-400 text-center mb-12">Real transformations from our users</p>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              {examples.map((ex, i) => (
-                <div key={i} className="bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-amber-500/30 transition">
-                  <div className="flex items-center gap-3 mb-3">
-                    <img src={ex.before} alt="Before" className="w-20 h-20 rounded-xl object-cover" />
-                    <div className="text-2xl">→</div>
-                    <img src={ex.after} alt="After" className="w-20 h-20 rounded-xl object-cover" />
-                  </div>
-                  <div className="text-center">
-                    <div className="font-semibold">{ex.style}</div>
-                    <div className="text-sm text-gray-500">{ex.desc}</div>
-                  </div>
+            <h2 className="text-3xl font-bold text-center mb-12">70+ Art Styles</h2>
+            <div className="grid md:grid-cols-4 gap-6">
+              {styleCategories.map((cat, i) => (
+                <div key={i} className="bg-white/5 rounded-2xl p-6 border border-white/10">
+                  <h3 className="font-bold text-lg mb-4 text-amber-400">{cat.name}</h3>
+                  <ul className="space-y-2 text-sm text-gray-400">
+                    {cat.styles.map((style, j) => (
+                      <li key={j}>• {style}</li>
+                    ))}
+                    <li className="text-gray-600">+ more...</li>
+                  </ul>
                 </div>
               ))}
             </div>
@@ -223,14 +220,15 @@ export default function PetPortraitPage() {
             <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { step: "1", icon: "📤", title: "Upload", desc: "Drop your pet photo" },
-                { step: "2", icon: "🎨", title: "Choose Style", desc: "Pick from 70+ styles" },
-                { step: "3", icon: "⬇️", title: "Download", desc: "Get HD artwork" },
+                { step: "1", icon: "📤", title: "Upload Pet Photo", desc: "Any clear photo of your pet" },
+                { step: "2", icon: "🎨", title: "Choose Style", desc: "Pick from 70+ art styles" },
+                { step: "3", icon: "⬇️", title: "Download Art", desc: "Get HD artwork instantly" },
               ].map((item, i) => (
                 <div key={i} className="text-center">
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-3xl mx-auto mb-4">
                     {item.icon}
                   </div>
+                  <div className="text-amber-400 text-sm font-mono mb-2">Step {item.step}</div>
                   <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                   <p className="text-gray-500">{item.desc}</p>
                 </div>
@@ -242,13 +240,13 @@ export default function PetPortraitPage() {
         {/* CTA */}
         <section className="py-20 px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">Create Your Pet&apos;s Portrait</h2>
-            <p className="text-gray-400 mb-8">Upload a photo and transform it into art</p>
+            <h2 className="text-4xl font-bold mb-6">Ready to Create?</h2>
+            <p className="text-gray-400 mb-8">Upload your pet photo and see the magic</p>
             <button
               onClick={() => setMode("create")}
               className="px-10 py-5 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl font-semibold text-xl hover:shadow-xl hover:shadow-amber-500/25 transition"
             >
-              🐾 Start Creating — It&apos;s Free
+              🐾 Start Creating — Free
             </button>
           </div>
         </section>
@@ -348,7 +346,7 @@ export default function PetPortraitPage() {
           {/* Results */}
           {results.length > 0 && (
             <div className="space-y-8">
-              <h2 className="text-2xl font-bold text-center">Your Pet Portraits!</h2>
+              <h2 className="text-2xl font-bold text-center">Your Pet Portrait!</h2>
               <div className="grid grid-cols-2 gap-4">
                 {results.map((img, i) => (
                   <div key={i} className="relative group">

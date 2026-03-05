@@ -19,10 +19,11 @@ const styles = [
   { id: "abstract", name: "Abstract", emoji: "🎨", desc: "Modern abstract" },
 ];
 
-const examples = [
-  { before: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400", after: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=400", style: "Van Gogh" },
-  { before: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400", after: "https://images.unsplash.com/photo-1549490349-8643362247b5?w=400", style: "Monet" },
-  { before: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400", after: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400", style: "Abstract" },
+// Style examples - real art style images (not fake before/after)
+const styleExamples = [
+  { style: "Van Gogh", emoji: "🌻", image: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=400", desc: "Swirling brushstrokes" },
+  { style: "Impressionist", emoji: "🌸", image: "https://images.unsplash.com/photo-1549490349-8643362247b5?w=400", desc: "Light & color focus" },
+  { style: "Abstract", emoji: "🎨", image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400", desc: "Bold shapes & colors" },
 ];
 
 export default function StyleTransferPage() {
@@ -110,13 +111,14 @@ export default function StyleTransferPage() {
               </div>
             </div>
             
-            <div className="space-y-4">
-              {examples.map((ex, i) => (
-                <div key={i} className="flex items-center gap-4 bg-white/5 rounded-2xl p-4 border border-white/10">
-                  <img src={ex.before} alt="Before" className="w-24 h-24 rounded-xl object-cover" />
-                  <div className="text-2xl">→</div>
-                  <img src={ex.after} alt="After" className="w-24 h-24 rounded-xl object-cover" />
-                  <div className="ml-auto text-sm bg-rose-500/20 text-rose-400 px-3 py-1 rounded-full">{ex.style}</div>
+            <div className="grid grid-cols-3 gap-4">
+              {styleExamples.map((ex, i) => (
+                <div key={i} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10">
+                  <img src={ex.image} alt={ex.style} className="w-full aspect-square object-cover" />
+                  <div className="p-3 text-center">
+                    <span className="text-lg">{ex.emoji}</span>
+                    <div className="font-medium text-sm">{ex.style}</div>
+                  </div>
                 </div>
               ))}
             </div>
