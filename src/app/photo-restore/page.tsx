@@ -4,211 +4,233 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { useDropzone } from "react-dropzone";
 
-type Mode = "upload" | "options" | "processing" | "results";
+const examples = [
+  { before: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&sat=-100", after: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400", feature: "Colorization" },
+  { before: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&blur=2", after: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400", feature: "Face Restore" },
+  { before: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&sat=-100&blur=1", after: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400", feature: "Full Restore" },
+];
 
-const restorationOptions = [
-  { id: "face", name: "Face Restoration", description: "Enhance and restore facial features", icon: "👤", checked: true },
-  { id: "scratch", name: "Scratch Removal", description: "Remove scratches and damage", icon: "🔧", checked: true },
-  { id: "colorize", name: "Colorize B&W", description: "Add color to black and white photos", icon: "🎨", checked: false },
+const features = [
+  { icon: "👤", name: "Face Enhancement", desc: "Restore facial features with AI" },
+  { icon: "🔧", name: "Scratch Removal", desc: "Remove scratches and damage" },
+  { icon: "🎨", name: "Colorization", desc: "Add color to B&W photos" },
+  { icon: "✨", name: "Noise Reduction", desc: "Clean up grainy images" },
+];
+
+const options = [
+  { id: "face", name: "Face Restoration", icon: "👤", checked: true },
+  { id: "scratch", name: "Scratch Removal", icon: "🔧", checked: true },
+  { id: "colorize", name: "Colorize B&W", icon: "🎨", checked: false },
 ];
 
 export default function PhotoRestorePage() {
-  const [mode, setMode] = useState<Mode>("upload");
+  const [mode, setMode] = useState<"landing" | "create">("landing");
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-  const [options, setOptions] = useState(restorationOptions);
+  const [selectedOptions, setSelectedOptions] = useState(options);
+  const [processing, setProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [resultImage, setResultImage] = useState<string | null>(null);
+  const [result, setResult] = useState<string | null>(null);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
     if (file) {
       setUploadedFile(file);
       const reader = new FileReader();
-      reader.onload = () => {
-        setUploadedImage(reader.result as string);
-        setMode("options");
-      };
+      reader.onload = () => setUploadedImage(reader.result as string);
       reader.readAsDataURL(file);
     }
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: { "image/*": [".png", ".jpg", ".jpeg", ".webp"] },
-    maxFiles: 1,
-  });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: { "image/*": [] }, maxFiles: 1 });
 
   const toggleOption = (id: string) => {
-    setOptions(options.map(opt => 
-      opt.id === id ? { ...opt, checked: !opt.checked } : opt
-    ));
+    setSelectedOptions(selectedOptions.map(o => o.id === id ? { ...o, checked: !o.checked } : o));
   };
 
   const handleRestore = async () => {
     if (!uploadedFile) return;
-    setMode("processing");
+    setProcessing(true);
     setProgress(0);
 
-    const progressInterval = setInterval(() => {
-      setProgress(prev => Math.min(prev + 10, 90));
-    }, 500);
+    const interval = setInterval(() => setProgress(p => Math.min(p + 10, 90)), 400);
 
     try {
       const formData = new FormData();
       formData.append("image", uploadedFile);
-      formData.append("options", JSON.stringify(options.filter(o => o.checked).map(o => o.id)));
+      formData.append("options", JSON.stringify(selectedOptions.filter(o => o.checked).map(o => o.id)));
 
-      const response = await fetch("/api/restore", {
-        method: "POST",
-        body: formData,
-      });
-
+      const response = await fetch("/api/restore", { method: "POST", body: formData });
       const data = await response.json();
-      clearInterval(progressInterval);
+      clearInterval(interval);
       setProgress(100);
-
-      if (data.success) {
-        setResultImage(data.image);
-        setMode("results");
-      }
-    } catch (error) {
-      console.error(error);
-      clearInterval(progressInterval);
-      setMode("options");
+      if (data.success) setResult(data.image);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      clearInterval(interval);
+      setProcessing(false);
     }
   };
 
-  const handleDownload = () => {
-    if (resultImage) {
-      const link = document.createElement("a");
-      link.href = resultImage;
-      link.download = "restored-photo.png";
-      link.click();
-    }
-  };
+  if (mode === "landing" && !uploadedImage) {
+    return (
+      <main className="min-h-screen bg-[#0a0a0a] text-white">
+        <header className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <Link href="/" className="flex items-center gap-2">
+              <span className="text-2xl">📸</span>
+              <span className="font-semibold">PhotoICU</span>
+            </Link>
+            <button onClick={() => setMode("create")} className="px-5 py-2 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full text-sm font-medium">
+              Restore Now →
+            </button>
+          </div>
+        </header>
+
+        <section className="pt-32 pb-20 px-6">
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/20 rounded-full text-blue-400 text-sm mb-6">
+                📸 AI Photo Restoration
+              </div>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Bring Old Photos
+                <span className="block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  Back to Life
+                </span>
+              </h1>
+              <p className="text-xl text-gray-400 mb-8">
+                Repair scratches, enhance faces, colorize black & white. 
+                Restore precious memories with AI.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <button onClick={() => setMode("create")} className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-2xl font-semibold text-lg">
+                  📸 Restore Photo — Free
+                </button>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              {examples.map((ex, i) => (
+                <div key={i} className="flex items-center gap-4 bg-white/5 rounded-2xl p-4 border border-white/10">
+                  <img src={ex.before} alt="Before" className="w-24 h-24 rounded-xl object-cover opacity-70" />
+                  <div className="text-2xl">→</div>
+                  <img src={ex.after} alt="After" className="w-24 h-24 rounded-xl object-cover" />
+                  <div className="ml-auto text-sm bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full">{ex.feature}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 px-6 border-t border-white/5">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Restoration Features</h2>
+            <div className="grid md:grid-cols-4 gap-6">
+              {features.map((f, i) => (
+                <div key={i} className="text-center bg-white/5 rounded-2xl p-6 border border-white/10">
+                  <div className="text-4xl mb-4">{f.icon}</div>
+                  <h3 className="font-bold mb-2">{f.name}</h3>
+                  <p className="text-sm text-gray-500">{f.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-6">Restore Your Memories</h2>
+            <button onClick={() => setMode("create")} className="px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-2xl font-semibold text-xl">
+              📸 Start Restoration
+            </button>
+          </div>
+        </section>
+
+        <footer className="py-8 px-6 border-t border-white/5 text-center text-sm text-gray-600">
+          <Link href="/" className="hover:text-white transition">← Back to PhotoICU</Link>
+        </footer>
+      </main>
+    );
+  }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      {/* Header */}
-      <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <main className="min-h-screen bg-[#0a0a0a] text-white">
+      <header className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-3xl">📸</span>
-            <span className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-              PhotoICU
-            </span>
+            <span className="text-2xl">📸</span>
+            <span className="font-semibold">PhotoICU</span>
           </Link>
+          <span className="text-blue-400">📸 Photo Restore</span>
         </div>
       </header>
 
-      <div className="pt-24 pb-16 px-4">
+      <div className="pt-24 pb-16 px-6">
         <div className="max-w-4xl mx-auto">
-          {/* Title */}
-          <div className="text-center mb-12">
-            <div className="text-6xl mb-4">📸</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Photo Restoration</h1>
-            <p className="text-xl text-gray-600">Restore and colorize old damaged photos with AI</p>
-          </div>
+          <h1 className="text-3xl font-bold text-center mb-8">Restore Photo</h1>
 
-          {/* Upload Mode */}
-          {mode === "upload" && (
-            <div
-              {...getRootProps()}
-              className={`border-3 border-dashed rounded-3xl p-16 text-center cursor-pointer transition-all ${
-                isDragActive ? "border-blue-500 bg-blue-50" : "border-gray-300 hover:border-blue-400 hover:bg-blue-50/50"
-              }`}
-            >
+          {!uploadedImage && (
+            <div {...getRootProps()} className={`border-2 border-dashed rounded-3xl p-16 text-center cursor-pointer transition-all ${isDragActive ? "border-blue-500 bg-blue-500/10" : "border-white/20 hover:border-blue-500/50"}`}>
               <input {...getInputProps()} />
-              <div className="text-6xl mb-4">📤</div>
-              <p className="text-xl text-gray-700 mb-2">Drop your photo here</p>
-              <p className="text-gray-500">or click to browse</p>
+              <div className="text-6xl mb-4">📸</div>
+              <p className="text-xl mb-2">Drop your old photo here</p>
+              <p className="text-gray-500">Damaged, scratched, or faded photos</p>
             </div>
           )}
 
-          {/* Options Mode */}
-          {mode === "options" && uploadedImage && (
+          {uploadedImage && !processing && !result && (
             <div className="space-y-8">
-              <div className="bg-white rounded-3xl p-8 shadow-lg">
-                <img src={uploadedImage} alt="Original" className="max-h-64 mx-auto rounded-xl" />
+              <div className="flex justify-center">
+                <img src={uploadedImage} alt="Your photo" className="max-h-64 rounded-2xl" />
               </div>
-
-              <div className="bg-white rounded-3xl p-8 shadow-lg">
-                <h2 className="text-2xl font-bold mb-6">Restoration Options</h2>
-                <div className="space-y-4">
-                  {options.map(option => (
-                    <label
-                      key={option.id}
-                      className={`flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all ${
-                        option.checked ? "bg-blue-50 border-2 border-blue-500" : "bg-gray-50 border-2 border-transparent"
-                      }`}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={option.checked}
-                        onChange={() => toggleOption(option.id)}
-                        className="w-5 h-5"
-                      />
-                      <span className="text-2xl">{option.icon}</span>
-                      <div>
-                        <div className="font-semibold">{option.name}</div>
-                        <div className="text-sm text-gray-500">{option.description}</div>
-                      </div>
+              <div>
+                <h2 className="text-xl font-bold mb-4">Restoration Options</h2>
+                <div className="space-y-3">
+                  {selectedOptions.map(opt => (
+                    <label key={opt.id} className={`flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all ${opt.checked ? "bg-blue-500/20 border border-blue-500" : "bg-white/5 border border-white/10"}`}>
+                      <input type="checkbox" checked={opt.checked} onChange={() => toggleOption(opt.id)} className="w-5 h-5" />
+                      <span className="text-2xl">{opt.icon}</span>
+                      <span className="font-medium">{opt.name}</span>
                     </label>
                   ))}
                 </div>
               </div>
-
-              <button
-                onClick={handleRestore}
-                className="w-full py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-semibold text-lg hover:shadow-lg transition"
-              >
+              <button onClick={handleRestore} className="w-full py-4 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-xl font-semibold text-lg">
                 ✨ Restore Photo
               </button>
             </div>
           )}
 
-          {/* Processing Mode */}
-          {mode === "processing" && (
-            <div className="bg-white rounded-3xl p-16 shadow-lg text-center">
+          {processing && (
+            <div className="text-center py-16">
               <div className="text-6xl mb-6 animate-pulse">🔄</div>
               <h2 className="text-2xl font-bold mb-4">Restoring your photo...</h2>
-              <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
-                <div
-                  className="bg-gradient-to-r from-blue-500 to-cyan-500 h-4 rounded-full transition-all duration-500"
-                  style={{ width: `${progress}%` }}
-                />
+              <div className="w-full max-w-md mx-auto bg-white/10 rounded-full h-3 mb-4">
+                <div className="bg-gradient-to-r from-blue-500 to-cyan-600 h-3 rounded-full transition-all" style={{ width: `${progress}%` }} />
               </div>
-              <p className="text-gray-500">{progress}% complete</p>
             </div>
           )}
 
-          {/* Results Mode */}
-          {mode === "results" && resultImage && (
+          {result && (
             <div className="space-y-8">
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-3xl p-6 shadow-lg">
-                  <h3 className="font-semibold mb-4 text-center">Before</h3>
-                  <img src={uploadedImage!} alt="Original" className="rounded-xl w-full" />
+                <div className="text-center">
+                  <p className="text-sm text-gray-500 mb-2">Before</p>
+                  <img src={uploadedImage!} alt="Before" className="w-full rounded-xl" />
                 </div>
-                <div className="bg-white rounded-3xl p-6 shadow-lg">
-                  <h3 className="font-semibold mb-4 text-center">After</h3>
-                  <img src={resultImage} alt="Restored" className="rounded-xl w-full" />
+                <div className="text-center">
+                  <p className="text-sm text-gray-500 mb-2">After</p>
+                  <img src={result} alt="After" className="w-full rounded-xl" />
                 </div>
               </div>
-
               <div className="flex gap-4">
-                <button
-                  onClick={handleDownload}
-                  className="flex-1 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-semibold text-lg hover:shadow-lg transition"
-                >
+                <button onClick={() => { const a = document.createElement("a"); a.href = result; a.download = "restored.png"; a.click(); }} className="flex-1 py-4 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-xl font-semibold">
                   ⬇️ Download
                 </button>
-                <button
-                  onClick={() => { setMode("upload"); setUploadedImage(null); setResultImage(null); }}
-                  className="flex-1 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold text-lg hover:bg-gray-200 transition"
-                >
-                  🔄 Restore Another
+                <button onClick={() => { setResult(null); setUploadedImage(null); }} className="flex-1 py-4 bg-white/10 rounded-xl font-medium">
+                  Restore Another
                 </button>
               </div>
             </div>

@@ -4,241 +4,269 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { useDropzone } from "react-dropzone";
 
-type Mode = "upload" | "style" | "processing" | "results";
-
-const headshotStyles = [
-  { id: "corporate", name: "Corporate Professional", icon: "👔", desc: "Clean, formal business look" },
-  { id: "linkedin", name: "LinkedIn Ready", icon: "💼", desc: "Perfect for your profile" },
-  { id: "creative", name: "Creative Professional", icon: "🎨", desc: "Modern, approachable style" },
-  { id: "executive", name: "Executive", icon: "👤", desc: "C-suite ready portrait" },
-  { id: "casual", name: "Casual Business", icon: "😊", desc: "Friendly yet professional" },
-  { id: "startup", name: "Startup Founder", icon: "🚀", desc: "Tech-forward, modern" },
+const styles = [
+  { id: "corporate", name: "Corporate", icon: "👔", desc: "Formal business attire" },
+  { id: "linkedin", name: "LinkedIn", icon: "💼", desc: "Professional networking" },
+  { id: "creative", name: "Creative", icon: "🎨", desc: "Modern, approachable" },
+  { id: "executive", name: "Executive", icon: "👤", desc: "C-suite ready" },
+  { id: "startup", name: "Startup", icon: "🚀", desc: "Tech-forward casual" },
+  { id: "actor", name: "Actor", icon: "🎭", desc: "Entertainment industry" },
 ];
 
-const genderOptions = [
-  { id: "male", label: "Male", icon: "👨" },
-  { id: "female", label: "Female", icon: "👩" },
-  { id: "neutral", label: "Neutral", icon: "🧑" },
+const examples = [
+  { before: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400", after: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400", style: "Corporate" },
+  { before: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400", after: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400", style: "LinkedIn" },
+  { before: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400", after: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400", style: "Creative" },
 ];
 
 export default function AIHeadshotsPage() {
-  const [mode, setMode] = useState<Mode>("upload");
+  const [mode, setMode] = useState<"landing" | "create">("landing");
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [selectedStyle, setSelectedStyle] = useState<string | null>(null);
   const [gender, setGender] = useState("neutral");
+  const [processing, setProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [resultImages, setResultImages] = useState<string[]>([]);
+  const [results, setResults] = useState<string[]>([]);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
     if (file) {
       setUploadedFile(file);
       const reader = new FileReader();
-      reader.onload = () => {
-        setUploadedImage(reader.result as string);
-        setMode("style");
-      };
+      reader.onload = () => setUploadedImage(reader.result as string);
       reader.readAsDataURL(file);
     }
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: { "image/*": [".png", ".jpg", ".jpeg", ".webp"] },
-    maxFiles: 1,
-  });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: { "image/*": [] }, maxFiles: 1 });
 
   const handleGenerate = async () => {
     if (!uploadedFile || !selectedStyle) return;
-    setMode("processing");
+    setProcessing(true);
     setProgress(0);
 
-    const progressInterval = setInterval(() => {
-      setProgress(prev => Math.min(prev + 5, 90));
-    }, 500);
+    const interval = setInterval(() => setProgress(p => Math.min(p + 5, 90)), 400);
 
     try {
-      const style = headshotStyles.find(s => s.id === selectedStyle);
+      const style = styles.find(s => s.id === selectedStyle);
       const formData = new FormData();
       formData.append("image", uploadedFile);
       formData.append("style", selectedStyle);
       formData.append("stylePrompt", style?.desc || "");
       formData.append("gender", gender);
 
-      const response = await fetch("/api/headshots", {
-        method: "POST",
-        body: formData,
-      });
-
+      const response = await fetch("/api/headshots", { method: "POST", body: formData });
       const data = await response.json();
-      clearInterval(progressInterval);
+      clearInterval(interval);
       setProgress(100);
-
-      if (data.success) {
-        setResultImages(data.images);
-        setMode("results");
-      }
-    } catch (error) {
-      console.error(error);
-      clearInterval(progressInterval);
-      setMode("style");
+      if (data.success) setResults(data.images);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      clearInterval(interval);
+      setProcessing(false);
     }
   };
 
-  const handleDownload = (imageUrl: string, index: number) => {
-    const link = document.createElement("a");
-    link.href = imageUrl;
-    link.download = `headshot-${selectedStyle}-${index + 1}.png`;
-    link.click();
-  };
+  if (mode === "landing" && !uploadedImage) {
+    return (
+      <main className="min-h-screen bg-[#0a0a0a] text-white">
+        <header className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <Link href="/" className="flex items-center gap-2">
+              <span className="text-2xl">📸</span>
+              <span className="font-semibold">PhotoICU</span>
+            </Link>
+            <button onClick={() => setMode("create")} className="px-5 py-2 bg-gradient-to-r from-slate-600 to-zinc-700 rounded-full text-sm font-medium">
+              Create Headshot →
+            </button>
+          </div>
+        </header>
+
+        <section className="pt-32 pb-20 px-6">
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-500/20 rounded-full text-slate-300 text-sm mb-6">
+                👔 AI Professional Headshots
+              </div>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                LinkedIn-Ready
+                <span className="block bg-gradient-to-r from-slate-300 to-zinc-400 bg-clip-text text-transparent">
+                  In Seconds
+                </span>
+              </h1>
+              <p className="text-xl text-gray-400 mb-8">
+                Professional headshots for business, LinkedIn, and corporate. 
+                6 styles, 4 variations each.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <button onClick={() => setMode("create")} className="px-8 py-4 bg-gradient-to-r from-slate-600 to-zinc-700 rounded-2xl font-semibold text-lg">
+                  👔 Create Headshot — Free
+                </button>
+              </div>
+              <div className="flex items-center gap-6 mt-8 text-sm text-gray-500">
+                <span>✓ 6 pro styles</span>
+                <span>✓ 4 variations</span>
+                <span>✓ HD downloads</span>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              {examples.map((ex, i) => (
+                <div key={i} className="flex items-center gap-4 bg-white/5 rounded-2xl p-4 border border-white/10">
+                  <img src={ex.before} alt="Before" className="w-20 h-20 rounded-full object-cover" />
+                  <div className="text-2xl">→</div>
+                  <img src={ex.after} alt="After" className="w-20 h-20 rounded-full object-cover ring-2 ring-slate-500" />
+                  <div className="ml-auto text-sm bg-slate-500/20 text-slate-300 px-3 py-1 rounded-full">{ex.style}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 px-6 border-t border-white/5">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Professional Styles</h2>
+            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {styles.map((style, i) => (
+                <div key={i} className="text-center bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-slate-500/30 transition">
+                  <div className="text-4xl mb-3">{style.icon}</div>
+                  <div className="font-medium">{style.name}</div>
+                  <div className="text-xs text-gray-500 mt-1">{style.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 px-6 border-t border-white/5">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                { icon: "📤", title: "Upload Selfie", desc: "Clear, front-facing photo" },
+                { icon: "👔", title: "Choose Style", desc: "Corporate, LinkedIn, Creative" },
+                { icon: "⬇️", title: "Download 4 Variations", desc: "HD professional headshots" },
+              ].map((item, i) => (
+                <div key={i} className="text-center">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-600 to-zinc-700 flex items-center justify-center text-3xl mx-auto mb-4">{item.icon}</div>
+                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-500">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-6">Get Professional Headshots</h2>
+            <button onClick={() => setMode("create")} className="px-10 py-5 bg-gradient-to-r from-slate-600 to-zinc-700 rounded-2xl font-semibold text-xl">
+              👔 Start Creating
+            </button>
+          </div>
+        </section>
+
+        <footer className="py-8 px-6 border-t border-white/5 text-center text-sm text-gray-600">
+          <Link href="/" className="hover:text-white transition">← Back to PhotoICU</Link>
+        </footer>
+      </main>
+    );
+  }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Header */}
-      <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <main className="min-h-screen bg-[#0a0a0a] text-white">
+      <header className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-3xl">📸</span>
-            <span className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-              PhotoICU
-            </span>
+            <span className="text-2xl">📸</span>
+            <span className="font-semibold">PhotoICU</span>
           </Link>
+          <span className="text-slate-300">👔 AI Headshots</span>
         </div>
       </header>
 
-      <div className="pt-24 pb-16 px-4">
+      <div className="pt-24 pb-16 px-6">
         <div className="max-w-4xl mx-auto">
-          {/* Title */}
-          <div className="text-center mb-12">
-            <div className="text-6xl mb-4">👔</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">AI Headshots</h1>
-            <p className="text-xl text-gray-600">Professional headshots for LinkedIn & business</p>
-          </div>
+          <h1 className="text-3xl font-bold text-center mb-8">Create AI Headshot</h1>
 
-          {/* Upload Mode */}
-          {mode === "upload" && (
-            <div
-              {...getRootProps()}
-              className={`border-3 border-dashed rounded-3xl p-16 text-center cursor-pointer transition-all ${
-                isDragActive ? "border-slate-500 bg-slate-50" : "border-gray-300 hover:border-slate-400 hover:bg-slate-50/50"
-              }`}
-            >
+          {!uploadedImage && (
+            <div {...getRootProps()} className={`border-2 border-dashed rounded-3xl p-16 text-center cursor-pointer transition-all ${isDragActive ? "border-slate-500 bg-slate-500/10" : "border-white/20 hover:border-slate-500/50"}`}>
               <input {...getInputProps()} />
-              <div className="text-6xl mb-4">📤</div>
-              <p className="text-xl text-gray-700 mb-2">Upload a clear photo of your face</p>
-              <p className="text-gray-500">Front-facing, good lighting works best</p>
+              <div className="text-6xl mb-4">👔</div>
+              <p className="text-xl mb-2">Upload a clear selfie</p>
+              <p className="text-gray-500">Front-facing, good lighting</p>
             </div>
           )}
 
-          {/* Style Selection Mode */}
-          {mode === "style" && uploadedImage && (
+          {uploadedImage && !processing && results.length === 0 && (
             <div className="space-y-8">
-              <div className="bg-white rounded-3xl p-8 shadow-lg flex justify-center">
-                <img src={uploadedImage} alt="Your photo" className="max-h-48 rounded-xl" />
+              <div className="flex justify-center">
+                <img src={uploadedImage} alt="Your photo" className="w-32 h-32 rounded-full object-cover" />
               </div>
-
-              {/* Gender Selection */}
-              <div className="bg-white rounded-3xl p-6 shadow-lg">
-                <h2 className="text-xl font-bold mb-4">Select Style Preference</h2>
-                <div className="flex gap-4 justify-center">
-                  {genderOptions.map(opt => (
-                    <button
-                      key={opt.id}
-                      onClick={() => setGender(opt.id)}
-                      className={`px-6 py-3 rounded-xl flex items-center gap-2 transition-all ${
-                        gender === opt.id
-                          ? "bg-slate-800 text-white"
-                          : "bg-gray-100 hover:bg-gray-200"
-                      }`}
-                    >
-                      <span className="text-xl">{opt.icon}</span>
-                      <span>{opt.label}</span>
+              <div>
+                <h2 className="text-lg font-medium mb-3">Gender</h2>
+                <div className="flex gap-3 justify-center">
+                  {[
+                    { id: "male", label: "Male", icon: "👨" },
+                    { id: "female", label: "Female", icon: "👩" },
+                    { id: "neutral", label: "Neutral", icon: "🧑" },
+                  ].map(opt => (
+                    <button key={opt.id} onClick={() => setGender(opt.id)} className={`px-5 py-2 rounded-xl flex items-center gap-2 ${gender === opt.id ? "bg-slate-600 text-white" : "bg-white/5"}`}>
+                      <span>{opt.icon}</span> {opt.label}
                     </button>
                   ))}
                 </div>
               </div>
-
-              {/* Style Selection */}
-              <div className="bg-white rounded-3xl p-8 shadow-lg">
-                <h2 className="text-2xl font-bold mb-6">Choose Headshot Style</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {headshotStyles.map(style => (
-                    <button
-                      key={style.id}
-                      onClick={() => setSelectedStyle(style.id)}
-                      className={`p-4 rounded-xl text-left transition-all ${
-                        selectedStyle === style.id
-                          ? "bg-slate-100 border-2 border-slate-800"
-                          : "bg-gray-50 border-2 border-transparent hover:bg-gray-100"
-                      }`}
-                    >
-                      <div className="text-3xl mb-2">{style.icon}</div>
-                      <div className="font-semibold">{style.name}</div>
-                      <div className="text-sm text-gray-500">{style.desc}</div>
+              <div>
+                <h2 className="text-xl font-bold mb-4">Choose Style</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  {styles.map(style => (
+                    <button key={style.id} onClick={() => setSelectedStyle(style.id)} className={`p-4 rounded-xl text-left transition-all ${selectedStyle === style.id ? "bg-slate-600 text-white" : "bg-white/5 hover:bg-white/10 border border-white/10"}`}>
+                      <div className="text-2xl mb-1">{style.icon}</div>
+                      <div className="font-medium">{style.name}</div>
+                      <div className="text-xs opacity-70">{style.desc}</div>
                     </button>
                   ))}
                 </div>
               </div>
-
-              <button
-                onClick={handleGenerate}
-                disabled={!selectedStyle}
-                className="w-full py-4 bg-gradient-to-r from-slate-700 to-slate-900 text-white rounded-xl font-semibold text-lg hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
-              >
+              <button onClick={handleGenerate} disabled={!selectedStyle} className="w-full py-4 bg-gradient-to-r from-slate-600 to-zinc-700 rounded-xl font-semibold text-lg disabled:opacity-50">
                 👔 Generate Headshots
               </button>
             </div>
           )}
 
-          {/* Processing Mode */}
-          {mode === "processing" && (
-            <div className="bg-white rounded-3xl p-16 shadow-lg text-center">
+          {processing && (
+            <div className="text-center py-16">
               <div className="text-6xl mb-6 animate-pulse">👔</div>
-              <h2 className="text-2xl font-bold mb-4">Creating your headshots...</h2>
-              <p className="text-gray-500 mb-6">Generating 4 professional variations</p>
-              <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
-                <div
-                  className="bg-gradient-to-r from-slate-600 to-slate-800 h-4 rounded-full transition-all duration-500"
-                  style={{ width: `${progress}%` }}
-                />
+              <h2 className="text-2xl font-bold mb-4">Creating professional headshots...</h2>
+              <p className="text-gray-500 mb-6">Generating 4 variations</p>
+              <div className="w-full max-w-md mx-auto bg-white/10 rounded-full h-3 mb-4">
+                <div className="bg-gradient-to-r from-slate-600 to-zinc-700 h-3 rounded-full transition-all" style={{ width: `${progress}%` }} />
               </div>
-              <p className="text-gray-500">{progress}% complete</p>
             </div>
           )}
 
-          {/* Results Mode */}
-          {mode === "results" && resultImages.length > 0 && (
+          {results.length > 0 && (
             <div className="space-y-8">
-              <div className="bg-white rounded-3xl p-6 shadow-lg">
-                <h2 className="text-2xl font-bold mb-6 text-center">Your Professional Headshots</h2>
-                <div className="grid grid-cols-2 gap-4">
-                  {resultImages.map((img, i) => (
-                    <div key={i} className="relative group">
-                      <img src={img} alt={`Headshot ${i + 1}`} className="rounded-xl w-full" />
-                      <button
-                        onClick={() => handleDownload(img, i)}
-                        className="absolute bottom-2 right-2 bg-white/90 text-gray-800 px-3 py-1 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition"
-                      >
-                        ⬇️ Download
-                      </button>
-                    </div>
-                  ))}
-                </div>
+              <h2 className="text-2xl font-bold text-center">Your Professional Headshots</h2>
+              <div className="grid grid-cols-2 gap-4">
+                {results.map((img, i) => (
+                  <div key={i} className="relative group">
+                    <img src={img} alt={`Headshot ${i + 1}`} className="w-full rounded-xl" />
+                    <button onClick={() => { const a = document.createElement("a"); a.href = img; a.download = `headshot-${i + 1}.png`; a.click(); }} className="absolute bottom-3 right-3 bg-black/70 px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition">
+                      ⬇️ Download
+                    </button>
+                  </div>
+                ))}
               </div>
-
               <div className="flex gap-4">
-                <button
-                  onClick={() => resultImages.forEach((img, i) => handleDownload(img, i))}
-                  className="flex-1 py-4 bg-gradient-to-r from-slate-700 to-slate-900 text-white rounded-xl font-semibold text-lg hover:shadow-lg transition"
-                >
+                <button onClick={() => results.forEach((img, i) => { const a = document.createElement("a"); a.href = img; a.download = `headshot-${i + 1}.png`; a.click(); })} className="flex-1 py-4 bg-gradient-to-r from-slate-600 to-zinc-700 rounded-xl font-semibold">
                   ⬇️ Download All
                 </button>
-                <button
-                  onClick={() => { setMode("upload"); setUploadedImage(null); setResultImages([]); setSelectedStyle(null); }}
-                  className="flex-1 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold text-lg hover:bg-gray-200 transition"
-                >
-                  🔄 Create New
+                <button onClick={() => { setResults([]); setUploadedImage(null); setSelectedStyle(null); }} className="flex-1 py-4 bg-white/10 rounded-xl font-medium">
+                  Create More
                 </button>
               </div>
             </div>

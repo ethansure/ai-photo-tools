@@ -4,24 +4,28 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { useDropzone } from "react-dropzone";
 
-type Mode = "upload" | "processing" | "results";
+const examples = [
+  { before: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400", after: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400" },
+  { before: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400", after: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400" },
+  { before: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400", after: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400" },
+];
 
-const backgroundOptions = [
-  { id: "transparent", name: "Transparent", preview: "🔲", color: null },
-  { id: "white", name: "White", preview: "⬜", color: "#ffffff" },
-  { id: "black", name: "Black", preview: "⬛", color: "#000000" },
-  { id: "blue", name: "Blue", preview: "🟦", color: "#3b82f6" },
-  { id: "green", name: "Green", preview: "🟩", color: "#22c55e" },
-  { id: "gradient", name: "Gradient", preview: "🌈", color: "gradient" },
+const bgOptions = [
+  { id: "transparent", name: "Transparent", preview: "🔲" },
+  { id: "white", name: "White", color: "#ffffff" },
+  { id: "black", name: "Black", color: "#000000" },
+  { id: "blue", name: "Blue", color: "#3b82f6" },
+  { id: "gradient", name: "Gradient", color: "linear-gradient(135deg, #667eea, #764ba2)" },
 ];
 
 export default function BackgroundRemovePage() {
-  const [mode, setMode] = useState<Mode>("upload");
+  const [mode, setMode] = useState<"landing" | "create">("landing");
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [selectedBg, setSelectedBg] = useState("transparent");
+  const [processing, setProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [resultImage, setResultImage] = useState<string | null>(null);
+  const [result, setResult] = useState<string | null>(null);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
@@ -30,178 +34,187 @@ export default function BackgroundRemovePage() {
       const reader = new FileReader();
       reader.onload = () => {
         setUploadedImage(reader.result as string);
-        handleRemoveBackground(file);
+        handleRemove(file);
       };
       reader.readAsDataURL(file);
     }
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: { "image/*": [".png", ".jpg", ".jpeg", ".webp"] },
-    maxFiles: 1,
-  });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: { "image/*": [] }, maxFiles: 1 });
 
-  const handleRemoveBackground = async (file: File) => {
-    setMode("processing");
+  const handleRemove = async (file: File) => {
+    setProcessing(true);
     setProgress(0);
+    setMode("create");
 
-    const progressInterval = setInterval(() => {
-      setProgress(prev => Math.min(prev + 15, 90));
-    }, 300);
+    const interval = setInterval(() => setProgress(p => Math.min(p + 15, 90)), 250);
 
     try {
       const formData = new FormData();
       formData.append("image", file);
       formData.append("background", selectedBg);
 
-      const response = await fetch("/api/remove-bg", {
-        method: "POST",
-        body: formData,
-      });
-
+      const response = await fetch("/api/remove-bg", { method: "POST", body: formData });
       const data = await response.json();
-      clearInterval(progressInterval);
+      clearInterval(interval);
       setProgress(100);
-
-      if (data.success) {
-        setResultImage(data.image);
-        setMode("results");
-      }
-    } catch (error) {
-      console.error(error);
-      clearInterval(progressInterval);
-      setMode("upload");
+      if (data.success) setResult(data.image);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      clearInterval(interval);
+      setProcessing(false);
     }
   };
 
-  const handleChangeBg = async (bgId: string) => {
-    setSelectedBg(bgId);
-    if (uploadedFile) {
-      handleRemoveBackground(uploadedFile);
-    }
-  };
+  if (mode === "landing" && !uploadedImage) {
+    return (
+      <main className="min-h-screen bg-[#0a0a0a] text-white">
+        <header className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <Link href="/" className="flex items-center gap-2">
+              <span className="text-2xl">📸</span>
+              <span className="font-semibold">PhotoICU</span>
+            </Link>
+            <button onClick={() => setMode("create")} className="px-5 py-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full text-sm font-medium">
+              Remove BG →
+            </button>
+          </div>
+        </header>
 
-  const handleDownload = () => {
-    if (resultImage) {
-      const link = document.createElement("a");
-      link.href = resultImage;
-      link.download = "no-background.png";
-      link.click();
-    }
-  };
+        <section className="pt-32 pb-20 px-6">
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/20 rounded-full text-green-400 text-sm mb-6">
+                ✂️ Instant Background Removal
+              </div>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                One Click
+                <span className="block bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                  Clean Cut
+                </span>
+              </h1>
+              <p className="text-xl text-gray-400 mb-8">
+                Remove backgrounds instantly. Replace with solid colors, gradients, or keep transparent.
+              </p>
+              <div {...getRootProps()} className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all ${isDragActive ? "border-green-500 bg-green-500/10" : "border-white/20 hover:border-green-500/50"}`}>
+                <input {...getInputProps()} />
+                <p className="text-lg">✂️ Drop image here or click to upload</p>
+              </div>
+              <div className="flex items-center gap-6 mt-6 text-sm text-gray-500">
+                <span>✓ Instant results</span>
+                <span>✓ HD quality</span>
+                <span>✓ Free</span>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-3 gap-4">
+              {examples.map((ex, i) => (
+                <div key={i} className="relative aspect-square rounded-2xl overflow-hidden border border-white/10" style={{ background: "repeating-conic-gradient(#1a1a1a 0% 25%, #0a0a0a 0% 50%) 50%/20px 20px" }}>
+                  <img src={ex.after} alt="Example" className="w-full h-full object-cover" style={{ mixBlendMode: "multiply" }} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 px-6 border-t border-white/5">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Background Options</h2>
+            <div className="flex justify-center gap-6 flex-wrap">
+              {bgOptions.map((bg, i) => (
+                <div key={i} className="text-center">
+                  <div 
+                    className="w-20 h-20 rounded-2xl border-2 border-white/20 mb-2"
+                    style={{ background: bg.id === "transparent" ? "repeating-conic-gradient(#333 0% 25%, #111 0% 50%) 50%/10px 10px" : bg.color }}
+                  />
+                  <span className="text-sm text-gray-400">{bg.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-6">Remove Any Background</h2>
+            <div {...getRootProps()} className="inline-block">
+              <input {...getInputProps()} />
+              <button className="px-10 py-5 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl font-semibold text-xl cursor-pointer">
+                ✂️ Upload & Remove
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <footer className="py-8 px-6 border-t border-white/5 text-center text-sm text-gray-600">
+          <Link href="/" className="hover:text-white transition">← Back to PhotoICU</Link>
+        </footer>
+      </main>
+    );
+  }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-green-50 to-white">
-      {/* Header */}
-      <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <main className="min-h-screen bg-[#0a0a0a] text-white">
+      <header className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-3xl">📸</span>
-            <span className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-              PhotoICU
-            </span>
+            <span className="text-2xl">📸</span>
+            <span className="font-semibold">PhotoICU</span>
           </Link>
+          <span className="text-green-400">✂️ BG Remove</span>
         </div>
       </header>
 
-      <div className="pt-24 pb-16 px-4">
+      <div className="pt-24 pb-16 px-6">
         <div className="max-w-4xl mx-auto">
-          {/* Title */}
-          <div className="text-center mb-12">
-            <div className="text-6xl mb-4">🎭</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Background Remover</h1>
-            <p className="text-xl text-gray-600">Remove or replace backgrounds instantly with AI</p>
-          </div>
+          <h1 className="text-3xl font-bold text-center mb-8">Background Removed!</h1>
 
-          {/* Upload Mode */}
-          {mode === "upload" && (
-            <div
-              {...getRootProps()}
-              className={`border-3 border-dashed rounded-3xl p-16 text-center cursor-pointer transition-all ${
-                isDragActive ? "border-green-500 bg-green-50" : "border-gray-300 hover:border-green-400 hover:bg-green-50/50"
-              }`}
-            >
-              <input {...getInputProps()} />
-              <div className="text-6xl mb-4">📤</div>
-              <p className="text-xl text-gray-700 mb-2">Drop your photo here</p>
-              <p className="text-gray-500">Background will be removed automatically</p>
-            </div>
-          )}
-
-          {/* Processing Mode */}
-          {mode === "processing" && (
-            <div className="bg-white rounded-3xl p-16 shadow-lg text-center">
-              <div className="text-6xl mb-6 animate-pulse">🎭</div>
+          {processing && (
+            <div className="text-center py-16">
+              <div className="text-6xl mb-6 animate-pulse">✂️</div>
               <h2 className="text-2xl font-bold mb-4">Removing background...</h2>
-              <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
-                <div
-                  className="bg-gradient-to-r from-green-500 to-emerald-500 h-4 rounded-full transition-all duration-300"
-                  style={{ width: `${progress}%` }}
-                />
+              <div className="w-full max-w-md mx-auto bg-white/10 rounded-full h-3 mb-4">
+                <div className="bg-gradient-to-r from-green-500 to-emerald-600 h-3 rounded-full transition-all" style={{ width: `${progress}%` }} />
               </div>
-              <p className="text-gray-500">{progress}% complete</p>
             </div>
           )}
 
-          {/* Results Mode */}
-          {mode === "results" && resultImage && (
+          {result && (
             <div className="space-y-8">
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-3xl p-6 shadow-lg">
-                  <h3 className="font-semibold mb-4 text-center">Original</h3>
-                  <img src={uploadedImage!} alt="Original" className="rounded-xl w-full" />
+                <div className="text-center">
+                  <p className="text-sm text-gray-500 mb-2">Original</p>
+                  <img src={uploadedImage!} alt="Before" className="w-full rounded-xl" />
                 </div>
-                <div className="bg-white rounded-3xl p-6 shadow-lg" style={{ 
-                  background: selectedBg === "transparent" 
-                    ? "repeating-conic-gradient(#e5e7eb 0% 25%, transparent 0% 50%) 50%/20px 20px" 
-                    : selectedBg === "gradient" 
-                      ? "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-                      : backgroundOptions.find(b => b.id === selectedBg)?.color || "#fff"
-                }}>
-                  <h3 className="font-semibold mb-4 text-center">Result</h3>
-                  <img src={resultImage} alt="No Background" className="rounded-xl w-full" />
+                <div className="text-center">
+                  <p className="text-sm text-gray-500 mb-2">Removed</p>
+                  <div className="rounded-xl overflow-hidden" style={{ background: "repeating-conic-gradient(#333 0% 25%, #111 0% 50%) 50%/20px 20px" }}>
+                    <img src={result} alt="After" className="w-full" />
+                  </div>
                 </div>
               </div>
 
-              {/* Background Options */}
-              <div className="bg-white rounded-3xl p-6 shadow-lg">
-                <h3 className="font-semibold mb-4">Change Background</h3>
+              <div>
+                <h3 className="text-lg font-medium mb-3">Change Background</h3>
                 <div className="flex gap-3 flex-wrap">
-                  {backgroundOptions.map(bg => (
+                  {bgOptions.map((bg) => (
                     <button
                       key={bg.id}
-                      onClick={() => handleChangeBg(bg.id)}
-                      className={`w-14 h-14 rounded-xl flex items-center justify-center text-2xl transition-all ${
-                        selectedBg === bg.id ? "ring-2 ring-green-500 ring-offset-2" : ""
-                      }`}
-                      style={{
-                        background: bg.id === "transparent" 
-                          ? "repeating-conic-gradient(#e5e7eb 0% 25%, transparent 0% 50%) 50%/10px 10px"
-                          : bg.id === "gradient"
-                            ? "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-                            : bg.color || "#fff"
-                      }}
-                      title={bg.name}
-                    >
-                      {bg.id === "transparent" && "🔲"}
-                    </button>
+                      onClick={() => setSelectedBg(bg.id)}
+                      className={`w-12 h-12 rounded-xl ${selectedBg === bg.id ? "ring-2 ring-green-500 ring-offset-2 ring-offset-black" : ""}`}
+                      style={{ background: bg.id === "transparent" ? "repeating-conic-gradient(#333 0% 25%, #111 0% 50%) 50%/8px 8px" : bg.color }}
+                    />
                   ))}
                 </div>
               </div>
 
               <div className="flex gap-4">
-                <button
-                  onClick={handleDownload}
-                  className="flex-1 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl font-semibold text-lg hover:shadow-lg transition"
-                >
+                <button onClick={() => { const a = document.createElement("a"); a.href = result; a.download = "no-bg.png"; a.click(); }} className="flex-1 py-4 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl font-semibold">
                   ⬇️ Download PNG
                 </button>
-                <button
-                  onClick={() => { setMode("upload"); setUploadedImage(null); setResultImage(null); }}
-                  className="flex-1 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold text-lg hover:bg-gray-200 transition"
-                >
-                  🔄 Remove Another
+                <button onClick={() => { setResult(null); setUploadedImage(null); setMode("landing"); }} className="flex-1 py-4 bg-white/10 rounded-xl font-medium">
+                  Remove Another
                 </button>
               </div>
             </div>
