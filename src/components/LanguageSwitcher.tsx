@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
-import { locales, localeNames, type Locale } from "@/i18n";
+import { locales, localeNames, localeFlags, type Locale } from "@/i18n";
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
@@ -29,7 +29,7 @@ export default function LanguageSwitcher() {
         className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-sm"
         aria-label="Switch language"
       >
-        <span className="text-lg">🌐</span>
+        <span className="text-lg">{localeFlags[locale as Locale]}</span>
         <span className="hidden sm:inline">{localeNames[locale as Locale]}</span>
         <svg
           className="w-4 h-4 text-gray-400"
@@ -47,13 +47,14 @@ export default function LanguageSwitcher() {
             key={loc}
             onClick={() => switchLocale(loc)}
             className={`w-full px-4 py-2 text-left text-sm hover:bg-white/10 transition-colors flex items-center gap-2 ${
-              locale === loc ? "text-violet-400" : "text-gray-300"
+              locale === loc ? "text-violet-400 bg-white/5" : "text-gray-300"
             }`}
           >
+            <span>{localeFlags[loc]}</span>
+            <span>{localeNames[loc]}</span>
             {locale === loc && (
-              <span className="w-1.5 h-1.5 rounded-full bg-violet-400" />
+              <span className="ml-auto w-1.5 h-1.5 rounded-full bg-violet-400" />
             )}
-            <span className={locale !== loc ? "ml-3.5" : ""}>{localeNames[loc]}</span>
           </button>
         ))}
       </div>

@@ -1,0 +1,152 @@
+{
+  "common": {
+    "title": "Outils Photo IA",
+    "description": "Transformez vos photos avec des outils IA",
+    "getStarted": "Commencer",
+    "learnMore": "En Savoir Plus",
+    "tryNow": "Essayer",
+    "free": "Gratuit",
+    "upload": "Télécharger",
+    "download": "Télécharger",
+    "processing": "Traitement...",
+    "result": "Résultat",
+    "original": "Original",
+    "before": "Avant",
+    "after": "Après",
+    "dragDrop": "Glissez-déposez une image ici, ou cliquez pour sélectionner",
+    "supportedFormats": "Formats supportés: JPG, PNG, WebP",
+    "maxSize": "Taille max: 10MB",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "next": "Suivant",
+    "home": "Accueil",
+    "tools": "Outils",
+    "pricing": "Tarifs",
+    "about": "À Propos",
+    "contact": "Contact",
+    "language": "Langue",
+    "allTools": "Tous les Outils",
+    "changePhoto": "Changer Photo",
+    "createAnother": "Créer Une Autre",
+    "backToHome": "Retour à l'Accueil"
+  },
+  "nav": {
+    "petPortrait": "Portrait Animal",
+    "photoRestore": "Restaurer Photo",
+    "photoEnhance": "Améliorer Photo",
+    "backgroundRemove": "Supprimer Fond",
+    "styleTransfer": "Transfert Style",
+    "aiHeadshots": "Photos Pro"
+  },
+  "home": {
+    "toolCount": "6 Outils IA • Essai Gratuit",
+    "hero": {
+      "titleLine1": "Transformez Toute Photo",
+      "titleLine2": "Avec la Magie IA",
+      "subtitle": "Édition photo professionnelle par IA. Portraits d'animaux, restauration, amélioration et plus.",
+      "cta": "Explorer les Outils"
+    },
+    "tryNow": "Essayer",
+    "tools": {
+      "petPortrait": "Portrait Animal IA",
+      "petPortraitTagline": "Transformez votre animal en art",
+      "petPortraitDesc": "Transformez les photos de votre chien, chat ou animal en œuvres d'art.",
+      "petFeature1": "70+ Styles",
+      "petFeature2": "Qualité HD",
+      "petFeature3": "30 Secondes",
+      "photoRestore": "Restauration Photo",
+      "photoRestoreTagline": "Ravivez vos vieilles photos",
+      "photoRestoreDesc": "Réparez les photos rayées et endommagées avec l'IA.",
+      "restoreFeature1": "Amélioration Visage",
+      "restoreFeature2": "Suppression Rayures",
+      "restoreFeature3": "Restauration Couleur",
+      "photoEnhance": "Agrandisseur Image IA",
+      "photoEnhanceTagline": "Résolution 4x",
+      "photoEnhanceDesc": "Agrandissez vos images en qualité HD.",
+      "enhanceFeature1": "Agrandissement 4x",
+      "enhanceFeature2": "Suppression Bruit",
+      "enhanceFeature3": "Amélioration Détails",
+      "backgroundRemove": "Suppresseur de Fond",
+      "backgroundRemoveTagline": "Suppression en un clic",
+      "backgroundRemoveDesc": "Supprimez les fonds de toute image instantanément.",
+      "bgFeature1": "Suppression Instantanée",
+      "bgFeature2": "PNG Transparent",
+      "bgFeature3": "Bords Nets",
+      "styleTransfer": "Transfert de Style IA",
+      "styleTransferTagline": "Transformez photos en chefs-d'œuvre",
+      "styleTransferDesc": "Appliquez des styles d'art célèbres à vos photos.",
+      "styleFeature1": "Van Gogh",
+      "styleFeature2": "Monet",
+      "styleFeature3": "20+ Styles",
+      "aiHeadshots": "Photos Professionnelles IA",
+      "aiHeadshotsTagline": "Prêt pour LinkedIn en secondes",
+      "aiHeadshotsDesc": "Générez des photos pro depuis n'importe quel selfie.",
+      "headshotFeature1": "Look Pro",
+      "headshotFeature2": "Styles Multiples",
+      "headshotFeature3": "Qualité HD"
+    },
+    "cta": {
+      "title": "Prêt à Transformer?",
+      "subtitle": "Choisissez un outil et commencez à créer en secondes"
+    }
+  },
+  "petPortrait": {
+    "title": "Générateur Portrait Animal IA",
+    "heroTitle": "Portrait Animal",
+    "heroTitleHighlight": "Magie IA",
+    "badge": "70+ Styles Artistiques",
+    "dropTitle": "Déposez la photo de votre animal ici",
+    "chooseStyle": "Choisir Style",
+    "generate": "Générer Portrait",
+    "generating": "Création en cours..."
+  },
+  "photoRestore": {
+    "title": "Restauration Photo IA",
+    "heroTitle": "Ravivez Vos Photos",
+    "heroTitleHighlight": "Avec l'IA",
+    "badge": "Restauration Photo IA",
+    "restore": "Restaurer Photo",
+    "restoring": "Restauration..."
+  },
+  "photoEnhance": {
+    "title": "Améliorateur Photo IA",
+    "heroTitle": "Améliorez Vos Photos",
+    "heroTitleHighlight": "Avec l'IA",
+    "badge": "Agrandisseur Image IA",
+    "enhance": "Améliorer Photo",
+    "enhancing": "Amélioration..."
+  },
+  "backgroundRemove": {
+    "title": "Suppresseur de Fond IA",
+    "heroTitle": "Supprimez les Fonds",
+    "heroTitleHighlight": "Instantanément",
+    "badge": "Suppresseur Fond IA",
+    "remove": "Supprimer Fond",
+    "removing": "Suppression..."
+  },
+  "styleTransfer": {
+    "title": "Transfert de Style IA",
+    "heroTitle": "Transformez Photos",
+    "heroTitleHighlight": "En Art",
+    "badge": "Transfert Style IA",
+    "apply": "Appliquer Style",
+    "applying": "Application..."
+  },
+  "aiHeadshots": {
+    "title": "Photos Pro IA",
+    "heroTitle": "Photos Professionnelles",
+    "heroTitleHighlight": "En Secondes",
+    "badge": "Photos Pro IA",
+    "generate": "Générer Photos",
+    "generating": "Création..."
+  },
+  "footer": {
+    "copyright": "© 2026 Outils Photo IA. Tous droits réservés.",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "support": "Support"
+  }
+}

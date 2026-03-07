@@ -1,0 +1,152 @@
+{
+  "common": {
+    "title": "KI Foto-Tools",
+    "description": "Verwandeln Sie Ihre Fotos mit KI",
+    "getStarted": "Loslegen",
+    "learnMore": "Mehr Erfahren",
+    "tryNow": "Jetzt Testen",
+    "free": "Kostenlos",
+    "upload": "Hochladen",
+    "download": "Herunterladen",
+    "processing": "Verarbeitung...",
+    "result": "Ergebnis",
+    "original": "Original",
+    "before": "Vorher",
+    "after": "Nachher",
+    "dragDrop": "Bild hierher ziehen oder klicken zum Auswählen",
+    "supportedFormats": "Unterstützte Formate: JPG, PNG, WebP",
+    "maxSize": "Maximale Größe: 10MB",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "home": "Startseite",
+    "tools": "Werkzeuge",
+    "pricing": "Preise",
+    "about": "Über Uns",
+    "contact": "Kontakt",
+    "language": "Sprache",
+    "allTools": "Alle Werkzeuge",
+    "changePhoto": "Foto Ändern",
+    "createAnother": "Neu Erstellen",
+    "backToHome": "Zur Startseite"
+  },
+  "nav": {
+    "petPortrait": "Tierporträt",
+    "photoRestore": "Foto Restaurieren",
+    "photoEnhance": "Foto Verbessern",
+    "backgroundRemove": "Hintergrund Entfernen",
+    "styleTransfer": "Stil Übertragen",
+    "aiHeadshots": "KI Profilfotos"
+  },
+  "home": {
+    "toolCount": "6 KI-Werkzeuge • Kostenlos Testen",
+    "hero": {
+      "titleLine1": "Verwandeln Sie Jedes Foto",
+      "titleLine2": "Mit KI-Magie",
+      "subtitle": "Professionelle Fotobearbeitung mit KI. Tierporträts, Restaurierung, Verbesserung und mehr.",
+      "cta": "Werkzeuge Erkunden"
+    },
+    "tryNow": "Jetzt Testen",
+    "tools": {
+      "petPortrait": "KI Tierporträt",
+      "petPortraitTagline": "Verwandeln Sie Ihr Haustier in Kunst",
+      "petPortraitDesc": "Verwandeln Sie Fotos Ihres Hundes, Ihrer Katze oder eines anderen Haustiers in beeindruckende Kunstwerke.",
+      "petFeature1": "70+ Stile",
+      "petFeature2": "HD Qualität",
+      "petFeature3": "30 Sekunden",
+      "photoRestore": "Foto-Restaurierung",
+      "photoRestoreTagline": "Alte Fotos wiederbeleben",
+      "photoRestoreDesc": "Reparieren Sie zerkratzte, verblasste und beschädigte Fotos mit KI.",
+      "restoreFeature1": "Gesichtsverbesserung",
+      "restoreFeature2": "Kratzer Entfernen",
+      "restoreFeature3": "Farbe Wiederherstellen",
+      "photoEnhance": "KI Bild-Upscaler",
+      "photoEnhanceTagline": "4-fache Auflösungserhöhung",
+      "photoEnhanceDesc": "Skalieren Sie niedrig aufgelöste Bilder auf beeindruckende HD-Qualität.",
+      "enhanceFeature1": "4x Upscale",
+      "enhanceFeature2": "Rauschentfernung",
+      "enhanceFeature3": "Detail-Verbesserung",
+      "backgroundRemove": "Hintergrundentfernung",
+      "backgroundRemoveTagline": "Ein-Klick Hintergrundentfernung",
+      "backgroundRemoveDesc": "Entfernen Sie Hintergründe aus jedem Bild sofort.",
+      "bgFeature1": "Sofortige Entfernung",
+      "bgFeature2": "Transparentes PNG",
+      "bgFeature3": "Saubere Kanten",
+      "styleTransfer": "KI Stil-Transfer",
+      "styleTransferTagline": "Fotos in Meisterwerke verwandeln",
+      "styleTransferDesc": "Wenden Sie berühmte Kunststile auf Ihre Fotos an.",
+      "styleFeature1": "Van Gogh",
+      "styleFeature2": "Monet",
+      "styleFeature3": "20+ Stile",
+      "aiHeadshots": "KI Professionelle Fotos",
+      "aiHeadshotsTagline": "LinkedIn-bereit in Sekunden",
+      "aiHeadshotsDesc": "Erstellen Sie professionelle Fotos aus jedem Selfie.",
+      "headshotFeature1": "Professioneller Look",
+      "headshotFeature2": "Mehrere Stile",
+      "headshotFeature3": "HD Qualität"
+    },
+    "cta": {
+      "title": "Bereit zum Transformieren?",
+      "subtitle": "Wählen Sie ein Werkzeug und beginnen Sie in Sekunden"
+    }
+  },
+  "petPortrait": {
+    "title": "KI Tierporträt-Generator",
+    "heroTitle": "Tierporträt",
+    "heroTitleHighlight": "KI-Magie",
+    "badge": "70+ Kunststile",
+    "dropTitle": "Tierfoto hier ablegen",
+    "chooseStyle": "Stil Wählen",
+    "generate": "Porträt Erstellen",
+    "generating": "Meisterwerk wird erstellt..."
+  },
+  "photoRestore": {
+    "title": "KI Foto-Restaurierung",
+    "heroTitle": "Alte Fotos",
+    "heroTitleHighlight": "Wiederbeleben",
+    "badge": "KI Foto-Restaurierung",
+    "restore": "Foto Restaurieren",
+    "restoring": "Restaurierung..."
+  },
+  "photoEnhance": {
+    "title": "KI Foto-Verbesserer",
+    "heroTitle": "Fotos",
+    "heroTitleHighlight": "Mit KI Verbessern",
+    "badge": "KI Bild-Upscaler",
+    "enhance": "Foto Verbessern",
+    "enhancing": "Verbesserung..."
+  },
+  "backgroundRemove": {
+    "title": "KI Hintergrundentfernung",
+    "heroTitle": "Hintergründe",
+    "heroTitleHighlight": "Sofort Entfernen",
+    "badge": "KI Hintergrundentfernung",
+    "remove": "Hintergrund Entfernen",
+    "removing": "Entfernung..."
+  },
+  "styleTransfer": {
+    "title": "KI Stil-Transfer",
+    "heroTitle": "Fotos",
+    "heroTitleHighlight": "In Kunst Verwandeln",
+    "badge": "KI Stil-Transfer",
+    "apply": "Stil Anwenden",
+    "applying": "Anwendung..."
+  },
+  "aiHeadshots": {
+    "title": "KI Profilfotos",
+    "heroTitle": "Professionelle Fotos",
+    "heroTitleHighlight": "In Sekunden",
+    "badge": "KI Profilfotos",
+    "generate": "Fotos Erstellen",
+    "generating": "Erstellung..."
+  },
+  "footer": {
+    "copyright": "© 2026 KI Foto-Tools. Alle Rechte vorbehalten.",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "support": "Support"
+  }
+}

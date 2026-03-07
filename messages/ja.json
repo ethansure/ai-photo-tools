@@ -1,0 +1,152 @@
+{
+  "common": {
+    "title": "AI写真ツール",
+    "description": "AIで写真を変換",
+    "getStarted": "始める",
+    "learnMore": "詳細",
+    "tryNow": "今すぐ試す",
+    "free": "無料",
+    "upload": "アップロード",
+    "download": "ダウンロード",
+    "processing": "処理中...",
+    "result": "結果",
+    "original": "オリジナル",
+    "before": "変換前",
+    "after": "変換後",
+    "dragDrop": "画像をドラッグ＆ドロップ、またはクリックして選択",
+    "supportedFormats": "対応形式: JPG、PNG、WebP",
+    "maxSize": "最大サイズ: 10MB",
+    "error": "エラー",
+    "success": "成功",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "back": "戻る",
+    "next": "次へ",
+    "home": "ホーム",
+    "tools": "ツール",
+    "pricing": "料金",
+    "about": "概要",
+    "contact": "お問い合わせ",
+    "language": "言語",
+    "allTools": "すべてのツール",
+    "changePhoto": "写真を変更",
+    "createAnother": "もう一つ作成",
+    "backToHome": "ホームに戻る"
+  },
+  "nav": {
+    "petPortrait": "ペット肖像画",
+    "photoRestore": "写真修復",
+    "photoEnhance": "写真補正",
+    "backgroundRemove": "背景削除",
+    "styleTransfer": "スタイル変換",
+    "aiHeadshots": "AIプロフィール写真"
+  },
+  "home": {
+    "toolCount": "6つのAIツール • 無料でお試し",
+    "hero": {
+      "titleLine1": "あらゆる写真を",
+      "titleLine2": "AIマジックで変換",
+      "subtitle": "AIによるプロフェッショナルな写真編集。ペット肖像画、修復、補正など。",
+      "cta": "ツールを探す"
+    },
+    "tryNow": "今すぐ試す",
+    "tools": {
+      "petPortrait": "AIペット肖像画",
+      "petPortraitTagline": "ペットをアートに変換",
+      "petPortraitDesc": "犬、猫、その他のペットの写真を素晴らしいアートワークに変換。",
+      "petFeature1": "70以上のスタイル",
+      "petFeature2": "HD品質",
+      "petFeature3": "30秒",
+      "photoRestore": "写真修復",
+      "photoRestoreTagline": "古い写真を蘇らせる",
+      "photoRestoreDesc": "AIで傷、色あせ、損傷した写真を修復。",
+      "restoreFeature1": "顔の補正",
+      "restoreFeature2": "傷の除去",
+      "restoreFeature3": "色の復元",
+      "photoEnhance": "AI画像アップスケーラー",
+      "photoEnhanceTagline": "解像度4倍アップ",
+      "photoEnhanceDesc": "低解像度の画像をHD品質にアップスケール。",
+      "enhanceFeature1": "4倍アップスケール",
+      "enhanceFeature2": "ノイズ除去",
+      "enhanceFeature3": "ディテール補正",
+      "backgroundRemove": "背景削除",
+      "backgroundRemoveTagline": "ワンクリックで背景削除",
+      "backgroundRemoveDesc": "あらゆる画像の背景を即座に削除。",
+      "bgFeature1": "即座に削除",
+      "bgFeature2": "透明PNG",
+      "bgFeature3": "きれいなエッジ",
+      "styleTransfer": "AIスタイル変換",
+      "styleTransferTagline": "写真を傑作に変換",
+      "styleTransferDesc": "有名なアートスタイルを写真に適用。",
+      "styleFeature1": "ゴッホ",
+      "styleFeature2": "モネ",
+      "styleFeature3": "20以上のスタイル",
+      "aiHeadshots": "AIプロフィール写真",
+      "aiHeadshotsTagline": "数秒でLinkedIn対応",
+      "aiHeadshotsDesc": "セルフィーからプロフェッショナルな写真を生成。",
+      "headshotFeature1": "プロフェッショナル",
+      "headshotFeature2": "複数スタイル",
+      "headshotFeature3": "HD品質"
+    },
+    "cta": {
+      "title": "変換する準備はできましたか？",
+      "subtitle": "ツールを選んで、数秒で作成を始めましょう"
+    }
+  },
+  "petPortrait": {
+    "title": "AIペット肖像画ジェネレーター",
+    "heroTitle": "ペット肖像画",
+    "heroTitleHighlight": "AIマジック",
+    "badge": "70以上のアートスタイル",
+    "dropTitle": "ペットの写真をここにドロップ",
+    "chooseStyle": "スタイルを選択",
+    "generate": "肖像画を生成",
+    "generating": "傑作を作成中..."
+  },
+  "photoRestore": {
+    "title": "AI写真修復",
+    "heroTitle": "古い写真を",
+    "heroTitleHighlight": "蘇らせる",
+    "badge": "AI写真修復",
+    "restore": "写真を修復",
+    "restoring": "修復中..."
+  },
+  "photoEnhance": {
+    "title": "AI写真補正",
+    "heroTitle": "写真を",
+    "heroTitleHighlight": "AI補正",
+    "badge": "AI画像アップスケーラー",
+    "enhance": "写真を補正",
+    "enhancing": "補正中..."
+  },
+  "backgroundRemove": {
+    "title": "AI背景削除",
+    "heroTitle": "背景を",
+    "heroTitleHighlight": "即座に削除",
+    "badge": "AI背景削除",
+    "remove": "背景を削除",
+    "removing": "削除中..."
+  },
+  "styleTransfer": {
+    "title": "AIスタイル変換",
+    "heroTitle": "写真を",
+    "heroTitleHighlight": "アートに変換",
+    "badge": "AIスタイル変換",
+    "apply": "スタイルを適用",
+    "applying": "適用中..."
+  },
+  "aiHeadshots": {
+    "title": "AIプロフィール写真",
+    "heroTitle": "プロフィール写真を",
+    "heroTitleHighlight": "数秒で生成",
+    "badge": "AIプロフィール写真",
+    "generate": "写真を生成",
+    "generating": "生成中..."
+  },
+  "footer": {
+    "copyright": "© 2026 AI写真ツール. All rights reserved.",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "support": "サポート"
+  }
+}
