@@ -15,9 +15,9 @@ const toolSections = [
     color: "from-amber-500 to-orange-600",
     bgColor: "from-amber-950/50 to-orange-950/30",
     before: "/examples/pet-original.jpg",
-    after: "/examples/pet-royal-real.png",
-    afterAlt: "/examples/pet-disney-real.png",
-    afterAlt2: "/examples/pet-oil-real.png",
+    after: "/examples/pet-royal-real.jpg",
+    afterAlt: "/examples/pet-disney-real.jpg",
+    afterAlt2: "/examples/pet-oil-real.jpg",
     featuresKeys: ["petFeature1", "petFeature2", "petFeature3"],
   },
   {
@@ -29,7 +29,7 @@ const toolSections = [
     color: "from-blue-500 to-cyan-600",
     bgColor: "from-blue-950/50 to-cyan-950/30",
     before: "/examples/restore-before.jpg",
-    after: "/examples/restore-after.png",
+    after: "/examples/restore-after.jpg",
     featuresKeys: ["restoreFeature1", "restoreFeature2", "restoreFeature3"],
   },
   {
@@ -41,7 +41,7 @@ const toolSections = [
     color: "from-purple-500 to-pink-600",
     bgColor: "from-purple-950/50 to-pink-950/30",
     before: "/examples/enhance-before.jpg",
-    after: "/examples/enhance-after.png",
+    after: "/examples/enhance-after.jpg",
     featuresKeys: ["enhanceFeature1", "enhanceFeature2", "enhanceFeature3"],
   },
   {
@@ -53,7 +53,7 @@ const toolSections = [
     color: "from-green-500 to-emerald-600",
     bgColor: "from-green-950/50 to-emerald-950/30",
     before: "/examples/bg-remove-before.jpg",
-    after: "/examples/bg-remove-after.png",
+    after: "/examples/bg-remove-after.jpg",
     featuresKeys: ["bgFeature1", "bgFeature2", "bgFeature3"],
   },
   {
@@ -65,7 +65,7 @@ const toolSections = [
     color: "from-rose-500 to-red-600",
     bgColor: "from-rose-950/50 to-red-950/30",
     before: "/examples/style-before.jpg",
-    after: "/examples/style-after.png",
+    after: "/examples/style-after.jpg",
     featuresKeys: ["styleFeature1", "styleFeature2", "styleFeature3"],
   },
   {
@@ -77,7 +77,7 @@ const toolSections = [
     color: "from-slate-400 to-zinc-600",
     bgColor: "from-slate-950/50 to-zinc-950/30",
     before: "/examples/headshot-before.jpg",
-    after: "/examples/headshot-after.png",
+    after: "/examples/headshot-after.jpg",
     featuresKeys: ["headshotFeature1", "headshotFeature2", "headshotFeature3"],
   },
 ];
@@ -150,9 +150,9 @@ export default function Home() {
           {/* Quick showcase */}
           <div className="flex justify-center gap-4 mb-12">
             {[
-              { b: "/examples/pet-original.jpg", a: "/examples/pet-royal-real.png" },
-              { b: "/examples/style-before.jpg", a: "/examples/style-after.png" },
-              { b: "/examples/restore-before.jpg", a: "/examples/restore-after.png" },
+              { b: "/examples/pet-original.jpg", a: "/examples/pet-royal-real.jpg" },
+              { b: "/examples/style-before.jpg", a: "/examples/style-after.jpg" },
+              { b: "/examples/restore-before.jpg", a: "/examples/restore-after.jpg" },
             ].map((item, i) => (
               <div 
                 key={i} 
