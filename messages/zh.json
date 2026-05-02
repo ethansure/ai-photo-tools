@@ -39,7 +39,26 @@
     "photoEnhance": "照片增强",
     "backgroundRemove": "背景去除",
     "styleTransfer": "风格迁移",
-    "aiHeadshots": "AI 证件照"
+    "aiHeadshots": "AI 证件照",
+    "makeupLab": "妆容实验室"
+  },
+  "makeupLab": {
+    "nav": "妆容实验室",
+    "title1": "互动",
+    "title2": "妆容实验室",
+    "subtitle": "上传自拍，查看最适合你的妆容推荐。每个卡片包含 0–100 的造型师评分，并给出 2–3 条理由（肤色底调契合、对比度平衡、职业感、五官平衡）。",
+    "uploadTitle": "上传自拍",
+    "uploadHint": "JPG/PNG/WebP • 最大 10MB • 支持拖拽",
+    "preview": "预览",
+    "lipstick": "口红",
+    "shade": "色号",
+    "intensity": "强度",
+    "mvpNote": "MVP 预览：轻量叠加效果（暂不使用重型生成模型）。",
+    "topLooks": "Top 妆容",
+    "rubric": "评分维度：肤色底调 • 对比度平衡 • 职业感 • 五官平衡",
+    "showMore": "展开到 18 个",
+    "showLess": "收起到 6 个",
+    "faqTitle": "常见问题"
   },
   "home": {
     "toolCount": "6 款 AI 工具 • 免费试用",

@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Tool pages with their priorities
   const toolRoutes = [
+    { path: "/makeup-lab", priority: 0.9, changeFreq: "weekly" as const },
     { path: "/pet-portrait", priority: 0.9, changeFreq: "weekly" as const },
     { path: "/photo-restore", priority: 0.9, changeFreq: "weekly" as const },
     { path: "/photo-enhance", priority: 0.9, changeFreq: "weekly" as const },

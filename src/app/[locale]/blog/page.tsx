@@ -8,25 +8,32 @@ export const metadata: Metadata = {
   keywords: ["AI photo editing", "photo tips", "image editing guide", "AI art tutorial", "photo restoration guide"],
 };
 
-export default function BlogPage() {
+export default function BlogPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
   const posts = getAllBlogPosts();
+  const locale = params.locale;
+  const localizedHref = (path: string) => (locale === "en" ? path : `/${locale}${path}`);
 
   return (
     <main className="min-h-screen bg-black text-white">
       {/* Header */}
       <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href={localizedHref("/")} className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-lg">
               📸
             </div>
             <span className="text-xl font-bold">AI Photo Tools</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6 text-sm text-gray-400">
-            <Link href="/" className="hover:text-white transition">Home</Link>
-            <Link href="/pet-portrait" className="hover:text-white transition">Pet Portrait</Link>
-            <Link href="/photo-restore" className="hover:text-white transition">Restore</Link>
-            <Link href="/blog" className="text-white">Blog</Link>
+            <Link href={localizedHref("/")} className="hover:text-white transition">Home</Link>
+            <Link href={localizedHref("/makeup-lab")} className="hover:text-white transition">Makeup Lab</Link>
+            <Link href={localizedHref("/pet-portrait")} className="hover:text-white transition">Pet Portrait</Link>
+            <Link href={localizedHref("/photo-restore")} className="hover:text-white transition">Restore</Link>
+            <Link href={localizedHref("/blog")} className="text-white">Blog</Link>
           </nav>
         </div>
       </header>
@@ -48,7 +55,7 @@ export default function BlogPage() {
         {/* Featured Post */}
         {posts.length > 0 && (
           <Link
-            href={`/blog/${posts[0].slug}`}
+            href={localizedHref(`/blog/${posts[0].slug}`)}
             className="block mb-16 group"
           >
             <div className="relative p-8 bg-gradient-to-br from-violet-950/50 to-fuchsia-950/30 rounded-3xl border border-violet-500/20 hover:border-violet-500/40 transition">
@@ -82,7 +89,7 @@ export default function BlogPage() {
           {posts.slice(1).map((post) => (
             <Link
               key={post.slug}
-              href={`/blog/${post.slug}`}
+              href={localizedHref(`/blog/${post.slug}`)}
               className="group"
             >
               <article className="h-full p-6 bg-white/5 rounded-2xl border border-white/10 hover:border-violet-500/50 transition flex flex-col">
@@ -118,7 +125,7 @@ export default function BlogPage() {
             Transform your photos with AI—free, no signup required.
           </p>
           <Link
-            href="/"
+            href={localizedHref("/")}
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-2xl font-semibold text-lg hover:scale-105 transition"
           >
             Explore Tools →

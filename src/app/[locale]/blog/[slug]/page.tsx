@@ -57,10 +57,12 @@ export default function BlogPostPage({ params }: Props) {
   }
 
   const baseUrl = "https://aiphotos.icu";
+  const locale = params.locale;
+  const localizedPath = (path: string) => (locale === "en" ? path : `/${locale}${path}`);
   const breadcrumbs = [
-    { name: "Home", url: baseUrl },
-    { name: "Blog", url: `${baseUrl}/blog` },
-    { name: post.title, url: `${baseUrl}/blog/${post.slug}` },
+    { name: "Home", url: `${baseUrl}${localizedPath("/")}` },
+    { name: "Blog", url: `${baseUrl}${localizedPath("/blog")}` },
+    { name: post.title, url: `${baseUrl}${localizedPath(`/blog/${post.slug}`)}` },
   ];
 
   return (
@@ -70,7 +72,7 @@ export default function BlogPostPage({ params }: Props) {
       {/* Header */}
       <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href={localizedPath("/")} className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-lg">
               📸
             </div>
@@ -82,9 +84,9 @@ export default function BlogPostPage({ params }: Props) {
       <article className="max-w-4xl mx-auto px-6 pt-32 pb-20">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
-          <Link href="/" className="hover:text-white">Home</Link>
+          <Link href={localizedPath("/")} className="hover:text-white">Home</Link>
           <span className="mx-2">/</span>
-          <Link href="/blog" className="hover:text-white">Blog</Link>
+          <Link href={localizedPath("/blog")} className="hover:text-white">Blog</Link>
           <span className="mx-2">/</span>
           <span className="text-gray-400">{post.category}</span>
         </nav>

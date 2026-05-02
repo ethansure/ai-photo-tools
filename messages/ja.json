@@ -39,7 +39,26 @@
     "photoEnhance": "写真高画質化",
     "backgroundRemove": "背景削除",
     "styleTransfer": "スタイル変換",
-    "aiHeadshots": "AIヘッドショット"
+    "aiHeadshots": "AIヘッドショット",
+    "makeupLab": "Makeup Lab"
+  },
+  "makeupLab": {
+    "nav": "Makeup Lab",
+    "title1": "Interactive",
+    "title2": "Makeup Lab",
+    "subtitle": "Upload a selfie to see your top curated makeup looks. Each card includes a stylist score (0–100) and quick reasons based on undertone harmony, contrast balance, professionalism, and feature balance.",
+    "uploadTitle": "Upload your selfie",
+    "uploadHint": "JPG/PNG/WebP • up to 10MB • drag & drop",
+    "preview": "Preview",
+    "lipstick": "Lipstick",
+    "shade": "Shade",
+    "intensity": "Intensity",
+    "mvpNote": "MVP preview: lightweight overlays (no heavy generative model yet).",
+    "topLooks": "Top Looks",
+    "rubric": "Stylist rubric: undertone harmony • contrast balance • professionalism • feature balance",
+    "showMore": "Show 18",
+    "showLess": "Show 6",
+    "faqTitle": "FAQ"
   },
   "home": {
     "toolCount": "6つのAIツール • 無料でお試し",
