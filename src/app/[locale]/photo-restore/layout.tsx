@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Photo Restoration - Restore Old & Damaged Photos",
-  description: "Restore old, damaged, and faded photos with AI. Fix scratches, enhance faces, colorize black & white photos, and bring memories back to life. Free online photo restoration tool.",
+  title: "Restore Studio - AI Old Photo Restoration",
+  description: "Restore old, damaged, and faded photos with AI. Restore Studio helps you repair scratches, enhance faces, and upscale results. Simple controls with optional advanced overrides.",
   keywords: [
     "AI photo restoration",
     "restore old photos",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
     "GFPGAN"
   ],
   openGraph: {
-    title: "AI Photo Restoration - Bring Old Photos Back to Life",
-    description: "Restore old, damaged, and faded photos instantly with AI. Fix scratches, enhance faces, and colorize black & white photos.",
+    title: "Restore Studio - Bring Old Photos Back to Life",
+    description: "Restore old, damaged, and faded photos instantly with AI. Repair damage, enhance faces, and upscale results.",
     images: ["/examples/restore-after.png"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Photo Restoration Tool",
-    description: "Restore damaged and old photos with AI. Fix scratches, enhance faces, colorize B&W photos.",
+    title: "Restore Studio - AI Photo Restoration",
+    description: "Restore damaged and old photos with AI. Repair, enhance, and upscale with Restore Studio.",
     images: ["/examples/restore-after.png"],
   },
   alternates: {

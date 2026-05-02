@@ -12,11 +12,18 @@ export async function POST(request: NextRequest) {
     const image = formData.get("image") as File;
     const optionsRaw = formData.get("options") as string;
     const options = optionsRaw ? JSON.parse(optionsRaw) : ["face"];
+    const strengthRaw = String(formData.get("strength") ?? "60");
+    const promptOverride = String(formData.get("prompt") ?? "");
+    const negativePrompt = String(formData.get("negativePrompt") ?? "");
+    const strength = Number.isFinite(Number(strengthRaw)) ? Math.max(0, Math.min(100, Number(strengthRaw))) : 60;
 
     logger.start({
       imageSize: image?.size,
       imageType: image?.type,
       options,
+      strength,
+      hasPromptOverride: !!promptOverride,
+      hasNegativePrompt: !!negativePrompt,
     });
 
     if (!image) {
@@ -43,14 +50,32 @@ export async function POST(request: NextRequest) {
         })
       );
 
+      // Optional upscale pass as a simple "strength" proxy.
+      // GFPGAN itself doesn't expose a clean strength knob.
+      // We map strength -> ESRGAN scale to give users a tangible control.
+      const shouldUpscale = options.includes("upscale") || strength >= 50;
+      const upscaleScale = strength >= 80 ? 4 : 2;
+
+      const finalOutput = shouldUpscale
+        ? await withLogging(logger, "replicate_upscale", async () => {
+            const inUrl = Array.isArray(output) ? output[0] : output;
+            return runModel(replicate, models.realEsrgan, {
+              image: inUrl,
+              scale: upscaleScale,
+            });
+          })
+        : output;
+
       logger.info("output_received", {
         outputType: typeof output,
         outputUrl: typeof output === "string" ? output.substring(0, 80) : "not a string",
       });
 
-      if (typeof output !== "string" || !output.startsWith("http")) {
+      const outUrl = Array.isArray(finalOutput) ? finalOutput[0] : finalOutput;
+
+      if (typeof outUrl !== "string" || !outUrl.startsWith("http")) {
         logger.error("invalid_output", new Error("Output is not a valid URL"), {
-          rawOutput: JSON.stringify(output).substring(0, 200),
+          rawOutput: JSON.stringify(finalOutput).substring(0, 200),
         });
         return NextResponse.json({ error: "Invalid output from API" }, { status: 500 });
       }
@@ -59,8 +84,9 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json({
         success: true,
-        image: output,
+        image: outUrl,
         options,
+        strength,
       });
     } else {
       logger.info("demo_mode");
