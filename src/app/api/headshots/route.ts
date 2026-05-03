@@ -6,13 +6,24 @@ export const maxDuration = 180;
 export const runtime = "nodejs";
 
 const styleDescriptions: Record<string, string> = {
-  corporate: "formal business attire, dark suit, clean background",
-  linkedin: "professional networking photo, smart casual, confident smile",
-  creative: "modern approachable style, creative professional, warm lighting",
-  executive: "c-suite executive portrait, powerful presence, premium quality",
-  startup: "tech startup founder, casual but professional, innovative",
-  actor: "entertainment industry headshot, dramatic lighting, expressive",
+  // These are intentionally concrete and photography-like.
+  // Goal: produce LinkedIn-ready results (suit + clean background) with minimal hallucination.
+  corporate:
+    "wearing a tailored navy or charcoal suit jacket, crisp white dress shirt, optional tie, pure white or light gray seamless studio background, soft diffused key light (softbox), subtle rim light, head-and-shoulders framing, centered composition, 85mm portrait lens look, natural skin texture, sharp eyes, professional and approachable slight smile",
+  linkedin:
+    "wearing a tailored suit jacket (navy/charcoal/black) and white dress shirt, pure white seamless background, soft studio lighting, head-and-shoulders crop, centered, 85mm lens look, clean corporate headshot, natural skin texture, sharp focus, professional slight smile",
+  executive:
+    "wearing a premium dark suit jacket and white dress shirt, subtle tie, neutral seamless background, premium studio lighting, head-and-shoulders portrait, confident executive presence, 85mm lens look, clean and sharp, natural skin texture",
+  startup:
+    "smart casual: blazer over plain crewneck or button-down, neutral seamless background, soft studio lighting, head-and-shoulders portrait, friendly confident smile, 85mm lens look, clean and modern",
+  creative:
+    "modern creative professional portrait, minimalist studio background (light gray gradient), soft studio lighting, head-and-shoulders framing, stylish but subtle outfit, natural skin texture, sharp focus, 85mm lens look",
+  actor:
+    "actor headshot, neutral seamless background, soft studio lighting with gentle contrast, head-and-shoulders framing, natural skin texture, sharp eyes, no heavy retouching, 85mm lens look",
 };
+
+const qualityGuardrails =
+  "photorealistic, studio photography, high detail, sharp focus, realistic skin texture, no illustration, no CGI, no cartoon, no anime, no painting, no text, no watermark";
 
 export async function POST(request: NextRequest) {
   const logger = createLogger("ai-headshots");
@@ -52,8 +63,9 @@ export async function POST(request: NextRequest) {
       });
       
       const genderPrefix = gender === "male" ? "man" : gender === "female" ? "woman" : "person";
-      const styleDesc = stylePrompt || styleDescriptions[style] || "professional attire";
-      const prompt = `professional corporate headshot portrait of a ${genderPrefix}, ${styleDesc}, clean studio background, professional lighting, linkedin profile photo, sharp focus, high quality, 8k`;
+      const baseStyle = styleDescriptions[style] || styleDescriptions.linkedin;
+      const userAddon = stylePrompt ? `, ${stylePrompt}` : "";
+      const prompt = `professional LinkedIn headshot portrait photo of a ${genderPrefix}, ${baseStyle}${userAddon}, ${qualityGuardrails}`;
       
       logger.info("calling_sdxl", { 
         model: "sdxl", 
@@ -68,9 +80,10 @@ export async function POST(request: NextRequest) {
             prompt,
             image: dataUrl,
             num_outputs: 4,
-            guidance_scale: 7.5,
-            prompt_strength: 0.4,
-            num_inference_steps: 35,
+            guidance_scale: 6.5,
+            // Lower prompt_strength helps preserve identity and reduces unwanted changes.
+            prompt_strength: 0.28,
+            num_inference_steps: 30,
             scheduler: "K_EULER",
           });
         } catch (e) {
