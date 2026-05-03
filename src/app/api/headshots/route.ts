@@ -5,6 +5,8 @@ import { createLogger, withLogging } from "@/lib/logger";
 export const maxDuration = 180;
 export const runtime = "nodejs";
 
+const OPENAI_IMAGE_MODEL = "gpt-image-2";
+
 const styleDescriptions: Record<string, string> = {
   // These are intentionally concrete and photography-like.
   // Goal: produce LinkedIn-ready results (suit + clean background) with minimal hallucination.
@@ -49,6 +51,77 @@ export async function POST(request: NextRequest) {
     }
 
     const replicate = getReplicateClient();
+
+    // Prefer OpenAI image edits when configured.
+    const openaiKey = process.env.OPENAI_API_KEY;
+    if (openaiKey) {
+      logger.info("openai_configured", { model: OPENAI_IMAGE_MODEL });
+
+      const prompt = (() => {
+        const genderPrefix = gender === "male" ? "man" : gender === "female" ? "woman" : "person";
+        const baseStyle = styleDescriptions[style] || styleDescriptions.linkedin;
+        const userAddon = stylePrompt ? `, ${stylePrompt}` : "";
+        return `Professional LinkedIn headshot photo of a ${genderPrefix}, ${baseStyle}${userAddon}, ${qualityGuardrails}`;
+      })();
+
+      const imageBuffer = Buffer.from(await image.arrayBuffer());
+
+      // Normalize + resize to avoid huge uploads and keep edits stable.
+      const sharp = (await import("sharp")).default;
+      const normalizedPng = await sharp(imageBuffer, { failOnError: false })
+        .rotate()
+        .resize({ width: 1024, height: 1024, fit: "inside", withoutEnlargement: true })
+        .png({ compressionLevel: 9 })
+        .toBuffer();
+
+      const form = new FormData();
+      form.append("model", OPENAI_IMAGE_MODEL);
+      form.append("prompt", prompt);
+      form.append("n", "4");
+      form.append("size", "1024x1024");
+      form.append("response_format", "b64_json");
+      form.append(
+        "image",
+        new Blob([new Uint8Array(normalizedPng)], { type: "image/png" }),
+        "input.png"
+      );
+
+      const resp = await withLogging(logger, "openai_images_edits", async () => {
+        const r = await fetch("https://api.openai.com/v1/images/edits", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${openaiKey}`,
+          },
+          body: form as any,
+        });
+        const text = await r.text();
+        if (!r.ok) {
+          throw new Error(`OpenAI image edit failed (${r.status}): ${text.slice(0, 300)}`);
+        }
+        return text;
+      });
+
+      const parsed = JSON.parse(resp) as { data?: Array<{ b64_json?: string }> };
+      const images = (parsed.data || [])
+        .map((d) => d.b64_json)
+        .filter((b): b is string => typeof b === "string" && b.length > 0)
+        .map((b) => `data:image/png;base64,${b}`);
+
+      if (!images.length) {
+        return NextResponse.json({ error: "No valid images generated" }, { status: 500 });
+      }
+
+      logger.end(true, { imageCount: images.length, backend: "openai" });
+
+      return NextResponse.json({
+        success: true,
+        images,
+        style,
+        gender,
+        backend: "openai",
+        model: OPENAI_IMAGE_MODEL,
+      });
+    }
 
     if (replicate) {
       logger.info("replicate_configured");
@@ -117,6 +190,8 @@ export async function POST(request: NextRequest) {
         images: validImages,
         style,
         gender,
+        backend: "replicate",
+        model: "sdxl",
       });
     } else {
       logger.info("demo_mode");
