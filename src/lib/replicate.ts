@@ -37,9 +37,38 @@ export async function runModel(
 
 // Convert file to base64 data URL
 export async function fileToDataUrl(file: File): Promise<string> {
+  // iPhone photos are often HEIC/HEIF. Replicate models typically expect JPEG/PNG.
+  const fileName = (file as any)?.name ? String((file as any).name).toLowerCase() : "";
+  const mime = (file.type || "").toLowerCase();
+  const isHeic =
+    mime === "image/heic" ||
+    mime === "image/heif" ||
+    fileName.endsWith(".heic") ||
+    fileName.endsWith(".heif");
+
+  if (isHeic) {
+    return fileToJpegDataUrlFromHeic(file);
+  }
+
   const buffer = await file.arrayBuffer();
   const base64 = Buffer.from(buffer).toString("base64");
   return `data:${file.type};base64,${base64}`;
+}
+
+async function fileToJpegDataUrlFromHeic(file: File): Promise<string> {
+  const buffer = Buffer.from(await file.arrayBuffer());
+
+  // heic-decode returns raw RGBA pixels.
+  const { default: heicDecode } = await import("heic-decode");
+  const decoded = await heicDecode({ buffer });
+  const width = decoded.width;
+  const height = decoded.height;
+  const data = decoded.data; // Uint8Array RGBA
+
+  const { encode } = await import("jpeg-js");
+  const jpeg = encode({ data, width, height }, 90);
+  const base64 = Buffer.from(jpeg.data).toString("base64");
+  return `data:image/jpeg;base64,${base64}`;
 }
 
 // Convert base64 to data URL if needed
