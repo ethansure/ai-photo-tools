@@ -3,6 +3,7 @@ import { getReplicateClient, fileToDataUrl, demoImages, runModel, models } from 
 import { createLogger, withLogging } from "@/lib/logger";
 
 export const maxDuration = 180;
+export const runtime = "nodejs";
 
 const styleDescriptions: Record<string, string> = {
   corporate: "formal business attire, dark suit, clean background",
@@ -41,9 +42,14 @@ export async function POST(request: NextRequest) {
     if (replicate) {
       logger.info("replicate_configured");
       
-      const dataUrl = await withLogging(logger, "file_to_dataurl", () =>
-        fileToDataUrl(image)
-      );
+      const dataUrl = await withLogging(logger, "file_to_dataurl", async () => {
+        try {
+          return await fileToDataUrl(image);
+        } catch (e) {
+          const msg = e instanceof Error ? e.message : String(e);
+          throw new Error(`Failed to prepare image (HEIC->JPG conversion may have failed): ${msg}`);
+        }
+      });
       
       const genderPrefix = gender === "male" ? "man" : gender === "female" ? "woman" : "person";
       const styleDesc = stylePrompt || styleDescriptions[style] || "professional attire";
@@ -56,17 +62,22 @@ export async function POST(request: NextRequest) {
         style,
       });
       
-      const output = await withLogging(logger, "replicate_api", () =>
-        runModel(replicate, models.sdxl, {
-          prompt,
-          image: dataUrl,
-          num_outputs: 4,
-          guidance_scale: 7.5,
-          prompt_strength: 0.4,
-          num_inference_steps: 35,
-          scheduler: "K_EULER",
-        })
-      );
+      const output = await withLogging(logger, "replicate_api", async () => {
+        try {
+          return await runModel(replicate, models.sdxl, {
+            prompt,
+            image: dataUrl,
+            num_outputs: 4,
+            guidance_scale: 7.5,
+            prompt_strength: 0.4,
+            num_inference_steps: 35,
+            scheduler: "K_EULER",
+          });
+        } catch (e) {
+          const msg = e instanceof Error ? e.message : String(e);
+          throw new Error(`Replicate generation failed: ${msg}`);
+        }
+      });
 
       const images = Array.isArray(output) ? output : [output];
       const validImages = images.filter((img): img is string => 
@@ -112,7 +123,7 @@ export async function POST(request: NextRequest) {
     logger.error("request_failed", error as Error);
     return NextResponse.json({ 
       error: "Failed to generate headshots",
-      details: error instanceof Error ? error.message : "Unknown error"
+      details: error instanceof Error ? error.message : "Unknown error",
     }, { status: 500 });
   }
 }
