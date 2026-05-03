@@ -27,7 +27,7 @@ const toolSections = [
     color: "from-blue-500 to-cyan-600",
     bgColor: "from-blue-950/50 to-cyan-950/30",
     before: "/examples/restore-before.jpg",
-    after: "/examples/restore-after.png",
+    after: "/examples/restore-after.jpg",
     features: ["Face Enhancement", "Scratch Removal", "Color Restore"],
   },
   {
@@ -39,7 +39,7 @@ const toolSections = [
     color: "from-purple-500 to-pink-600",
     bgColor: "from-purple-950/50 to-pink-950/30",
     before: "/examples/enhance-before.jpg",
-    after: "/examples/enhance-after.png",
+    after: "/examples/enhance-after.jpg",
     features: ["4x Upscale", "Noise Removal", "Detail Enhancement"],
   },
   {
@@ -51,7 +51,7 @@ const toolSections = [
     color: "from-green-500 to-emerald-600",
     bgColor: "from-green-950/50 to-emerald-950/30",
     before: "/examples/bg-remove-before.jpg",
-    after: "/examples/bg-remove-after.png",
+    after: "/examples/bg-remove-after.jpg",
     features: ["Instant Removal", "Transparent PNG", "Clean Edges"],
   },
   {
@@ -63,7 +63,7 @@ const toolSections = [
     color: "from-rose-500 to-red-600",
     bgColor: "from-rose-950/50 to-red-950/30",
     before: "/examples/style-before.jpg",
-    after: "/examples/style-after.png",
+    after: "/examples/style-after.jpg",
     features: ["Van Gogh", "Monet", "20+ Styles"],
   },
   {
@@ -75,7 +75,7 @@ const toolSections = [
     color: "from-slate-400 to-zinc-600",
     bgColor: "from-slate-950/50 to-zinc-950/30",
     before: "/examples/headshot-before.jpg",
-    after: "/examples/headshot-after.png",
+    after: "/examples/headshot-after.jpg",
     features: ["Professional Look", "Multiple Styles", "HD Quality"],
   },
 ];
@@ -140,8 +140,8 @@ export default function Home() {
           <div className="flex justify-center gap-4 mb-12">
             {[
               { b: "/examples/pet-original.jpg", a: "/examples/pet-royal-real.jpg" },
-              { b: "/examples/style-before.jpg", a: "/examples/style-after.png" },
-              { b: "/examples/restore-before.jpg", a: "/examples/restore-after.png" },
+              { b: "/examples/style-before.jpg", a: "/examples/style-after.jpg" },
+              { b: "/examples/restore-before.jpg", a: "/examples/restore-after.jpg" },
             ].map((item, i) => (
               <div 
                 key={i} 

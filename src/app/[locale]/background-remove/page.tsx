@@ -8,7 +8,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const realExample = {
   before: "/examples/bg-remove-before.jpg",
-  after: "/examples/bg-remove-after.png",
+  after: "/examples/bg-remove-after.jpg",
 };
 
 const bgOptions = [

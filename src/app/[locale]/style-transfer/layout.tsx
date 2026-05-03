@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Style Transfer - Turn Photos Into Masterpieces",
     description: "Transform photos into stunning artwork. Van Gogh, Monet, anime, watercolor & more artistic styles powered by AI.",
-    images: ["/examples/style-after.png"],
+    images: ["/examples/style-after.jpg"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Style Transfer",
     description: "Transform your photos into stunning artwork with AI. Van Gogh, Monet, anime & more!",
-    images: ["/examples/style-after.png"],
+    images: ["/examples/style-after.jpg"],
   },
   alternates: {
     canonical: "https://aiphotos.icu/style-transfer",

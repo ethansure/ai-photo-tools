@@ -19,7 +19,7 @@ const styles = [
 
 const realExample = {
   before: "/examples/style-before.jpg",
-  after: "/examples/style-after.png",
+  after: "/examples/style-after.jpg",
 };
 
 export default function StyleTransferPage() {

@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Background Remover - Remove Backgrounds Instantly",
     description: "Remove image backgrounds in seconds with AI. Perfect for product photos, portraits, and designs. Free transparent PNG output.",
-    images: ["/examples/bg-remove-after.png"],
+    images: ["/examples/bg-remove-after.jpg"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Background Remover",
     description: "Remove image backgrounds instantly with AI. Free transparent PNG output.",
-    images: ["/examples/bg-remove-after.png"],
+    images: ["/examples/bg-remove-after.jpg"],
   },
   alternates: {
     canonical: "https://aiphotos.icu/background-remove",

@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Image Upscaler - Enhance Photos to 4K Quality",
     description: "Upscale images up to 4x resolution with AI. Remove noise, sharpen details, and transform low-quality photos into stunning high-res images.",
-    images: ["/examples/enhance-after.png"],
+    images: ["/examples/enhance-after.jpg"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Image Upscaler & Enhancer",
     description: "Upscale images 4x with AI. Remove noise, enhance details, improve quality instantly.",
-    images: ["/examples/enhance-after.png"],
+    images: ["/examples/enhance-after.jpg"],
   },
   alternates: {
     canonical: "https://aiphotos.icu/photo-enhance",

@@ -14,7 +14,7 @@ const styles = [
 
 const realExample = {
   before: "/examples/headshot-before.jpg",
-  after: "/examples/headshot-after.png",
+  after: "/examples/headshot-after.jpg",
 };
 
 export default function AIHeadshotsPage() {

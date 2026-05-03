@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Professional Headshot Generator",
     description: "Transform selfies into professional headshots with AI. Perfect for LinkedIn, corporate profiles, and business use.",
-    images: ["/examples/headshot-after.png"],
+    images: ["/examples/headshot-after.jpg"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Professional Headshots",
     description: "Generate stunning professional headshots with AI. LinkedIn, corporate & business ready!",
-    images: ["/examples/headshot-after.png"],
+    images: ["/examples/headshot-after.jpg"],
   },
   alternates: {
     canonical: "https://aiphotos.icu/ai-headshots",

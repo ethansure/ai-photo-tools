@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Restore Studio - Bring Old Photos Back to Life",
     description: "Restore old, damaged, and faded photos instantly with AI. Repair damage, enhance faces, and upscale results.",
-    images: ["/examples/restore-after.png"],
+    images: ["/examples/restore-after.jpg"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Restore Studio - AI Photo Restoration",
     description: "Restore damaged and old photos with AI. Repair, enhance, and upscale with Restore Studio.",
-    images: ["/examples/restore-after.png"],
+    images: ["/examples/restore-after.jpg"],
   },
   alternates: {
     canonical: "https://aiphotos.icu/photo-restore",

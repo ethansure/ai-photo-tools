@@ -8,7 +8,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const realExample = {
   before: "/examples/enhance-before.jpg",
-  after: "/examples/enhance-after.png",
+  after: "/examples/enhance-after.jpg",
 };
 
 export default function PhotoEnhancePage() {

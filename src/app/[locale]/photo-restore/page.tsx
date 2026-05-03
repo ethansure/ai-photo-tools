@@ -8,7 +8,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const realExample = {
   before: "/examples/restore-before.jpg",
-  after: "/examples/restore-after.png",
+  after: "/examples/restore-after.jpg",
 };
 
 export default function PhotoRestorePage() {

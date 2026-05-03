@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "Interactive Makeup Lab",
     description:
       "Upload a selfie to get your top makeup looks with a stylist score and quick lipstick tweaks.",
-    images: ["/examples/headshot-after.png"],
+    images: ["/examples/headshot-after.jpg"],
     type: "website",
   },
   twitter: {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "Interactive Makeup Lab",
     description:
       "Upload a selfie to get your top makeup looks with a stylist score and quick lipstick tweaks.",
-    images: ["/examples/headshot-after.png"],
+    images: ["/examples/headshot-after.jpg"],
   },
   alternates: {
     canonical: "https://aiphotos.icu/makeup-lab",
