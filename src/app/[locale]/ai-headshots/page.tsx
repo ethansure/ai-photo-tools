@@ -37,6 +37,13 @@ export default function AIHeadshotsPage() {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
     if (file) {
+      const lowerName = (file.name || "").toLowerCase();
+      const isHeic = file.type === "image/heic" || file.type === "image/heif" || lowerName.endsWith(".heic") || lowerName.endsWith(".heif");
+      if (isHeic) {
+        setError("HEIC/HEIF is not supported yet. Please convert to JPG/PNG and try again.");
+        return;
+      }
+
       setUploadedFile(file);
       const reader = new FileReader();
       reader.onload = () => setUploadedImage(reader.result as string);
@@ -64,15 +71,22 @@ export default function AIHeadshotsPage() {
 
       const response = await fetch("/api/headshots", { method: "POST", body: formData });
       let data: any = null;
+      let rawText: string | null = null;
+      const ct = response.headers.get("content-type") || "";
       try {
-        data = await response.json();
+        if (ct.includes("application/json")) {
+          data = await response.json();
+        } else {
+          rawText = await response.text();
+        }
       } catch {
         // ignore
       }
       clearInterval(interval);
       setProgress(100);
       if (!response.ok || !data?.success) {
-        throw new Error(data?.error || data?.details || "Failed to generate headshots");
+        const details = data?.error || data?.details || (rawText ? rawText.slice(0, 200) : "");
+        throw new Error(details ? `Failed to generate headshots (${response.status}): ${details}` : `Failed to generate headshots (${response.status})`);
       }
       const imgs = Array.isArray(data.images) ? data.images : [];
       if (imgs.length === 0) {
