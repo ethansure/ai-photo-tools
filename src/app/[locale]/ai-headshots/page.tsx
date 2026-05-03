@@ -34,13 +34,42 @@ export default function AIHeadshotsPage() {
   const locale = useLocale();
   const localizedHref = (path: string) => `/${locale}${path}`;
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
-    if (file) {
-      const lowerName = (file.name || "").toLowerCase();
-      const isHeic = file.type === "image/heic" || file.type === "image/heif" || lowerName.endsWith(".heic") || lowerName.endsWith(".heif");
+    if (!file) return;
+
+    setError(null);
+
+    const lowerName = (file.name || "").toLowerCase();
+    const isHeic =
+      file.type === "image/heic" ||
+      file.type === "image/heif" ||
+      lowerName.endsWith(".heic") ||
+      lowerName.endsWith(".heif");
+
+    try {
       if (isHeic) {
-        setError("HEIC/HEIF is not supported yet. Please convert to JPG/PNG and try again.");
+        setProcessing(true);
+        setProgress(5);
+
+        // Lazy-load to keep bundle smaller.
+        const heic2any = (await import("heic2any")).default;
+        const out = (await heic2any({
+          blob: file,
+          toType: "image/jpeg",
+          quality: 0.9,
+        })) as Blob;
+
+        const newName = file.name.replace(/\.(heic|heif)$/i, ".jpg") || "photo.jpg";
+        const jpegFile = new File([out], newName, {
+          type: "image/jpeg",
+          lastModified: Date.now(),
+        });
+
+        setUploadedFile(jpegFile);
+        setUploadedImage(URL.createObjectURL(jpegFile));
+        setProgress(0);
+        setProcessing(false);
         return;
       }
 
@@ -48,6 +77,11 @@ export default function AIHeadshotsPage() {
       const reader = new FileReader();
       reader.onload = () => setUploadedImage(reader.result as string);
       reader.readAsDataURL(file);
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : "Unknown error";
+      setError(`Failed to convert HEIC to JPG: ${msg}`);
+      setProcessing(false);
+      setProgress(0);
     }
   }, []);
 
