@@ -11,7 +11,7 @@ const toolSections = [
     nameKey: "petPortrait",
     taglineKey: "petPortraitTagline",
     descKey: "petPortraitDesc",
-    emoji: "🐾",
+    thumb: "/examples/pet-royal-real.jpg",
     color: "from-amber-500 to-orange-600",
     bgColor: "from-amber-950/50 to-orange-950/30",
     before: "/examples/pet-original.jpg",
@@ -25,7 +25,7 @@ const toolSections = [
     nameKey: "photoRestore",
     taglineKey: "photoRestoreTagline",
     descKey: "photoRestoreDesc",
-    emoji: "📸",
+    thumb: "/examples/restore-after.jpg",
     color: "from-blue-500 to-cyan-600",
     bgColor: "from-blue-950/50 to-cyan-950/30",
     before: "/examples/restore-before.jpg",
@@ -37,7 +37,7 @@ const toolSections = [
     nameKey: "photoEnhance",
     taglineKey: "photoEnhanceTagline",
     descKey: "photoEnhanceDesc",
-    emoji: "✨",
+    thumb: "/examples/enhance-after.jpg",
     color: "from-purple-500 to-pink-600",
     bgColor: "from-purple-950/50 to-pink-950/30",
     before: "/examples/enhance-before.jpg",
@@ -49,7 +49,7 @@ const toolSections = [
     nameKey: "backgroundRemove",
     taglineKey: "backgroundRemoveTagline",
     descKey: "backgroundRemoveDesc",
-    emoji: "✂️",
+    thumb: "/examples/bg-remove-after.jpg",
     color: "from-green-500 to-emerald-600",
     bgColor: "from-green-950/50 to-emerald-950/30",
     before: "/examples/bg-remove-before.jpg",
@@ -61,7 +61,7 @@ const toolSections = [
     nameKey: "styleTransfer",
     taglineKey: "styleTransferTagline",
     descKey: "styleTransferDesc",
-    emoji: "🎨",
+    thumb: "/examples/style-after.jpg",
     color: "from-rose-500 to-red-600",
     bgColor: "from-rose-950/50 to-red-950/30",
     before: "/examples/style-before.jpg",
@@ -73,7 +73,7 @@ const toolSections = [
     nameKey: "aiHeadshots",
     taglineKey: "aiHeadshotsTagline",
     descKey: "aiHeadshotsDesc",
-    emoji: "👔",
+    thumb: "/examples/headshot-after.jpg",
     color: "from-slate-400 to-zinc-600",
     bgColor: "from-slate-950/50 to-zinc-950/30",
     before: "/examples/headshot-before.jpg",
@@ -105,8 +105,12 @@ export default function Home() {
       <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href={localizedHref("")} className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-lg">
-              📸
+            <div className="w-10 h-10 rounded-2xl overflow-hidden border border-white/10">
+              <img
+                src="/examples/style-after.jpg"
+                alt="AI Photo Tools"
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="text-xl font-bold">{tCommon("title")}</span>
           </Link>
@@ -196,8 +200,14 @@ export default function Home() {
               
               {/* Text Content */}
               <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${tool.color} text-sm font-medium mb-6`}>
-                  {tool.emoji} {t(`tools.${tool.nameKey}`)}
+              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${tool.color} text-sm font-medium mb-6`}>
+                  <img
+                    src={tool.thumb}
+                    alt=""
+                    className="w-6 h-6 rounded-md object-cover border border-white/20"
+                    loading="lazy"
+                  />
+                  {t(`tools.${tool.nameKey}`)}
                 </div>
                 
                 <h2 className="text-4xl lg:text-5xl font-bold mb-4">
@@ -293,9 +303,15 @@ export default function Home() {
               <Link
                 key={tool.id}
                 href={localizedHref(`/${tool.id}`)}
-                className={`px-6 py-3 bg-gradient-to-r ${tool.color} rounded-xl font-medium hover:scale-105 transition-transform shadow-lg`}
+                className={`px-5 py-3 bg-gradient-to-r ${tool.color} rounded-xl font-medium hover:scale-105 transition-transform shadow-lg inline-flex items-center gap-3`}
               >
-                {tool.emoji} {t(`tools.${tool.nameKey}`).split(" ")[0]}
+                <img
+                  src={tool.thumb}
+                  alt=""
+                  className="w-6 h-6 rounded-md object-cover border border-white/20"
+                  loading="lazy"
+                />
+                {t(`tools.${tool.nameKey}`).split(" ")[0]}
               </Link>
             ))}
           </div>
@@ -306,7 +322,12 @@ export default function Home() {
       <footer className="py-12 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <span className="text-2xl">📸</span>
+            <img
+              src="/examples/restore-after.jpg"
+              alt=""
+              className="w-7 h-7 rounded-md object-cover border border-white/10"
+              loading="lazy"
+            />
             <span className="font-semibold">{tCommon("title")}</span>
           </div>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
