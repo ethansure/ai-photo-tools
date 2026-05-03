@@ -10,23 +10,23 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 // Real AI-generated examples
 const realExamples = [
-  { styleKey: "royal", before: "/examples/pet-original.jpg", after: "/examples/pet-royal-real.png" },
-  { styleKey: "disney", before: "/examples/pet-original.jpg", after: "/examples/pet-disney-real.png" },
-  { styleKey: "oil", before: "/examples/pet-original.jpg", after: "/examples/pet-oil-real.png" },
+  { styleKey: "royal", before: "/examples/pet-original.jpg", after: "/examples/pet-royal-real.jpg" },
+  { styleKey: "disney", before: "/examples/pet-original.jpg", after: "/examples/pet-disney-real.jpg" },
+  { styleKey: "oil", before: "/examples/pet-original.jpg", after: "/examples/pet-oil-real.jpg" },
 ];
 
 const artStyles = [
-  { id: "royal", nameKey: "royal", emoji: "👑", preview: "/examples/pet-royal-real.png" },
-  { id: "disney", nameKey: "disney", emoji: "✨", preview: "/examples/pet-disney-real.png" },
-  { id: "oil", nameKey: "oil", emoji: "🎨", preview: "/examples/pet-oil-real.png" },
+  { id: "royal", nameKey: "royal", emoji: "👑", preview: "/examples/pet-royal-real.jpg" },
+  { id: "disney", nameKey: "disney", emoji: "✨", preview: "/examples/pet-disney-real.jpg" },
+  { id: "oil", nameKey: "oil", emoji: "🎨", preview: "/examples/pet-oil-real.jpg" },
   { id: "watercolor", nameKey: "watercolor", emoji: "💧", preview: "/examples/pet-royal.png" },
   { id: "anime", nameKey: "anime", emoji: "🌸", preview: "/examples/pet-disney.png" },
   { id: "popart", nameKey: "popart", emoji: "🔴", preview: "/examples/pet-oil.png" },
-  { id: "renaissance", nameKey: "renaissance", emoji: "🏛️", preview: "/examples/pet-royal-real.png" },
-  { id: "cartoon", nameKey: "cartoon", emoji: "🎬", preview: "/examples/pet-disney-real.png" },
+  { id: "renaissance", nameKey: "renaissance", emoji: "🏛️", preview: "/examples/pet-royal-real.jpg" },
+  { id: "cartoon", nameKey: "cartoon", emoji: "🎬", preview: "/examples/pet-disney-real.jpg" },
   { id: "fantasy", nameKey: "fantasy", emoji: "⚔️", preview: "/examples/pet-royal.png" },
   { id: "space", nameKey: "space", emoji: "🚀", preview: "/examples/pet-disney.png" },
-  { id: "vangogh", nameKey: "vangogh", emoji: "🌻", preview: "/examples/pet-oil-real.png" },
+  { id: "vangogh", nameKey: "vangogh", emoji: "🌻", preview: "/examples/pet-oil-real.jpg" },
   { id: "sketch", nameKey: "sketch", emoji: "✏️", preview: "/examples/pet-oil.png" },
 ];
 
@@ -460,7 +460,7 @@ export default function PetPortraitPage() {
         name={t("title")}
         description={t("description")}
         url={`https://aiphotos.icu/${locale}/pet-portrait`}
-        image="https://aiphotos.icu/examples/pet-royal-real.png"
+        image="https://aiphotos.icu/examples/pet-royal-real.jpg"
       />
       <FAQJsonLd
         faqs={[

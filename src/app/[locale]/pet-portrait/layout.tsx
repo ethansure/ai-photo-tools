@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Pet Portrait Generator - Transform Your Pet Into Stunning Art",
     description: "Turn your beloved pet into beautiful artwork. 70+ art styles including Royal, Disney, Oil Painting, Anime & more. Free to try!",
-    images: ["/examples/pet-royal-real.png"],
+    images: ["/examples/pet-royal-real.jpg"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Pet Portrait Generator",
     description: "Transform your pet photos into stunning artwork with AI. 70+ art styles!",
-    images: ["/examples/pet-royal-real.png"],
+    images: ["/examples/pet-royal-real.jpg"],
   },
   alternates: {
     canonical: "https://aiphotos.icu/pet-portrait",

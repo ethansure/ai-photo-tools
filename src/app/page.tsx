@@ -13,9 +13,9 @@ const toolSections = [
     color: "from-amber-500 to-orange-600",
     bgColor: "from-amber-950/50 to-orange-950/30",
     before: "/examples/pet-original.jpg",
-    after: "/examples/pet-royal-real.png",
-    afterAlt: "/examples/pet-disney-real.png",
-    afterAlt2: "/examples/pet-oil-real.png",
+    after: "/examples/pet-royal-real.jpg",
+    afterAlt: "/examples/pet-disney-real.jpg",
+    afterAlt2: "/examples/pet-oil-real.jpg",
     features: ["70+ Art Styles", "HD Quality", "30 Seconds"],
   },
   {
@@ -139,7 +139,7 @@ export default function Home() {
           {/* Quick showcase */}
           <div className="flex justify-center gap-4 mb-12">
             {[
-              { b: "/examples/pet-original.jpg", a: "/examples/pet-royal-real.png" },
+              { b: "/examples/pet-original.jpg", a: "/examples/pet-royal-real.jpg" },
               { b: "/examples/style-before.jpg", a: "/examples/style-after.png" },
               { b: "/examples/restore-before.jpg", a: "/examples/restore-after.png" },
             ].map((item, i) => (
