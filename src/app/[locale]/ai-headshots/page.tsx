@@ -26,6 +26,7 @@ export default function AIHeadshotsPage() {
   const [processing, setProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
   const [results, setResults] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   const t = useTranslations("aiHeadshots");
   const tCommon = useTranslations("common");
@@ -47,6 +48,7 @@ export default function AIHeadshotsPage() {
 
   const handleGenerate = async () => {
     if (!uploadedFile || !selectedStyle) return;
+    setError(null);
     setProcessing(true);
     setProgress(0);
 
@@ -61,12 +63,25 @@ export default function AIHeadshotsPage() {
       formData.append("gender", gender);
 
       const response = await fetch("/api/headshots", { method: "POST", body: formData });
-      const data = await response.json();
+      let data: any = null;
+      try {
+        data = await response.json();
+      } catch {
+        // ignore
+      }
       clearInterval(interval);
       setProgress(100);
-      if (data.success) setResults(data.images);
+      if (!response.ok || !data?.success) {
+        throw new Error(data?.error || data?.details || "Failed to generate headshots");
+      }
+      const imgs = Array.isArray(data.images) ? data.images : [];
+      if (imgs.length === 0) {
+        throw new Error("No images returned from API");
+      }
+      setResults(imgs);
     } catch (e) {
-      console.error(e);
+      const msg = e instanceof Error ? e.message : "Unknown error";
+      setError(msg);
     } finally {
       clearInterval(interval);
       setProcessing(false);
@@ -213,6 +228,11 @@ export default function AIHeadshotsPage() {
               <button onClick={handleGenerate} disabled={!selectedStyle} className="w-full py-4 bg-gradient-to-r from-slate-600 to-zinc-700 rounded-xl font-semibold text-lg disabled:opacity-50">
                 👔 {t("generate")}
               </button>
+              {error && (
+                <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+                  {error}
+                </div>
+              )}
             </div>
           )}
 
