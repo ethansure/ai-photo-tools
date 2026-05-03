@@ -46,29 +46,58 @@ export async function fileToDataUrl(file: File): Promise<string> {
     fileName.endsWith(".heic") ||
     fileName.endsWith(".heif");
 
-  if (isHeic) {
-    return fileToJpegDataUrlFromHeic(file);
-  }
-
-  const buffer = await file.arrayBuffer();
-  const base64 = Buffer.from(buffer).toString("base64");
-  return `data:${file.type};base64,${base64}`;
-}
-
-async function fileToJpegDataUrlFromHeic(file: File): Promise<string> {
   const buffer = Buffer.from(await file.arrayBuffer());
 
+  // Normalize very large uploads to prevent model OOM (common with iPhone HEIC / high-res photos).
+  // We resize to a safe max dimension before sending to Replicate.
+  const normalized = isHeic
+    ? await heicBufferToNormalizedJpeg(buffer)
+    : await normalizeRasterToJpeg(buffer, mime);
+
+  const base64 = normalized.toString("base64");
+  return `data:image/jpeg;base64,${base64}`;
+}
+
+async function normalizeRasterToJpeg(buffer: Buffer, mime: string): Promise<Buffer> {
+  // Prefer sharp for robust orientation + resize.
+  const sharp = (await import("sharp")).default;
+  const img = sharp(buffer, { failOnError: false }).rotate();
+  const out = await img
+    .resize({
+      width: 1024,
+      height: 1024,
+      fit: "inside",
+      withoutEnlargement: true,
+    })
+    .jpeg({ quality: 85 })
+    .toBuffer();
+
+  return out;
+}
+
+async function heicBufferToNormalizedJpeg(buffer: Buffer): Promise<Buffer> {
   // heic-decode returns raw RGBA pixels.
   const { default: heicDecode } = await import("heic-decode");
   const decoded = await heicDecode({ buffer });
-  const width = decoded.width;
-  const height = decoded.height;
-  const data = decoded.data; // Uint8Array RGBA
 
-  const { encode } = await import("jpeg-js");
-  const jpeg = encode({ data, width, height }, 90);
-  const base64 = Buffer.from(jpeg.data).toString("base64");
-  return `data:image/jpeg;base64,${base64}`;
+  const sharp = (await import("sharp")).default;
+  const out = await sharp(decoded.data, {
+    raw: {
+      width: decoded.width,
+      height: decoded.height,
+      channels: 4,
+    },
+  })
+    .resize({
+      width: 1024,
+      height: 1024,
+      fit: "inside",
+      withoutEnlargement: true,
+    })
+    .jpeg({ quality: 85 })
+    .toBuffer();
+
+  return out;
 }
 
 // Convert base64 to data URL if needed
