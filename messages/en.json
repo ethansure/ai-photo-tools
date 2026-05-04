@@ -40,7 +40,8 @@
     "backgroundRemove": "Background Remove",
     "styleTransfer": "Style Transfer",
     "aiHeadshots": "AI Headshots",
-    "makeupLab": "Makeup Lab"
+    "makeupLab": "Makeup Lab",
+    "myType": "My Type"
   },
   "makeupLab": {
     "nav": "Makeup Lab",
@@ -105,7 +106,13 @@
       "aiHeadshotsDesc": "Generate professional headshots from any selfie. Perfect for LinkedIn, corporate profiles, and business cards.",
       "headshotFeature1": "Professional Look",
       "headshotFeature2": "Multiple Styles",
-      "headshotFeature3": "HD Quality"
+      "headshotFeature3": "HD Quality",
+      "myType": "My Type",
+      "myTypeTagline": "Try male/female looks on your photo",
+      "myTypeDesc": "Upload your photo and pick a gender + style (muscular, streetwear, cyberpunk, old money, K-pop, beach). Get 4 AI-generated results.",
+      "myTypeFeature1": "Gender + style presets",
+      "myTypeFeature2": "Identity-preserving edits",
+      "myTypeFeature3": "4 results per run"
     },
     "cta": {
       "title": "Ready to Transform?",
@@ -355,6 +362,39 @@
       "casual": "Casual Professional"
     },
     "generate": "Generate Headshots"
+  },
+  "myType": {
+    "title": "My Type AI",
+    "subtitle": "Upload your photo, choose male/female, pick a vibe, and generate 4 results.",
+    "upload": {
+      "title": "Upload your photo",
+      "desc": "Drag & drop or click to select an image.",
+      "cta": "Choose Photo"
+    },
+    "gender": {
+      "label": "Gender",
+      "male": "Male",
+      "female": "Female"
+    },
+    "preset": {
+      "label": "Style preset"
+    },
+    "presets": {
+      "muscular": "Muscular",
+      "streetwear": "Streetwear",
+      "oldMoney": "Old Money",
+      "cyberpunk": "Cyberpunk",
+      "kpop": "K-pop Idol",
+      "beach": "Beach"
+    },
+    "generate": "Generate",
+    "generating": "Generating...",
+    "progress": "Progress",
+    "reset": "Upload another photo",
+    "results": "Results",
+    "resultsEmpty": "Generate to see results here.",
+    "resultCount": "{count} images",
+    "note": "Tip: For best results, use a clear, front-facing photo with good lighting."
   },
   "footer": {
     "copyright": "© 2026 AI Photo Tools. All rights reserved.",

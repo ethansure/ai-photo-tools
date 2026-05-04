@@ -40,7 +40,8 @@
     "backgroundRemove": "背景去除",
     "styleTransfer": "风格迁移",
     "aiHeadshots": "AI 证件照",
-    "makeupLab": "妆容实验室"
+    "makeupLab": "妆容实验室",
+    "myType": "我的类型"
   },
   "makeupLab": {
     "nav": "妆容实验室",
@@ -105,7 +106,13 @@
       "aiHeadshotsDesc": "从任何自拍生成专业证件照。适用于 LinkedIn、企业档案和名片。",
       "headshotFeature1": "专业外观",
       "headshotFeature2": "多种风格",
-      "headshotFeature3": "高清画质"
+      "headshotFeature3": "高清画质",
+      "myType": "我的类型（My Type）",
+      "myTypeTagline": "在你的照片上切换男/女风格",
+      "myTypeDesc": "上传照片，选择性别与风格（肌肉感/街头潮流/赛博朋克/老钱风/韩流偶像/海边度假），一次生成 4 张结果。",
+      "myTypeFeature1": "性别 + 风格预设",
+      "myTypeFeature2": "尽量保留本人特征",
+      "myTypeFeature3": "每次 4 张结果"
     },
     "cta": {
       "title": "准备好了吗？",
@@ -362,5 +369,38 @@
     "terms": "服务条款",
     "support": "技术支持",
     "backTo": "返回"
+  },
+  "myType": {
+    "title": "我的类型（My Type）",
+    "subtitle": "上传照片，选择男/女和风格，一次生成 4 张结果。",
+    "upload": {
+      "title": "上传你的照片",
+      "desc": "拖拽到这里，或点击选择图片。",
+      "cta": "选择照片"
+    },
+    "gender": {
+      "label": "性别",
+      "male": "男",
+      "female": "女"
+    },
+    "preset": {
+      "label": "风格类型"
+    },
+    "presets": {
+      "muscular": "肌肉感",
+      "streetwear": "街头潮流",
+      "oldMoney": "老钱风",
+      "cyberpunk": "赛博朋克",
+      "kpop": "韩流偶像",
+      "beach": "海边度假"
+    },
+    "generate": "生成",
+    "generating": "生成中…",
+    "progress": "进度",
+    "reset": "换一张照片",
+    "results": "结果",
+    "resultsEmpty": "点击生成后在这里查看结果。",
+    "resultCount": "{count} 张",
+    "note": "建议：选择清晰、光线好的正脸照片，效果更稳定。"
   }
 }

@@ -40,7 +40,8 @@
     "backgroundRemove": "배경 제거",
     "styleTransfer": "스타일 변환",
     "aiHeadshots": "AI 프로필 사진",
-    "makeupLab": "Makeup Lab"
+    "makeupLab": "Makeup Lab",
+    "myType": "My Type"
   },
   "makeupLab": {
     "nav": "Makeup Lab",
@@ -105,7 +106,13 @@
       "aiHeadshotsDesc": "어떤 셀카에서든 전문적인 프로필 사진을 생성하세요. LinkedIn, 기업 프로필, 명함에 완벽합니다.",
       "headshotFeature1": "전문적인 룩",
       "headshotFeature2": "다양한 스타일",
-      "headshotFeature3": "HD 품질"
+      "headshotFeature3": "HD 품질",
+      "myType": "My Type",
+      "myTypeTagline": "Try male/female looks on your photo",
+      "myTypeDesc": "Upload your photo and pick a gender + style (muscular, streetwear, cyberpunk, old money, K-pop, beach). Get 4 AI-generated results.",
+      "myTypeFeature1": "Gender + style presets",
+      "myTypeFeature2": "Identity-preserving edits",
+      "myTypeFeature3": "4 results per run"
     },
     "cta": {
       "title": "변환할 준비가 되셨나요?",
@@ -348,5 +355,38 @@
     "terms": "이용약관",
     "support": "고객지원",
     "backTo": "으로 돌아가기"
+  },
+  "myType": {
+    "title": "My Type AI",
+    "subtitle": "Upload your photo, choose male/female, pick a vibe, and generate 4 results.",
+    "upload": {
+      "title": "Upload your photo",
+      "desc": "Drag & drop or click to select an image.",
+      "cta": "Choose Photo"
+    },
+    "gender": {
+      "label": "Gender",
+      "male": "Male",
+      "female": "Female"
+    },
+    "preset": {
+      "label": "Style preset"
+    },
+    "presets": {
+      "muscular": "Muscular",
+      "streetwear": "Streetwear",
+      "oldMoney": "Old Money",
+      "cyberpunk": "Cyberpunk",
+      "kpop": "K-pop Idol",
+      "beach": "Beach"
+    },
+    "generate": "Generate",
+    "generating": "Generating...",
+    "progress": "Progress",
+    "reset": "Upload another photo",
+    "results": "Results",
+    "resultsEmpty": "Generate to see results here.",
+    "resultCount": "{count} images",
+    "note": "Tip: For best results, use a clear, front-facing photo with good lighting."
   }
 }

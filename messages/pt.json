@@ -40,7 +40,8 @@
     "backgroundRemove": "Remover Fundo",
     "styleTransfer": "Transferir Estilo",
     "aiHeadshots": "Fotos Profissionais AI",
-    "makeupLab": "Makeup Lab"
+    "makeupLab": "Makeup Lab",
+    "myType": "My Type"
   },
   "makeupLab": {
     "nav": "Makeup Lab",
@@ -105,7 +106,13 @@
       "aiHeadshotsDesc": "Gere fotos profissionais de qualquer selfie. Perfeito para LinkedIn, perfis corporativos e cartões de visita.",
       "headshotFeature1": "Look Profissional",
       "headshotFeature2": "Múltiplos Estilos",
-      "headshotFeature3": "Qualidade HD"
+      "headshotFeature3": "Qualidade HD",
+      "myType": "My Type",
+      "myTypeTagline": "Try male/female looks on your photo",
+      "myTypeDesc": "Upload your photo and pick a gender + style (muscular, streetwear, cyberpunk, old money, K-pop, beach). Get 4 AI-generated results.",
+      "myTypeFeature1": "Gender + style presets",
+      "myTypeFeature2": "Identity-preserving edits",
+      "myTypeFeature3": "4 results per run"
     },
     "cta": {
       "title": "Pronto para Transformar?",
@@ -348,5 +355,38 @@
     "terms": "Termos de Serviço",
     "support": "Suporte",
     "backTo": "Voltar para"
+  },
+  "myType": {
+    "title": "My Type AI",
+    "subtitle": "Upload your photo, choose male/female, pick a vibe, and generate 4 results.",
+    "upload": {
+      "title": "Upload your photo",
+      "desc": "Drag & drop or click to select an image.",
+      "cta": "Choose Photo"
+    },
+    "gender": {
+      "label": "Gender",
+      "male": "Male",
+      "female": "Female"
+    },
+    "preset": {
+      "label": "Style preset"
+    },
+    "presets": {
+      "muscular": "Muscular",
+      "streetwear": "Streetwear",
+      "oldMoney": "Old Money",
+      "cyberpunk": "Cyberpunk",
+      "kpop": "K-pop Idol",
+      "beach": "Beach"
+    },
+    "generate": "Generate",
+    "generating": "Generating...",
+    "progress": "Progress",
+    "reset": "Upload another photo",
+    "results": "Results",
+    "resultsEmpty": "Generate to see results here.",
+    "resultCount": "{count} images",
+    "note": "Tip: For best results, use a clear, front-facing photo with good lighting."
   }
 }

@@ -80,6 +80,18 @@ const toolSections = [
     after: "/examples/headshot-after.jpg",
     featuresKeys: ["headshotFeature1", "headshotFeature2", "headshotFeature3"],
   },
+  {
+    id: "my-type",
+    nameKey: "myType",
+    taglineKey: "myTypeTagline",
+    descKey: "myTypeDesc",
+    thumb: "/examples/headshot-after.jpg",
+    color: "from-violet-500 to-fuchsia-600",
+    bgColor: "from-violet-950/50 to-fuchsia-950/30",
+    before: "/examples/headshot-before.jpg",
+    after: "/examples/headshot-after.jpg",
+    featuresKeys: ["myTypeFeature1", "myTypeFeature2", "myTypeFeature3"],
+  },
 ];
 
 export default function Home() {
@@ -118,6 +130,9 @@ export default function Home() {
             <nav className="hidden md:flex items-center gap-6 text-sm text-gray-400">
               <Link href={localizedHref("/makeup-lab")} className="hover:text-white transition">
                 {tNav("makeupLab")}
+              </Link>
+              <Link href={localizedHref("/my-type")} className="hover:text-white transition">
+                {tNav("myType")}
               </Link>
               <a href="#pet-portrait" className="hover:text-white transition">{tNav("petPortrait")}</a>
               <a href="#photo-restore" className="hover:text-white transition">{tNav("photoRestore")}</a>

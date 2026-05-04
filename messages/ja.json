@@ -40,7 +40,8 @@
     "backgroundRemove": "背景削除",
     "styleTransfer": "スタイル変換",
     "aiHeadshots": "AIヘッドショット",
-    "makeupLab": "Makeup Lab"
+    "makeupLab": "Makeup Lab",
+    "myType": "My Type"
   },
   "makeupLab": {
     "nav": "Makeup Lab",
@@ -105,7 +106,13 @@
       "aiHeadshotsDesc": "どんな自撮りからもプロフェッショナルなヘッドショットを生成。LinkedIn、企業プロフィール、名刺に最適。",
       "headshotFeature1": "プロフェッショナルな仕上がり",
       "headshotFeature2": "複数のスタイル",
-      "headshotFeature3": "HD品質"
+      "headshotFeature3": "HD品質",
+      "myType": "My Type",
+      "myTypeTagline": "Try male/female looks on your photo",
+      "myTypeDesc": "Upload your photo and pick a gender + style (muscular, streetwear, cyberpunk, old money, K-pop, beach). Get 4 AI-generated results.",
+      "myTypeFeature1": "Gender + style presets",
+      "myTypeFeature2": "Identity-preserving edits",
+      "myTypeFeature3": "4 results per run"
     },
     "cta": {
       "title": "変換の準備はできましたか？",
@@ -348,5 +355,38 @@
     "terms": "利用規約",
     "support": "サポート",
     "backTo": "に戻る"
+  },
+  "myType": {
+    "title": "My Type AI",
+    "subtitle": "Upload your photo, choose male/female, pick a vibe, and generate 4 results.",
+    "upload": {
+      "title": "Upload your photo",
+      "desc": "Drag & drop or click to select an image.",
+      "cta": "Choose Photo"
+    },
+    "gender": {
+      "label": "Gender",
+      "male": "Male",
+      "female": "Female"
+    },
+    "preset": {
+      "label": "Style preset"
+    },
+    "presets": {
+      "muscular": "Muscular",
+      "streetwear": "Streetwear",
+      "oldMoney": "Old Money",
+      "cyberpunk": "Cyberpunk",
+      "kpop": "K-pop Idol",
+      "beach": "Beach"
+    },
+    "generate": "Generate",
+    "generating": "Generating...",
+    "progress": "Progress",
+    "reset": "Upload another photo",
+    "results": "Results",
+    "resultsEmpty": "Generate to see results here.",
+    "resultCount": "{count} images",
+    "note": "Tip: For best results, use a clear, front-facing photo with good lighting."
   }
 }
