@@ -48,10 +48,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing image" }, { status: 400 });
     }
 
-    const genderToken = gender === "female" ? "woman" : "man";
+    const companionToken = gender === "female" ? "woman" : "man";
     const basePreset = presetDescriptions[preset] || presetDescriptions.muscular;
     const userAddon = presetPrompt ? `, ${presetPrompt}` : "";
-    const prompt = `Photorealistic portrait photo of a ${genderToken}, same person as the input photo, ${basePreset}${userAddon}, ${qualityGuardrails}`;
+    const prompt = `Photorealistic photo edit: keep the original person exactly the same as the input photo. Add one ${companionToken} standing next to them (close, natural pose, friendly vibe). The new person should match this style: ${basePreset}${userAddon}. Ensure both faces are realistic, no extra people, no text. ${qualityGuardrails}`;
 
     // Prefer OpenAI image edits when configured.
     const openaiKey = process.env.OPENAI_API_KEY;
@@ -133,7 +133,8 @@ export async function POST(request: NextRequest) {
     });
 
     // Slightly stronger than headshots since this is a style try-on.
-    const promptStrength = preset === "muscular" ? 0.42 : 0.35;
+    // Adding a new person needs stronger prompting than simple restyling.
+    const promptStrength = preset === "muscular" ? 0.5 : 0.45;
 
     const output = await withLogging(logger, "replicate_api", async () => {
       try {
@@ -184,4 +185,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-

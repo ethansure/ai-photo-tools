@@ -108,8 +108,8 @@
       "headshotFeature2": "Múltiples Estilos",
       "headshotFeature3": "Calidad HD",
       "myType": "My Type",
-      "myTypeTagline": "Try male/female looks on your photo",
-      "myTypeDesc": "Upload your photo and pick a gender + style (muscular, streetwear, cyberpunk, old money, K-pop, beach). Get 4 AI-generated results.",
+      "myTypeTagline": "Add a male/female next to you",
+      "myTypeDesc": "Upload your photo and add a male/female next to you with a chosen style (muscular, streetwear, cyberpunk, old money, K-pop, beach). Get 4 AI-generated results.",
       "myTypeFeature1": "Gender + style presets",
       "myTypeFeature2": "Identity-preserving edits",
       "myTypeFeature3": "4 results per run"
@@ -195,14 +195,14 @@
   },
   "myType": {
     "title": "My Type AI",
-    "subtitle": "Upload your photo, choose male/female, pick a vibe, and generate 4 results.",
+    "subtitle": "Upload your photo, choose who to add next to you (male/female) + a style, and generate 4 results.",
     "upload": {
       "title": "Upload your photo",
       "desc": "Drag & drop or click to select an image.",
       "cta": "Choose Photo"
     },
     "gender": {
-      "label": "Gender",
+      "label": "Person to add next to you",
       "male": "Male",
       "female": "Female"
     },
@@ -224,6 +224,6 @@
     "results": "Results",
     "resultsEmpty": "Generate to see results here.",
     "resultCount": "{count} images",
-    "note": "Tip: For best results, use a clear, front-facing photo with good lighting."
+    "note": "Tip: Use a clear photo and a simple background for more natural results."
   }
 }

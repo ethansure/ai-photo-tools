@@ -108,8 +108,8 @@
       "headshotFeature2": "多种风格",
       "headshotFeature3": "高清画质",
       "myType": "我的类型（My Type）",
-      "myTypeTagline": "在你的照片上切换男/女风格",
-      "myTypeDesc": "上传照片，选择性别与风格（肌肉感/街头潮流/赛博朋克/老钱风/韩流偶像/海边度假），一次生成 4 张结果。",
+      "myTypeTagline": "在你的照片旁边加一个男/女",
+      "myTypeDesc": "上传照片，选择要加在你旁边的性别与风格（肌肉感/街头潮流/赛博朋克/老钱风/韩流偶像/海边度假），一次生成 4 张结果。",
       "myTypeFeature1": "性别 + 风格预设",
       "myTypeFeature2": "尽量保留本人特征",
       "myTypeFeature3": "每次 4 张结果"
@@ -372,14 +372,14 @@
   },
   "myType": {
     "title": "我的类型（My Type）",
-    "subtitle": "上传照片，选择男/女和风格，一次生成 4 张结果。",
+    "subtitle": "上传照片，选择你旁边要加的男/女以及风格，一次生成 4 张结果。",
     "upload": {
       "title": "上传你的照片",
       "desc": "拖拽到这里，或点击选择图片。",
       "cta": "选择照片"
     },
     "gender": {
-      "label": "性别",
+      "label": "你旁边的人",
       "male": "男",
       "female": "女"
     },
@@ -401,6 +401,6 @@
     "results": "结果",
     "resultsEmpty": "点击生成后在这里查看结果。",
     "resultCount": "{count} 张",
-    "note": "建议：选择清晰、光线好的正脸照片，效果更稳定。"
+    "note": "建议：背景尽量简单、人物清晰，生成的“旁边的人”会更自然。"
   }
 }
