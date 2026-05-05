@@ -206,6 +206,11 @@
     "results": "Results",
     "resultsEmpty": "Generate to see results here.",
     "resultCount": "{count} images",
-    "note": "Tip: Use a clear photo and a simple background for more natural results."
+    "note": "Tip: Use a clear photo and a simple background for more natural results.",
+    "side": {
+      "label": "Add person on",
+      "left": "Left side",
+      "right": "Right side"
+    }
   }
 }

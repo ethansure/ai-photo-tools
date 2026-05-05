@@ -56,6 +56,7 @@ export default function MyTypePage() {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [gender, setGender] = useState<"male" | "female">("male");
+  const [side, setSide] = useState<"left" | "right">("right");
   const [preset, setPreset] = useState<string>(PRESETS[0].id);
   const [processing, setProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -112,6 +113,7 @@ export default function MyTypePage() {
       const formData = new FormData();
       formData.append("image", uploadedFile);
       formData.append("gender", gender);
+      formData.append("side", side);
       formData.append("preset", selectedPreset.id);
       formData.append("presetPrompt", selectedPreset.prompt);
 
@@ -226,6 +228,32 @@ export default function MyTypePage() {
                         }`}
                       >
                         {t("gender.female")}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="text-sm text-gray-400 mb-2">{t("side.label")}</div>
+                    <div className="flex gap-3">
+                      <button
+                        onClick={() => setSide("left")}
+                        className={`px-4 py-2 rounded-xl border transition ${
+                          side === "left"
+                            ? "bg-white/15 border-white/20"
+                            : "bg-transparent border-white/10 hover:border-white/20"
+                        }`}
+                      >
+                        {t("side.left")}
+                      </button>
+                      <button
+                        onClick={() => setSide("right")}
+                        className={`px-4 py-2 rounded-xl border transition ${
+                          side === "right"
+                            ? "bg-white/15 border-white/20"
+                            : "bg-transparent border-white/10 hover:border-white/20"
+                        }`}
+                      >
+                        {t("side.right")}
                       </button>
                     </div>
                   </div>

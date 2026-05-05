@@ -34,6 +34,7 @@ export async function POST(request: NextRequest) {
     const gender = (formData.get("gender") as string) || "male";
     const preset = (formData.get("preset") as string) || "muscular";
     const presetPrompt = (formData.get("presetPrompt") as string) || "";
+    const side = ((formData.get("side") as string) || "right").toLowerCase();
 
     logger.start({
       imageSize: image?.size,
@@ -41,6 +42,7 @@ export async function POST(request: NextRequest) {
       gender,
       preset,
       hasPresetPrompt: !!presetPrompt,
+      side,
     });
 
     if (!image) {
@@ -51,7 +53,7 @@ export async function POST(request: NextRequest) {
     const companionToken = gender === "female" ? "woman" : "man";
     const basePreset = presetDescriptions[preset] || presetDescriptions.muscular;
     const userAddon = presetPrompt ? `, ${presetPrompt}` : "";
-    const prompt = `Photorealistic photo edit: keep the original person exactly the same as the input photo. Add one ${companionToken} standing next to them (close, natural pose, friendly vibe). The new person should match this style: ${basePreset}${userAddon}. Ensure both faces are realistic, no extra people, no text. ${qualityGuardrails}`;
+    const prompt = `Photorealistic photo edit. Keep the original subject exactly the same as the input image (do not change their face, body, clothing, or background). Add exactly one ${companionToken} standing next to the original subject on the ${side} side. The added person should match this style: ${basePreset}${userAddon}. Keep everything realistic and natural. No extra people. No text. ${qualityGuardrails}`;
 
     // Prefer OpenAI image edits when configured.
     const openaiKey = process.env.OPENAI_API_KEY;
@@ -66,6 +68,54 @@ export async function POST(request: NextRequest) {
         .png({ compressionLevel: 9 })
         .toBuffer();
 
+      // To reliably "add a person next to you" (instead of rewriting the whole photo),
+      // we expand the canvas and provide a mask so edits only occur in the new area.
+      const meta = await sharp(normalizedPng).metadata();
+      const w = meta.width || 1024;
+      const h = meta.height || 1024;
+      const extra = Math.max(320, Math.round(w * 0.55));
+
+      const extended = await sharp(normalizedPng)
+        .extend({
+          top: 0,
+          bottom: 0,
+          left: side === "left" ? extra : 0,
+          right: side === "right" ? extra : 0,
+          // Extend by duplicating edge pixels for a more natural seam.
+          extendWith: "copy" as any,
+        })
+        .png({ compressionLevel: 9 })
+        .toBuffer();
+
+      const mask = await sharp({
+        create: {
+          width: w + extra,
+          height: h,
+          // Use RGB to satisfy sharp's TS types; still valid as a mask for OpenAI.
+          channels: 3,
+          background: { r: 0, g: 0, b: 0 },
+        },
+      } as any)
+        .composite([
+          {
+            input: await sharp({
+              create: {
+                width: extra,
+                height: h,
+                channels: 3,
+                background: { r: 255, g: 255, b: 255 },
+              },
+            } as any)
+              .png()
+              .toBuffer(),
+            left: side === "left" ? 0 : w,
+            top: 0,
+            blend: "over",
+          },
+        ])
+        .png()
+        .toBuffer();
+
       const form = new FormData();
       form.append("model", OPENAI_IMAGE_MODEL);
       form.append("prompt", prompt);
@@ -74,8 +124,13 @@ export async function POST(request: NextRequest) {
       form.append("response_format", "b64_json");
       form.append(
         "image",
-        new Blob([new Uint8Array(normalizedPng)], { type: "image/png" }),
+        new Blob([new Uint8Array(extended)], { type: "image/png" }),
         "input.png"
+      );
+      form.append(
+        "mask",
+        new Blob([new Uint8Array(mask)], { type: "image/png" }),
+        "mask.png"
       );
 
       const respText = await withLogging(logger, "openai_images_edits", async () => {
