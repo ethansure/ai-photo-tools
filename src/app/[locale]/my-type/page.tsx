@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useDropzone } from "react-dropzone";
 import { useLocale, useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { optimizeImageFile } from "@/lib/clientImage";
 
 type Preset = {
   id: string;
@@ -79,10 +80,12 @@ export default function MyTypePage() {
     setResults([]);
 
     try {
-      setUploadedFile(file);
+      // Support large uploads by downscaling/compressing on-device first.
+      const optimized = await optimizeImageFile(file);
+      setUploadedFile(optimized);
       const reader = new FileReader();
       reader.onload = () => setUploadedImage(reader.result as string);
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(optimized);
     } catch (e) {
       const msg = e instanceof Error ? e.message : "Unknown error";
       setError(`Failed to read file: ${msg}`);

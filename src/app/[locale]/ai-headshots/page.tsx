@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useDropzone } from "react-dropzone";
 import { useTranslations, useLocale } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { optimizeImageFile } from "@/lib/clientImage";
 
 const styles = [
   { id: "corporate", nameKey: "corporate", icon: "👔" },
@@ -41,10 +42,12 @@ export default function AIHeadshotsPage() {
     setError(null);
 
     try {
-      setUploadedFile(file);
+      // Support large uploads by downscaling/compressing on-device first.
+      const optimized = await optimizeImageFile(file);
+      setUploadedFile(optimized);
       const reader = new FileReader();
       reader.onload = () => setUploadedImage(reader.result as string);
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(optimized);
     } catch (e) {
       const msg = e instanceof Error ? e.message : "Unknown error";
       setError(`Failed to read file: ${msg}`);
