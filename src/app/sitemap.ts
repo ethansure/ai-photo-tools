@@ -3,12 +3,7 @@ import { locales } from "@/i18n";
 import { getAllBlogPosts } from "@/lib/blog-posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // IMPORTANT: Don't hardcode the canonical host.
-  // - When the custom domain isn't live yet, hardcoding it can prevent Google from indexing the Vercel domain.
-  // - Once DNS is ready, set NEXT_PUBLIC_SITE_URL=https://aiphotos.icu (or your primary domain).
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://aiphotos.icu");
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aiphotos.icu";
   
   // Tool pages with their priorities
   const toolRoutes = [
