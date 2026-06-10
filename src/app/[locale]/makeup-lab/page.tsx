@@ -91,6 +91,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 0.98, saturate: 1.04, hueRotateDeg: 3 },
   },
   {
+    id: "suede-skin",
+    name: "Suede Skin",
+    vibe: "Velvety, blurred",
+    lipstickHex: "#A96B63",
+    filter: { contrast: 1.0, saturate: 1.02, hueRotateDeg: 1 },
+  },
+  {
     id: "terracotta",
     name: "Terracotta",
     vibe: "Sun-kissed",

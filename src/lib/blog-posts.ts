@@ -13,6 +13,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "suede-skin-blurred-makeup-filter-2026",
+    title: "Suede Skin Makeup Filter: Test a Soft-Focus Complexion",
+    description: "See how the suede skin and blurred skin makeup trend works, then use Makeup Lab to preview a soft-focus complexion look before buying foundation or skin tint.",
+    date: "2026-06-10",
+    author: "AI Photo Tools Team",
+    image: "/blog/suede-skin-makeup.jpg",
+    keywords: ["suede skin", "blurred skin makeup", "soft focus skin filter", "foundation shade match", "natural foundation filter", "AI makeup filter"],
+    category: "Makeup Lab",
+    content: "# Suede Skin Makeup Filter: Test a Soft-Focus Complexion\n\nSuede skin is a soft-focus complexion trend: less glossy than glass skin, less flat than heavy matte foundation, and more forgiving on camera than a full-coverage filter.\n\n## Why It Is Trending\n\nBeauty searches and creator conversations keep circling the same problem: people want skin that looks polished without looking fake. Blurred skin, suede skin, and cloud skin all point toward a natural finish with gentle diffusion, realistic texture, and a shade that still matches the neck and chest.\n\n## What the Look Should Do\n\n- Keep skin tone believable instead of lighter, cooler, or ashy\n- Add a velvety finish without erasing every line or pore\n- Pair with muted rose, warm nude, or soft berry lips\n- Work for selfies, dating profiles, creator portraits, and headshots\n\n## How to Preview It\n\nOpen Makeup Lab, upload a selfie, and choose the Suede Skin preset. Start with a medium lipstick intensity, then compare it against Blurry Cloud, Soft Nude, and Dusty Rose. If the preview feels too flat, pick a warmer lip shade or reduce the overlay intensity.\n\n## Foundation Shade-Match Tip\n\nThe safest suede skin look should match your natural undertone first. If a filter makes your face look cooler, lighter, or disconnected from your neck, treat that as a warning before buying a foundation or skin tint.\n\n## Best Use Cases\n\n1. Testing whether a soft-focus base suits your face before shopping\n2. Comparing warm nude vs rose lip colors for a natural makeup look\n3. Choosing a profile photo style that looks polished but not over-edited\n4. Spotting when an AI beauty filter pushes skin tone too far\n\nTry the Suede Skin preset in Makeup Lab as a quick first pass, then use the score reasons to decide whether the look is natural, professional, or too filtered.",
+  },
+  {
     slug: "blurry-cloud-makeup-filter-2026",
     title: "Blurry Cloud Makeup Filter: Soft Natural Looks for 2026",
     description: "Learn how the blurry cloud makeup trend works, when to use it, and how to test a soft-focus natural look with AI Makeup Lab before buying products.",
