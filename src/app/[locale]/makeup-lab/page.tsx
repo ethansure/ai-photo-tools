@@ -162,6 +162,19 @@ const LOOKS: Look[] = [
   },
 ];
 
+const FOUNDATION_CHECKLIST = [
+  "Use window light and turn off beauty filters",
+  "Include face, jawline, neck, and a little chest",
+  "Compare the preview against your neck before buying",
+];
+
+const UNDERTONE_OPTIONS = [
+  { label: "Cool / pink", swatch: "#e9a7b7" },
+  { label: "Neutral", swatch: "#c99a7a" },
+  { label: "Warm / golden", swatch: "#d8a15f" },
+  { label: "Olive / muted", swatch: "#a99b68" },
+];
+
 function hashToUnit(input: string) {
   // Simple deterministic hash -> [0,1)
   let h = 2166136261;
@@ -269,6 +282,8 @@ export default function MakeupLabPage() {
 
   const [lipstickHex, setLipstickHex] = useState<string>(LOOKS[0].lipstickHex);
   const [lipstickIntensity, setLipstickIntensity] = useState<number>(45);
+  const [undertone, setUndertone] = useState<string>(UNDERTONE_OPTIONS[1].label);
+  const [matchTarget, setMatchTarget] = useState<"neck" | "face">("neck");
 
   const selectedLook = useMemo(
     () => LOOKS.find((l) => l.id === selectedLookId) || LOOKS[0],
@@ -374,6 +389,88 @@ export default function MakeupLabPage() {
             </div>
           </div>
         </div>
+
+        {/* Foundation Shade Match */}
+        <section className="mb-10 rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start">
+            <div>
+              <div className="text-sm text-violet-300 mb-2">Foundation Shade Match</div>
+              <h2 className="text-2xl font-bold mb-3">
+                Narrow your undertone before you test a look
+              </h2>
+              <p className="text-gray-400">
+                Use this quick flow with a daylight selfie. It is a preview aid, not a final
+                colorimeter: the safest shade should keep your face connected to your neck.
+              </p>
+              <div className="mt-5 grid sm:grid-cols-2 gap-3">
+                {FOUNDATION_CHECKLIST.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-white/10 bg-black/20 p-4 text-sm text-gray-300"
+                  >
+                    <span className="text-violet-300">✓</span> {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-black/25 p-5">
+              <div className="text-sm text-gray-300 mb-3">Undertone family</div>
+              <div className="grid grid-cols-2 gap-2">
+                {UNDERTONE_OPTIONS.map((option) => (
+                  <button
+                    key={option.label}
+                    type="button"
+                    onClick={() => setUndertone(option.label)}
+                    className={`flex items-center gap-2 rounded-xl border px-3 py-2 text-left text-sm transition ${
+                      undertone === option.label
+                        ? "border-violet-500/70 bg-violet-500/15"
+                        : "border-white/10 bg-white/5 hover:border-violet-500/40"
+                    }`}
+                  >
+                    <span
+                      className="h-4 w-4 rounded-full border border-white/20"
+                      style={{ background: option.swatch }}
+                    />
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="mt-5 text-sm text-gray-300 mb-3">Match priority</div>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { id: "neck", label: "Neck match" },
+                  { id: "face", label: "Face match" },
+                ].map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => setMatchTarget(option.id as "neck" | "face")}
+                    className={`rounded-xl border px-3 py-2 text-sm transition ${
+                      matchTarget === option.id
+                        ? "border-fuchsia-500/70 bg-fuchsia-500/15"
+                        : "border-white/10 bg-white/5 hover:border-fuchsia-500/40"
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="mt-5 rounded-xl bg-white/5 p-4 text-sm text-gray-300">
+                Test {undertone.toLowerCase()} shades against your {matchTarget}. If the preview
+                looks ashy, orange, or disconnected, try the next undertone family before buying.
+              </div>
+              <Link
+                href={localizedHref("/blog/foundation-shade-match-selfie-undertone-2026")}
+                className="mt-4 inline-flex text-sm font-medium text-violet-300 hover:text-violet-200"
+              >
+                Read the full shade-match guide →
+              </Link>
+            </div>
+          </div>
+        </section>
 
         {/* Results */}
         {photoDataUrl && (
