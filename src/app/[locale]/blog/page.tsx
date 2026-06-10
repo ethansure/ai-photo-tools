@@ -100,6 +100,7 @@ export default function BlogPage({
                   {post.category === "Background Remove" && "✂️"}
                   {post.category === "Style Transfer" && "🎨"}
                   {post.category === "AI Headshots" && "👔"}
+                  {post.category === "Makeup Lab" && "💄"}
                 </div>
                 <div className="flex-1">
                   <div className="text-sm text-violet-400 mb-2">{post.category}</div>

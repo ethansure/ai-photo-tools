@@ -13,6 +13,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "blurry-cloud-makeup-filter-2026",
+    title: "Blurry Cloud Makeup Filter: Soft Natural Looks for 2026",
+    description: "Learn how the blurry cloud makeup trend works, when to use it, and how to test a soft-focus natural look with AI Makeup Lab before buying products.",
+    date: "2026-06-09",
+    author: "AI Photo Tools Team",
+    image: "/blog/blurry-cloud-makeup.jpg",
+    keywords: ["blurry cloud makeup", "cloud makeup filter", "AI makeup filter", "natural makeup look", "soft focus makeup", "makeup lab"],
+    category: "Makeup Lab",
+    content: "# Blurry Cloud Makeup Filter: Soft Natural Looks for 2026\n\nBlurry cloud makeup is a soft-focus look built around diffused skin, low-contrast lips, gentle blush, and a polished finish that still looks natural on camera.\n\n## What Makes the Look Work\n\n- Soft contrast instead of sharp contour\n- Rosy or mauve lip shades that stay close to your natural color\n- A slightly blurred finish that flatters selfies and headshots\n- Natural saturation so the look feels wearable in daylight\n\n## Who Should Try It\n\nThis style is best for people who want makeup that reads clean, approachable, and camera-friendly. It works especially well for profile photos, dating app pictures, casual creator portraits, and professional headshots where heavy glam would feel too loud.\n\n## How to Test It First\n\nUse Makeup Lab before buying products or editing a whole photo set. Upload a selfie, choose the Blurry Cloud preset, then adjust lipstick shade and intensity until the score and preview feel balanced.\n\n## Quick Tips\n\n1. Start with medium lipstick intensity, then reduce it if your lips pull too much attention\n2. Pick mauve, rose, or soft berry shades before trying bright red\n3. Use the look for daylight selfies and profile photos where skin should look fresh, not flat\n4. Compare it against Soft Nude and Dusty Rose to find your safest everyday option\n\n## Why AI Helps\n\nAI makeup previews are useful because they let you test vibe, contrast, and undertone before committing. The preview is not a final retouch, but it can quickly show whether a soft-focus trend fits your face and photo style.\n\nTry the Blurry Cloud preset in Makeup Lab and use the score reasons to decide whether the look is natural, professional, or too subtle for your photo.",
+  },
+  {
     slug: "best-ai-pet-portrait-generator-2026",
     title: "Best AI Pet Portrait Generator 2026: Turn Your Pet Into Art",
     description: "Discover the best AI pet portrait generators in 2026. Transform photos of your dog, cat, or any pet into stunning artwork with royal portraits, Disney style, and 70+ artistic styles.",

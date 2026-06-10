@@ -84,6 +84,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.02, saturate: 1.08, hueRotateDeg: 4 },
   },
   {
+    id: "blurry-cloud",
+    name: "Blurry Cloud",
+    vibe: "Soft-focus, natural",
+    lipstickHex: "#C57A86",
+    filter: { contrast: 0.98, saturate: 1.04, hueRotateDeg: 3 },
+  },
+  {
     id: "terracotta",
     name: "Terracotta",
     vibe: "Sun-kissed",

@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     "undertone makeup",
     "professional makeup",
     "makeup for headshots",
+    "blurry makeup",
+    "cloud makeup",
+    "natural makeup filter",
   ],
   openGraph: {
     title: "Interactive Makeup Lab",
