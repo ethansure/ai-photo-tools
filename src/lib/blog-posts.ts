@@ -13,6 +13,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "sunlit-skin-watercolor-blush-filter-2026",
+    title: "Sunlit Skin and Watercolor Blush Filter: 2026 Makeup Preview",
+    description: "Preview the sunlit skin and watercolor blush makeup trend with Makeup Lab before buying blush, skin tint, or glossy lip products.",
+    date: "2026-06-10",
+    author: "AI Photo Tools Team",
+    image: "/blog/sunlit-skin-watercolor-blush.jpg",
+    keywords: ["sunlit skin", "watercolor blush", "beach skin makeup", "AI blush filter", "AI makeup filter", "natural makeup look", "soft focus skin"],
+    category: "Makeup Lab",
+    content: "# Sunlit Skin and Watercolor Blush Filter: 2026 Makeup Preview\n\nSunlit skin and watercolor blush are part of the same 2026 beauty direction: skin should look warm, fresh, lightly blurred, and believable in daylight instead of heavily contoured or over-filtered.\n\n## What the Look Means\n\nThe trend combines a soft-focus base, transparent blush, and warm natural lips. It should look like a good-light selfie after a beach walk, not a full glam edit. The best version keeps the face connected to the neck while adding gentle warmth across cheeks and lips.\n\n## Why Preview It First\n\nBlush and skin tint are easy to overbuy online. A shade can look soft in a product photo but turn too orange, too pink, or too saturated on your selfie. A quick AI makeup preview helps you test whether the color family works before you buy.\n\n## How to Use Makeup Lab\n\nOpen Makeup Lab, upload a daylight selfie, and try the Sunlit Blush preset. Compare it with Blurry Cloud, Suede Skin, Peachy Fresh, and Soft Nude. If your skin looks too warm, move toward a rose or mauve shade. If the preview looks flat, increase warmth slightly or compare against Terracotta.\n\n## Best Selfie Setup\n\n- Use window light or open shade instead of yellow bathroom light\n- Turn off beauty filters and heavy portrait smoothing\n- Include your face and neck so you can check undertone connection\n- Avoid strong bronzer before testing the preview\n- Compare the edited look against the original photo, not just against other filters\n\n## What to Watch For\n\nA good sunlit skin filter should make the photo feel fresher without changing your actual skin tone too much. Watch for orange jawlines, blush that sits too high, or lips that overpower the rest of the look. If the face looks warmer than the neck, choose a more neutral blush or lower the intensity.\n\n## Product Buying Checklist\n\n- Pick sheer or buildable blush instead of opaque pigment first\n- Choose skin tint or foundation samples that match your neck\n- Look for real customer selfies in daylight before buying\n- Test blush and lip colors together because both affect warmth\n- Re-check the result in natural light before keeping the product\n\n## The Practical Takeaway\n\nSunlit skin and watercolor blush work best when the color is transparent, warm, and softly blended. Use Makeup Lab as a quick first pass to see whether the trend suits your selfie, then use real daylight and your neck match before buying products.",
+  },
+  {
     slug: "foundation-shade-match-selfie-undertone-2026",
     title: "Foundation Shade Match From a Selfie: Undertone Guide 2026",
     description: "Learn how to use selfies, natural light, neck matching, and AI Makeup Lab previews to narrow your foundation shade and undertone before buying.",

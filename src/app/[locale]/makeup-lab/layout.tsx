@@ -22,6 +22,10 @@ export const metadata: Metadata = {
     "foundation shade match",
     "foundation shade finder",
     "undertone finder",
+    "sunlit skin",
+    "watercolor blush",
+    "beach skin makeup",
+    "AI blush filter",
   ],
   openGraph: {
     title: "Interactive Makeup Lab",

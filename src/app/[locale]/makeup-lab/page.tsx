@@ -98,6 +98,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.0, saturate: 1.02, hueRotateDeg: 1 },
   },
   {
+    id: "sunlit-blush",
+    name: "Sunlit Blush",
+    vibe: "Beach skin, watercolor",
+    lipstickHex: "#D87A72",
+    filter: { contrast: 1.01, saturate: 1.1, hueRotateDeg: 7 },
+  },
+  {
     id: "terracotta",
     name: "Terracotta",
     vibe: "Sun-kissed",
