@@ -105,6 +105,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.01, saturate: 1.1, hueRotateDeg: 7 },
   },
   {
+    id: "hazy-pout",
+    name: "Hazy Pout",
+    vibe: "Blurred lip, soft glam",
+    lipstickHex: "#A45A6A",
+    filter: { contrast: 1.0, saturate: 1.06, hueRotateDeg: -3 },
+  },
+  {
     id: "terracotta",
     name: "Terracotta",
     vibe: "Sun-kissed",

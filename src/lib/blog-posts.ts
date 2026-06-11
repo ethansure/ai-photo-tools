@@ -13,6 +13,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "hazy-pout-blurred-lip-filter-2026",
+    title: "Hazy Pout and Blurred Lip Filter: Soft Lip Makeup Preview",
+    description: "Try the hazy pout and blurred lip makeup trend in Makeup Lab before buying lip stain, liner, gloss, or soft-focus lip products.",
+    date: "2026-06-10",
+    author: "AI Photo Tools Team",
+    image: "/blog/hazy-pout-blurred-lip.jpg",
+    keywords: ["hazy pout", "blurred lip filter", "soft lip makeup", "AI lip filter", "blurred lips", "makeup preview", "AI makeup filter"],
+    category: "Makeup Lab",
+    content: "# Hazy Pout and Blurred Lip Filter: Soft Lip Makeup Preview\n\nHazy pout and blurred lip makeup are 2026 versions of a soft-focus lip: color looks diffused around the edges, lightly stained in the center, and balanced with natural skin instead of sharply lined or heavily glossy.\n\n## Why the Look Works\n\nA blurred lip can make a selfie feel softer without making the whole face look over-edited. It pairs well with suede skin, watercolor blush, and daylight makeup because the lip color supports the face instead of becoming the only thing people notice.\n\n## How to Preview It\n\nOpen Makeup Lab, upload a clean selfie, and choose the Hazy Pout preset. Compare it with Blurry Cloud, Sunlit Blush, Soft Nude, and Dusty Rose. If the lip looks too gray, move warmer. If it looks too bright, lower intensity or choose a softer mauve.\n\n## Best Selfie Setup\n\n- Use daylight or neutral indoor light\n- Remove heavy lip liner before testing a soft blurred look\n- Keep your lips relaxed so the edge does not look overdrawn\n- Include your full face so you can compare lip color against blush and skin tone\n- Check the preview against your original selfie before judging the shade\n\n## What to Watch For\n\nThe best hazy pout filter should make lips look softly stained, not smudged. Watch for color that makes teeth look dull, edges that look too fuzzy, or a shade that fights your undertone. If the lip pulls too purple or brown, compare a rosewood or soft nude option before buying products.\n\n## Product Buying Checklist\n\n- Choose a stain, balm, or sheer lipstick before a full matte liquid lip\n- Use liner softly at the center of the lip line instead of drawing a hard edge\n- Look for real wearer photos in daylight, not only studio swatches\n- Pair the lip with soft blush so the face stays balanced\n- Re-test after a few hours because stains can deepen or turn warmer\n\n## The Practical Takeaway\n\nHazy pout works best when the lip looks diffused, comfortable, and connected to the rest of the face. Use Makeup Lab as a quick preview before buying lip products, then confirm the shade in daylight and compare it with your natural lip color.",
+  },
+  {
     slug: "sunlit-skin-watercolor-blush-filter-2026",
     title: "Sunlit Skin and Watercolor Blush Filter: 2026 Makeup Preview",
     description: "Preview the sunlit skin and watercolor blush makeup trend with Makeup Lab before buying blush, skin tint, or glossy lip products.",

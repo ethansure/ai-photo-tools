@@ -26,6 +26,10 @@ export const metadata: Metadata = {
     "watercolor blush",
     "beach skin makeup",
     "AI blush filter",
+    "hazy pout",
+    "blurred lip filter",
+    "soft lip makeup",
+    "AI lip filter",
   ],
   openGraph: {
     title: "Interactive Makeup Lab",
