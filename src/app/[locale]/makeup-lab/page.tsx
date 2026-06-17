@@ -133,6 +133,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.02, saturate: 1.03, hueRotateDeg: -2 },
   },
   {
+    id: "olive-undertone-check",
+    name: "Olive Undertone",
+    vibe: "Muted olive base",
+    lipstickHex: "#9D6B5C",
+    filter: { contrast: 1.01, saturate: 0.98, hueRotateDeg: -7 },
+  },
+  {
     id: "terracotta",
     name: "Terracotta",
     vibe: "Sun-kissed",
@@ -563,6 +570,26 @@ export default function MakeupLabPage() {
               className="inline-flex justify-center rounded-2xl border border-amber-400/40 px-5 py-3 text-sm font-semibold text-amber-100 hover:bg-amber-500/20 transition"
             >
               Read the undertone guide →
+            </Link>
+          </div>
+        </section>
+
+        {/* Olive Undertone Guide */}
+        <section className="mb-10 rounded-3xl border border-emerald-500/20 bg-emerald-500/10 p-6">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-5 items-center">
+            <div>
+              <div className="text-sm text-emerald-300 mb-2">Olive Foundation Check</div>
+              <h2 className="text-2xl font-bold mb-3">Test muted olive vs orange or ashy base</h2>
+              <p className="text-gray-400">
+                Use the Olive Undertone preset when warm foundation turns orange, cool shades look
+                gray, or neutral bases still disconnect from your neck in daylight selfies.
+              </p>
+            </div>
+            <Link
+              href={localizedHref("/blog/olive-undertone-foundation-match-selfie-filter-2026")}
+              className="inline-flex justify-center rounded-2xl border border-emerald-400/40 px-5 py-3 text-sm font-semibold text-emerald-100 hover:bg-emerald-500/20 transition"
+            >
+              Read the olive undertone guide →
             </Link>
           </div>
         </section>
