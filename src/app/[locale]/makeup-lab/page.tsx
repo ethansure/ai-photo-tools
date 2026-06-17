@@ -119,6 +119,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.03, saturate: 1.07, hueRotateDeg: 4 },
   },
   {
+    id: "underpainting-preview",
+    name: "Underpainting",
+    vibe: "Soft sculpt, glow",
+    lipstickHex: "#B86A68",
+    filter: { contrast: 1.04, saturate: 1.08, hueRotateDeg: 5 },
+  },
+  {
     id: "terracotta",
     name: "Terracotta",
     vibe: "Sun-kissed",
@@ -509,6 +516,26 @@ export default function MakeupLabPage() {
               className="inline-flex justify-center rounded-2xl border border-violet-400/40 px-5 py-3 text-sm font-semibold text-violet-100 hover:bg-violet-500/20 transition"
             >
               Read the bright-face guide →
+            </Link>
+          </div>
+        </section>
+
+        {/* Underpainting Guide */}
+        <section className="mb-10 rounded-3xl border border-rose-500/20 bg-rose-500/10 p-6">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-5 items-center">
+            <div>
+              <div className="text-sm text-rose-300 mb-2">Underpainting Preview</div>
+              <h2 className="text-2xl font-bold mb-3">Test soft blush and contour under the base</h2>
+              <p className="text-gray-400">
+                Use the Underpainting preset to preview gentle lift, blush placement, and natural
+                dimension before buying contour, concealer, or cream blush products.
+              </p>
+            </div>
+            <Link
+              href={localizedHref("/blog/underpainting-makeup-filter-blush-contour-preview-2026")}
+              className="inline-flex justify-center rounded-2xl border border-rose-400/40 px-5 py-3 text-sm font-semibold text-rose-100 hover:bg-rose-500/20 transition"
+            >
+              Read the underpainting guide →
             </Link>
           </div>
         </section>

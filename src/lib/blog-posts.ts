@@ -13,6 +13,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "underpainting-makeup-filter-blush-contour-preview-2026",
+    title: "Underpainting Makeup Filter: Blush and Contour Preview",
+    description: "Preview underpainting makeup in Makeup Lab before buying cream blush, contour, concealer, or natural-glow complexion products.",
+    date: "2026-06-16",
+    author: "AI Photo Tools Team",
+    image: "/blog/underpainting-makeup-filter.jpg",
+    keywords: ["underpainting makeup", "underpainting filter", "blush contour preview", "AI makeup filter", "cream blush preview", "natural glow makeup", "contour filter"],
+    category: "Makeup Lab",
+    content: "# Underpainting Makeup Filter: Blush and Contour Preview\n\nUnderpainting is the soft-sculpt makeup method where blush, contour, and concealer sit under a lighter base. The goal is not a heavy carved face. The best 2026 version looks like natural dimension: lifted cheeks, warmer skin, and subtle shape that still reads believable in daylight.\n\n## Why Preview Underpainting First\n\nCream blush and contour can look beautiful in tutorials but too strong in a selfie. Placement matters more than product hype. If the color sits too low, the face can look tired. If the contour is too cool, it can turn gray. If the concealer is too bright, the center of the face can disconnect from the neck.\n\n## How to Try It in Makeup Lab\n\nOpen Makeup Lab, upload a clean daylight selfie, and choose the Underpainting preset. Compare it with Bright Face, Sunlit Blush, Suede Skin, and Soft Nude. Look for gentle lift around the cheeks, a believable lip shade, and enough warmth that the face still matches the neck.\n\n## Best Selfie Setup\n\n- Use window light or neutral indoor light\n- Remove heavy contour before testing placement\n- Include your face, jawline, and neck in the photo\n- Keep your expression relaxed so cheek placement is easier to judge\n- Compare the preview with the original before deciding whether the shape works\n\n## What to Watch For\n\nA good underpainting filter should make the face look softly shaped, not striped. Watch for contour that turns muddy, blush that sits too close to the nose, or under-eye brightness that makes the skin look pale. If the preview feels too strong, choose a warmer softer preset before buying products.\n\n## Product Buying Checklist\n\n- Choose sheer cream blush before very pigmented formulas\n- Pick contour that is only slightly deeper than your skin tone\n- Test concealer brightness against your neck and jawline\n- Search for daylight selfies from people with similar undertones\n- Start with placement before adding more color intensity\n\n## The Practical Takeaway\n\nUnderpainting works best when blush, contour, and brightening look connected under a natural base. Use Makeup Lab as a first preview before buying cream products, then confirm placement and undertone in daylight.",
+  },
+  {
     slug: "look-less-tired-makeup-filter-under-eye-brightening-2026",
     title: "Look Less Tired Makeup Filter: Under-Eye Brightening Preview",
     description: "Try a less tired makeup filter in Makeup Lab before buying under-eye brightener, peach corrector, soft blush, or natural lip products.",

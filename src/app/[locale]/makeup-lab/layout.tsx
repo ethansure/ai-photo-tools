@@ -30,6 +30,10 @@ export const metadata: Metadata = {
     "blurred lip filter",
     "soft lip makeup",
     "AI lip filter",
+    "underpainting makeup",
+    "blush contour filter",
+    "contour preview",
+    "cream blush preview",
   ],
   openGraph: {
     title: "Interactive Makeup Lab",
