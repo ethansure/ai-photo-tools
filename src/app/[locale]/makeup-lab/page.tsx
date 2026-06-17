@@ -140,6 +140,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.01, saturate: 0.98, hueRotateDeg: -7 },
   },
   {
+    id: "foundation-wear-test",
+    name: "Wear Test",
+    vibe: "Oxidation check",
+    lipstickHex: "#A36A5E",
+    filter: { contrast: 1.02, saturate: 0.99, hueRotateDeg: -4 },
+  },
+  {
     id: "terracotta",
     name: "Terracotta",
     vibe: "Sun-kissed",
@@ -510,7 +517,33 @@ export default function MakeupLabPage() {
               >
                 Read the full shade-match guide →
               </Link>
+              <Link
+                href={localizedHref("/blog/foundation-oxidation-wear-test-selfie-filter-2026")}
+                className="mt-3 inline-flex text-sm font-medium text-violet-300 hover:text-violet-200"
+              >
+                Check foundation oxidation after an hour →
+              </Link>
             </div>
+          </div>
+        </section>
+
+        {/* Foundation Wear Test Guide */}
+        <section className="mb-10 rounded-3xl border border-orange-500/20 bg-orange-500/10 p-6">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-5 items-center">
+            <div>
+              <div className="text-sm text-orange-300 mb-2">Foundation Wear Test</div>
+              <h2 className="text-2xl font-bold mb-3">Compare fresh vs one-hour oxidation</h2>
+              <p className="text-gray-400">
+                Use the Wear Test preset when a foundation looks right at first but turns orange,
+                darker, or disconnected from your neck after setting.
+              </p>
+            </div>
+            <Link
+              href={localizedHref("/blog/foundation-oxidation-wear-test-selfie-filter-2026")}
+              className="inline-flex justify-center rounded-2xl border border-orange-400/40 px-5 py-3 text-sm font-semibold text-orange-100 hover:bg-orange-500/20 transition"
+            >
+              Read the wear-test guide →
+            </Link>
           </div>
         </section>
 
