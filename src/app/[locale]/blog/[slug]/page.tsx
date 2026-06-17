@@ -1,11 +1,39 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog-posts";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 
 interface Props {
   params: { slug: string; locale: string };
+}
+
+function renderInlineContent(text: string, localizedPath: (path: string) => string): ReactNode {
+  const anchorPattern = /<a href="([^"]+)">(.+?)<\/a>/g;
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = anchorPattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(text.slice(lastIndex, match.index));
+    }
+
+    const href = match[1].startsWith("/") ? localizedPath(match[1]) : match[1];
+    nodes.push(
+      <Link key={`${match.index}-${match[1]}`} href={href}>
+        {match[2]}
+      </Link>
+    );
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex));
+  }
+
+  return nodes.length > 0 ? nodes : text;
 }
 
 export async function generateStaticParams() {
@@ -137,19 +165,19 @@ export default function BlogPostPage({ params }: Props) {
               if (match) {
                 return (
                   <li key={i} className="ml-6">
-                    <strong>{match[1]}</strong> - {match[2]}
+                    <strong>{match[1]}</strong> - {renderInlineContent(match[2], localizedPath)}
                   </li>
                 );
               }
             }
             if (paragraph.startsWith('- ')) {
-              return <li key={i} className="ml-6">{paragraph.slice(2)}</li>;
+              return <li key={i} className="ml-6">{renderInlineContent(paragraph.slice(2), localizedPath)}</li>;
             }
             if (paragraph.match(/^\d+\. /)) {
-              return <li key={i} className="ml-6 list-decimal">{paragraph.slice(3)}</li>;
+              return <li key={i} className="ml-6 list-decimal">{renderInlineContent(paragraph.slice(3), localizedPath)}</li>;
             }
             if (paragraph.trim()) {
-              return <p key={i}>{paragraph}</p>;
+              return <p key={i}>{renderInlineContent(paragraph, localizedPath)}</p>;
             }
             return null;
           })}
