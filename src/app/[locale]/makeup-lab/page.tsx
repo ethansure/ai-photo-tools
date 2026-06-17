@@ -126,6 +126,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.04, saturate: 1.08, hueRotateDeg: 5 },
   },
   {
+    id: "undertone-fix",
+    name: "Undertone Fix",
+    vibe: "Foundation check",
+    lipstickHex: "#BC746D",
+    filter: { contrast: 1.02, saturate: 1.03, hueRotateDeg: -2 },
+  },
+  {
     id: "terracotta",
     name: "Terracotta",
     vibe: "Sun-kissed",
@@ -536,6 +543,26 @@ export default function MakeupLabPage() {
               className="inline-flex justify-center rounded-2xl border border-rose-400/40 px-5 py-3 text-sm font-semibold text-rose-100 hover:bg-rose-500/20 transition"
             >
               Read the underpainting guide →
+            </Link>
+          </div>
+        </section>
+
+        {/* Undertone Fix Guide */}
+        <section className="mb-10 rounded-3xl border border-amber-500/20 bg-amber-500/10 p-6">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-5 items-center">
+            <div>
+              <div className="text-sm text-amber-300 mb-2">Foundation Camera Check</div>
+              <h2 className="text-2xl font-bold mb-3">Catch orange, yellow, or pink mismatch</h2>
+              <p className="text-gray-400">
+                Use the Undertone Fix preset to preview a calmer base direction before buying
+                foundation that may oxidize or disconnect from your neck in selfies.
+              </p>
+            </div>
+            <Link
+              href={localizedHref("/blog/foundation-undertone-fix-orange-selfie-filter-2026")}
+              className="inline-flex justify-center rounded-2xl border border-amber-400/40 px-5 py-3 text-sm font-semibold text-amber-100 hover:bg-amber-500/20 transition"
+            >
+              Read the undertone guide →
             </Link>
           </div>
         </section>

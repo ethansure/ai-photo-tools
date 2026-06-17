@@ -34,6 +34,10 @@ export const metadata: Metadata = {
     "blush contour filter",
     "contour preview",
     "cream blush preview",
+    "foundation undertone fix",
+    "foundation oxidizing orange",
+    "selfie foundation match",
+    "orange foundation filter",
   ],
   openGraph: {
     title: "Interactive Makeup Lab",

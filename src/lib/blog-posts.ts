@@ -13,6 +13,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "foundation-undertone-fix-orange-selfie-filter-2026",
+    title: "Foundation Undertone Fix: Orange Selfie Filter Preview",
+    description: "Use Makeup Lab to preview foundation undertone fixes for orange, yellow, pink, or gray selfie mismatch before buying a new base product.",
+    date: "2026-06-17",
+    author: "AI Photo Tools Team",
+    image: "/blog/foundation-undertone-fix.jpg",
+    keywords: ["foundation undertone fix", "foundation oxidizing orange", "orange foundation filter", "selfie foundation match", "AI makeup filter", "yellow foundation mismatch", "pink foundation mismatch"],
+    category: "Makeup Lab",
+    content: "# Foundation Undertone Fix: Orange Selfie Filter Preview\n\nFoundation can look perfect in a product swatch and still turn orange, yellow, pink, or gray in a selfie. The issue is often not just shade depth. Lighting, camera processing, oxidation, and undertone mismatch can make a base product disconnect from your neck even when it looked close in store.\n\n## Why Foundation Turns Wrong on Camera\n\nPhone cameras try to balance skin, background, and exposure at the same time. Warm bathroom light can push foundation orange. Cool indoor light can make yellow shades look gray. Portrait smoothing can hide texture but exaggerate a jawline mismatch. A formula that oxidizes after an hour may also look deeper and warmer than it did when first applied.\n\n## How to Preview an Undertone Fix\n\nOpen Makeup Lab, upload a daylight selfie, and choose the Undertone Fix preset. Compare it with Foundation Shade Match, Suede Skin, Bright Face, and Underpainting. The goal is not to pick a bottle from one photo. The goal is to see whether a softer neutral base direction keeps your face, jawline, and neck connected.\n\n## Best Selfie Setup\n\n- Use indirect daylight near a window\n- Turn off beauty filters, portrait retouching, and strong HDR\n- Include your face, jawline, neck, and a little chest if possible\n- Take one photo right after applying foundation and one after an hour\n- Avoid heavy bronzer or blush while checking the base shade\n\n## What Each Mismatch Usually Means\n\n- Orange jawline: the shade may be too warm, too saturated, or oxidizing deeper\n- Yellow face: the base may be too golden compared with your neck\n- Pink face: the shade may be too cool or rosy for your undertone\n- Gray cast: the shade may be too muted, too cool, or sitting over the wrong color corrector\n- Pale center face: concealer or brightening may be too light compared with the neck\n\n## Product Buying Checklist\n\n- Compare swatches against your neck, not only your cheek\n- Search for daylight selfies from people with similar undertones\n- Check whether reviews mention oxidation after wear time\n- Prefer samples or minis when trying a new formula\n- Retest the shade in the same lighting where you take selfies\n\n## The Practical Takeaway\n\nA foundation undertone fix works when the face looks calmer without turning flat or disconnected from the neck. Use Makeup Lab as a quick camera preview, then confirm the shade in daylight and after wear time before buying full size.",
+  },
+  {
     slug: "underpainting-makeup-filter-blush-contour-preview-2026",
     title: "Underpainting Makeup Filter: Blush and Contour Preview",
     description: "Preview underpainting makeup in Makeup Lab before buying cream blush, contour, concealer, or natural-glow complexion products.",
