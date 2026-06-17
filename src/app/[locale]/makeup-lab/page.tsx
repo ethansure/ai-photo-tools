@@ -112,6 +112,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.0, saturate: 1.06, hueRotateDeg: -3 },
   },
   {
+    id: "less-tired-bright-face",
+    name: "Bright Face",
+    vibe: "Bright face, fresh",
+    lipstickHex: "#C97678",
+    filter: { contrast: 1.03, saturate: 1.07, hueRotateDeg: 4 },
+  },
+  {
     id: "terracotta",
     name: "Terracotta",
     vibe: "Sun-kissed",
@@ -483,6 +490,26 @@ export default function MakeupLabPage() {
                 Read the full shade-match guide →
               </Link>
             </div>
+          </div>
+        </section>
+
+        {/* Bright Face Guide */}
+        <section className="mb-10 rounded-3xl border border-violet-500/20 bg-violet-500/10 p-6">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-5 items-center">
+            <div>
+              <div className="text-sm text-violet-300 mb-2">Under-Eye Brightening</div>
+              <h2 className="text-2xl font-bold mb-3">Preview a less tired, bright-face look</h2>
+              <p className="text-gray-400">
+                Try the Bright Face preset for soft under-eye lift, peach/rose warmth, natural lips,
+                and lightweight complexion polish before buying brightening makeup.
+              </p>
+            </div>
+            <Link
+              href={localizedHref("/blog/look-less-tired-makeup-filter-under-eye-brightening-2026")}
+              className="inline-flex justify-center rounded-2xl border border-violet-400/40 px-5 py-3 text-sm font-semibold text-violet-100 hover:bg-violet-500/20 transition"
+            >
+              Read the bright-face guide →
+            </Link>
           </div>
         </section>
 

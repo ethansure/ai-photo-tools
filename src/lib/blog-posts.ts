@@ -13,6 +13,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "look-less-tired-makeup-filter-under-eye-brightening-2026",
+    title: "Look Less Tired Makeup Filter: Under-Eye Brightening Preview",
+    description: "Try a less tired makeup filter in Makeup Lab before buying under-eye brightener, peach corrector, soft blush, or natural lip products.",
+    date: "2026-06-16",
+    author: "AI Photo Tools Team",
+    image: "/blog/look-less-tired-makeup-filter.jpg",
+    keywords: ["look less tired makeup", "under eye brightening filter", "bright face makeup", "AI makeup filter", "peach corrector", "fresh face filter", "minimal makeup preview"],
+    category: "Makeup Lab",
+    content: "# Look Less Tired Makeup Filter: Under-Eye Brightening Preview\n\nLooking less tired with makeup is not about hiding your face. The best 2026 version is a lightweight fresh-face look: softly brightened under-eyes, peach or rose warmth, natural lips, and enough complexion polish to look awake without looking heavily edited.\n\n## Why This Look Is Useful\n\nPeople often search for a quick fix when a selfie looks dull, gray, or tired. The problem is that heavy concealer, bright blush, or glossy lips can make the photo look more artificial. A good bright face makeup preview should lift the center of the face while keeping skin tone believable.\n\n## How to Preview It\n\nOpen Makeup Lab, upload a clean daylight selfie, and choose the Bright Face preset. Compare it with Sunlit Blush, Blurry Cloud, Suede Skin, and Soft Nude. If your under-eye area looks too light, reduce intensity or move toward a warmer peach shade. If the face looks flat, compare a slightly warmer blush direction.\n\n## Best Selfie Setup\n\n- Use daylight or neutral indoor light instead of yellow bathroom light\n- Turn off beauty filters and portrait smoothing before uploading\n- Include your full face and neck so the preview stays connected\n- Relax your expression so under-eye shadows are easier to judge\n- Compare the edited look against the original selfie before judging product ideas\n\n## What to Watch For\n\nA less tired makeup filter should make the face look rested, not pale. Watch for under-eyes that turn gray, blush that sits too close to the nose, lips that overpower the fresh look, or skin that disconnects from the neck. If that happens, choose a softer peach/rose direction and keep lip color close to your natural shade.\n\n## Product Buying Checklist\n\n- Try peach or light rose corrector before a very bright concealer\n- Choose sheer blush or balm formulas before opaque pigment\n- Keep lip color soft so the under-eye brightening stays believable\n- Look for real daylight selfies before buying brightening products\n- Test the result in the lighting where you normally take photos\n\n## The Practical Takeaway\n\nBright Face works best when the under-eye area looks gently lifted, cheeks look alive, and lips stay natural. Use Makeup Lab as a first preview before buying brightening makeup, then confirm the shades in daylight and compare them with your real skin tone.",
+  },
+  {
     slug: "hazy-pout-blurred-lip-filter-2026",
     title: "Hazy Pout and Blurred Lip Filter: Soft Lip Makeup Preview",
     description: "Try the hazy pout and blurred lip makeup trend in Makeup Lab before buying lip stain, liner, gloss, or soft-focus lip products.",
