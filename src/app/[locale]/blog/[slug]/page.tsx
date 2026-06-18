@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog-posts";
-import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { BlogPostingJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
 
 interface Props {
   params: { slug: string; locale: string };
@@ -92,10 +92,23 @@ export default function BlogPostPage({ params }: Props) {
     { name: "Blog", url: `${baseUrl}${localizedPath("/blog")}` },
     { name: post.title, url: `${baseUrl}${localizedPath(`/blog/${post.slug}`)}` },
   ];
+  const postUrl = `${baseUrl}${localizedPath(`/blog/${post.slug}`)}`;
+  const postImage = post.image.startsWith("http")
+    ? post.image
+    : `${baseUrl}${post.image}`;
 
   return (
     <main className="min-h-screen bg-black text-white">
       <BreadcrumbJsonLd items={breadcrumbs} />
+      <BlogPostingJsonLd
+        headline={post.title}
+        description={post.description}
+        url={postUrl}
+        image={postImage}
+        datePublished={post.date}
+        authorName={post.author}
+        keywords={post.keywords}
+      />
       
       {/* Header */}
       <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">

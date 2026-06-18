@@ -129,6 +129,61 @@ export function BreadcrumbJsonLd({
   );
 }
 
+export function BlogPostingJsonLd({
+  headline,
+  description,
+  url,
+  image,
+  datePublished,
+  dateModified,
+  authorName,
+  keywords,
+}: {
+  headline: string;
+  description: string;
+  url: string;
+  image: string;
+  datePublished: string;
+  dateModified?: string;
+  authorName: string;
+  keywords: string[];
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": headline,
+    "description": description,
+    "url": url,
+    "image": image,
+    "datePublished": datePublished,
+    "dateModified": dateModified || datePublished,
+    "author": {
+      "@type": "Organization",
+      "name": authorName,
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI Photo Tools",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://aiphotos.icu/logo.png",
+      },
+    },
+    "keywords": keywords.join(", "),
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": url,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export function HowToJsonLd({
   name,
   description,
