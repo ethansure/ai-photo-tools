@@ -126,6 +126,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.02, saturate: 1.04, hueRotateDeg: 2 },
   },
   {
+    id: "dark-circle-corrector",
+    name: "Color Corrector",
+    vibe: "Dark circle prep",
+    lipstickHex: "#C97866",
+    filter: { contrast: 1.02, saturate: 1.05, hueRotateDeg: 5 },
+  },
+  {
     id: "underpainting-preview",
     name: "Underpainting",
     vibe: "Soft sculpt, glow",
@@ -607,11 +614,39 @@ export default function MakeupLabPage() {
                 coverage before buying a brighter, thicker, or more matte concealer.
               </p>
             </div>
+            <div className="flex flex-col gap-3">
+              <Link
+                href={localizedHref("/blog/non-cakey-concealer-dark-circles-dark-spots-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-pink-400/40 px-5 py-3 text-sm font-semibold text-pink-100 hover:bg-pink-500/20 transition"
+              >
+                Read the concealer guide →
+              </Link>
+              <Link
+                href={localizedHref("/blog/dark-circle-color-corrector-check-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-pink-400/30 px-5 py-3 text-sm font-semibold text-pink-100 hover:bg-pink-500/20 transition"
+              >
+                Pick a corrector shade →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Color Corrector Guide */}
+        <section className="mb-10 rounded-3xl border border-sky-500/20 bg-sky-500/10 p-6">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-5 items-center">
+            <div>
+              <div className="text-sm text-sky-300 mb-2">Dark Circle Corrector</div>
+              <h2 className="text-2xl font-bold mb-3">Preview peach, orange, or yellow correction</h2>
+              <p className="text-gray-400">
+                Use the Color Corrector preset before Concealer Check when blue, purple, brown, or
+                gray under-eyes need a thinner prep layer instead of heavier concealer.
+              </p>
+            </div>
             <Link
-              href={localizedHref("/blog/non-cakey-concealer-dark-circles-dark-spots-selfie-filter-2026")}
-              className="inline-flex justify-center rounded-2xl border border-pink-400/40 px-5 py-3 text-sm font-semibold text-pink-100 hover:bg-pink-500/20 transition"
+              href={localizedHref("/blog/dark-circle-color-corrector-check-selfie-filter-2026")}
+              className="inline-flex justify-center rounded-2xl border border-sky-400/40 px-5 py-3 text-sm font-semibold text-sky-100 hover:bg-sky-500/20 transition"
             >
-              Read the concealer guide →
+              Read the corrector guide →
             </Link>
           </div>
         </section>
