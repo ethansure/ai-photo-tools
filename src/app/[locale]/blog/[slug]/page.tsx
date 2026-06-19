@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog-posts";
-import { BlogPostingJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
+import { BlogPostingJsonLd, BreadcrumbJsonLd, FAQJsonLd } from "@/components/JsonLd";
 
 interface Props {
   params: { slug: string; locale: string };
@@ -109,6 +109,7 @@ export default function BlogPostPage({ params }: Props) {
         authorName={post.author}
         keywords={post.keywords}
       />
+      {post.faqs && <FAQJsonLd faqs={post.faqs} />}
       
       {/* Header */}
       <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
