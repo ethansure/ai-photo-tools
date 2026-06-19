@@ -168,6 +168,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.02, saturate: 0.99, hueRotateDeg: -4 },
   },
   {
+    id: "sunscreen-pilling-check",
+    name: "Pilling Check",
+    vibe: "SPF base prep",
+    lipstickHex: "#B06F62",
+    filter: { contrast: 1.01, saturate: 1.01, hueRotateDeg: -1 },
+  },
+  {
     id: "terracotta",
     name: "Terracotta",
     vibe: "Sun-kissed",
@@ -577,6 +584,34 @@ export default function MakeupLabPage() {
                 className="inline-flex justify-center rounded-2xl border border-orange-400/30 px-5 py-3 text-sm font-semibold text-orange-100 hover:bg-orange-500/20 transition"
               >
                 Check concealer creasing →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Foundation and Sunscreen Pilling Guide */}
+        <section className="mb-10 rounded-3xl border border-lime-500/20 bg-lime-500/10 p-6">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-5 items-center">
+            <div>
+              <div className="text-sm text-lime-300 mb-2">SPF and Primer Compatibility</div>
+              <h2 className="text-2xl font-bold mb-3">Check foundation pilling over sunscreen</h2>
+              <p className="text-gray-400">
+                Use the Pilling Check preset when moisturizer, SPF, primer, foundation, or setting
+                powder balls up, separates, or looks patchy after a few minutes of wear.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <Link
+                href={localizedHref("/blog/foundation-sunscreen-pilling-check-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-lime-400/40 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
+              >
+                Read the pilling guide →
+              </Link>
+              <Link
+                href={localizedHref("/blog/foundation-oxidation-wear-test-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
+              >
+                Compare one-hour wear →
               </Link>
             </div>
           </div>
