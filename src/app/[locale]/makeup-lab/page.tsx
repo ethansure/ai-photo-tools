@@ -133,6 +133,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.02, saturate: 1.05, hueRotateDeg: 5 },
   },
   {
+    id: "dry-undereye-crease",
+    name: "Dry Crease Check",
+    vibe: "Hydrated under-eye",
+    lipstickHex: "#BE766F",
+    filter: { contrast: 0.99, saturate: 1.03, hueRotateDeg: 2 },
+  },
+  {
     id: "underpainting-preview",
     name: "Underpainting",
     vibe: "Soft sculpt, glow",
@@ -627,7 +634,33 @@ export default function MakeupLabPage() {
               >
                 Pick a corrector shade →
               </Link>
+              <Link
+                href={localizedHref("/blog/dry-undereye-concealer-creasing-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-pink-400/30 px-5 py-3 text-sm font-semibold text-pink-100 hover:bg-pink-500/20 transition"
+              >
+                Check dry under-eye creasing →
+              </Link>
             </div>
+          </div>
+        </section>
+
+        {/* Dry Under-Eye Guide */}
+        <section className="mb-10 rounded-3xl border border-fuchsia-500/20 bg-fuchsia-500/10 p-6">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-5 items-center">
+            <div>
+              <div className="text-sm text-fuchsia-300 mb-2">Dry Under-Eye Creasing</div>
+              <h2 className="text-2xl font-bold mb-3">Preview smoother concealer before powder</h2>
+              <p className="text-gray-400">
+                Use the Dry Crease Check preset when concealer settles into fine lines, looks dry
+                after setting, or needs a thinner skincare-first approach.
+              </p>
+            </div>
+            <Link
+              href={localizedHref("/blog/dry-undereye-concealer-creasing-selfie-filter-2026")}
+              className="inline-flex justify-center rounded-2xl border border-fuchsia-400/40 px-5 py-3 text-sm font-semibold text-fuchsia-100 hover:bg-fuchsia-500/20 transition"
+            >
+              Read the dry under-eye guide →
+            </Link>
           </div>
         </section>
 
@@ -642,12 +675,20 @@ export default function MakeupLabPage() {
                 gray under-eyes need a thinner prep layer instead of heavier concealer.
               </p>
             </div>
-            <Link
-              href={localizedHref("/blog/dark-circle-color-corrector-check-selfie-filter-2026")}
-              className="inline-flex justify-center rounded-2xl border border-sky-400/40 px-5 py-3 text-sm font-semibold text-sky-100 hover:bg-sky-500/20 transition"
-            >
-              Read the corrector guide →
-            </Link>
+            <div className="flex flex-col gap-3">
+              <Link
+                href={localizedHref("/blog/dark-circle-color-corrector-check-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-sky-400/40 px-5 py-3 text-sm font-semibold text-sky-100 hover:bg-sky-500/20 transition"
+              >
+                Read the corrector guide →
+              </Link>
+              <Link
+                href={localizedHref("/blog/dry-undereye-concealer-creasing-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-sky-400/30 px-5 py-3 text-sm font-semibold text-sky-100 hover:bg-sky-500/20 transition"
+              >
+                Fix dry concealer texture →
+              </Link>
+            </div>
           </div>
         </section>
 
