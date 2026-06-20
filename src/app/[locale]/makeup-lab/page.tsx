@@ -700,7 +700,8 @@ export default function MakeupLabPage() {
               <h2 className="text-2xl font-bold mb-3">Preview smoother concealer before powder</h2>
               <p className="text-gray-400">
                 Use the Dry Crease Check preset when concealer settles into fine lines, looks dry
-                after setting, or needs a thinner skincare-first approach.
+                after setting, or needs a thinner skincare-first approach. The guide now separates
+                dryness from excess product, high placement, powder timing, and crease cleanout.
               </p>
             </div>
             <Link
