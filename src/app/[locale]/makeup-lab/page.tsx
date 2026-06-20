@@ -175,6 +175,13 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.01, saturate: 1.01, hueRotateDeg: -1 },
   },
   {
+    id: "bare-skin-base-check",
+    name: "Bare Skin Check",
+    vibe: "Less base, smoother",
+    lipstickHex: "#AD7468",
+    filter: { contrast: 0.99, saturate: 1.0, hueRotateDeg: 1 },
+  },
+  {
     id: "terracotta",
     name: "Terracotta",
     vibe: "Sun-kissed",
@@ -606,6 +613,12 @@ export default function MakeupLabPage() {
                 className="inline-flex justify-center rounded-2xl border border-lime-400/40 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
               >
                 Read the pilling guide →
+              </Link>
+              <Link
+                href={localizedHref("/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
+              >
+                Check if less base looks smoother →
               </Link>
               <Link
                 href={localizedHref("/blog/foundation-oxidation-wear-test-selfie-filter-2026")}
