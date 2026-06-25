@@ -429,6 +429,11 @@ const FAQS = [
     answer:
       "Take one daylight selfie before touch-up and one after using SPF powder, spray, stick, cushion, or setting spray. Use Wear Test and Pilling Check to compare shine, patchiness, lifted concealer, nose separation, and powder texture before changing products.",
   },
+  {
+    question: "How should I test under-eye sunscreen with concealer?",
+    answer:
+      "Take one daylight selfie after eye-area SPF settles, one after concealer and powder, and one after an hour. Use Dry Crease Check, Concealer Check, and Wear Test to compare stinging, gray cast, pilling, creasing, and powder texture before buying another eye SPF or concealer.",
+  },
 ];
 
 export default function MakeupLabPage() {
@@ -716,6 +721,12 @@ export default function MakeupLabPage() {
                 className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
               >
                 Check SPF touch-ups over makeup →
+              </Link>
+              <Link
+                href={localizedHref("/blog/under-eye-sunscreen-concealer-creasing-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
+              >
+                Check under-eye SPF with concealer →
               </Link>
               <Link
                 href={localizedHref("/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026")}

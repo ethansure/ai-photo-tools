@@ -14,6 +14,97 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "under-eye-sunscreen-concealer-creasing-selfie-filter-2026",
+    title: "Under-Eye Sunscreen and Concealer: Crease Check",
+    description: "Use Makeup Lab to compare eye-area SPF under concealer for stinging, pilling, creasing, dry texture, gray cast, and powder buildup.",
+    date: "2026-06-25",
+    author: "AI Photo Tools Team",
+    image: "/blog/under-eye-sunscreen-concealer.jpg",
+    keywords: ["under eye sunscreen concealer", "SPF under concealer", "sunscreen under eyes makeup", "concealer creasing over sunscreen", "eye sunscreen under makeup", "AI makeup filter"],
+    category: "Makeup Lab",
+    faqs: [
+      {
+        question: "Can sunscreen under the eyes make concealer crease?",
+        answer:
+          "Yes. Eye-area SPF can change how concealer grips, especially if the sunscreen is oily, thick, tacky, or not fully settled before concealer and powder. Test one thin SPF layer, wait, then compare a fresh selfie and a one-hour selfie.",
+      },
+      {
+        question: "What should I check before using eye sunscreen under makeup?",
+        answer:
+          "Check for stinging, watery eyes, pilling, gray cast, dry texture, and concealer gathering in fine lines. If the SPF alone already looks shiny or heavy, simplify the base before adding more concealer or powder.",
+      },
+      {
+        question: "Should I use powder over concealer and sunscreen?",
+        answer:
+          "Use the smallest amount of powder only where concealer moves. Too much powder over SPF can make under-eyes look dry, gray, or creased even when the concealer shade is right.",
+      },
+    ],
+    content: `# Under-Eye Sunscreen and Concealer: Crease Check
+
+Eye-area sunscreen is one of the hardest makeup layers to get right. People want SPF near the under-eyes, but the wrong formula can sting, water, pill, crease, turn concealer gray, or make powder texture look stronger in selfies.
+
+Makeup Lab cannot measure sun protection or diagnose eye sensitivity from a photo. What it can do is help you compare the visible makeup result: whether SPF under concealer looks smooth, dry, shiny, patchy, gray, or creased after it settles.
+
+## Why SPF Under Concealer Is Tricky
+
+The under-eye area moves, folds, and reflects light differently from the cheeks. A sunscreen that works well on the face can feel too oily near the eyes, or it can leave a film that makes concealer slide. A mineral SPF can look safer for sensitive eyes but may turn gray under concealer. A rich eye cream plus SPF plus corrector plus concealer plus powder can become too much product in the smallest part of the face.
+
+If the main issue is fine lines and powder texture, start with the <a href="/blog/dry-undereye-concealer-creasing-selfie-filter-2026">dry under-eye concealer creasing guide</a>. If the shadow turns gray or salmon, use the <a href="/blog/dark-circle-color-corrector-check-selfie-filter-2026">dark-circle color corrector check</a>. If sunscreen causes texture around the whole face, compare the <a href="/blog/foundation-sunscreen-pilling-check-selfie-filter-2026">foundation and sunscreen pilling check</a>. If your midday SPF refresh disturbs concealer, use the <a href="/blog/touch-up-sunscreen-over-makeup-selfie-filter-2026">touch-up sunscreen over makeup guide</a>.
+
+## How to Run the Under-Eye SPF Check
+
+Open Makeup Lab, upload a daylight selfie, and compare Dry Crease Check, Concealer Check, Color Corrector, Pilling Check, and Wear Test. Take one photo after SPF settles but before concealer, one photo after concealer and powder, and one photo after an hour if creasing is the problem.
+
+The goal is not to pick a sunscreen from one photo. The goal is to decide whether your under-eye routine needs thinner SPF, less eye cream, a different corrector, less concealer, lighter powder, or more wait time between layers.
+
+## Best Selfie Setup
+
+- Use indirect daylight near a window
+- Keep the camera angle, distance, and expression consistent
+- Take one photo after eye SPF, before corrector or concealer
+- Take one photo after concealer and powder
+- Recheck after one hour before touching up
+- Include under-eyes, inner corners, cheeks, nose bridge, and jawline
+- Turn off portrait smoothing, beauty filters, and strong HDR
+
+## What the Result Usually Means
+
+- SPF stings or eyes water: stop testing that formula near the eyes
+- Concealer slides or gathers: the SPF may be too emollient or not fully settled
+- Under-eyes look gray: mineral cast, wrong corrector, or too-light concealer may be showing
+- Fine lines look sharper: use less concealer, less powder, or a more flexible finish
+- Tiny rolls appear: eye cream, SPF, corrector, concealer, or powder may be layered too heavily
+- One-hour photo looks worse than fresh makeup: focus on powder amount and concealer placement
+
+## Eye SPF and Concealer Buying Checklist
+
+- Search reviews for under eyes, stinging, concealer, creasing, pilling, and gray cast
+- Patch test carefully and avoid formulas that irritate your eyes
+- Use one thin SPF layer before adding corrector or concealer
+- Wait for sunscreen to settle before concealer
+- Place full coverage slightly below the deepest fine lines
+- Powder only the crease-prone area with a tiny amount
+- Compare fresh and one-hour selfies before buying another concealer
+
+## FAQ: Under-Eye Sunscreen and Concealer
+
+## Can sunscreen under the eyes make concealer crease?
+
+Yes. Eye-area SPF can change how concealer grips, especially if the sunscreen is oily, thick, tacky, or not fully settled before concealer and powder. Test one thin SPF layer, wait, then compare a fresh selfie and a one-hour selfie.
+
+## What should I check before using eye sunscreen under makeup?
+
+Check for stinging, watery eyes, pilling, gray cast, dry texture, and concealer gathering in fine lines. If the SPF alone already looks shiny or heavy, simplify the base before adding more concealer or powder.
+
+## Should I use powder over concealer and sunscreen?
+
+Use the smallest amount of powder only where concealer moves. Too much powder over SPF can make under-eyes look dry, gray, or creased even when the concealer shade is right.
+
+## The Practical Takeaway
+
+The best under-eye SPF routine is thin, comfortable, and compatible with your concealer. Use Makeup Lab to compare sunscreen-only, fresh concealer, and one-hour wear before buying another eye SPF, corrector, concealer, or powder.`,
+  },
+  {
     slug: "touch-up-sunscreen-over-makeup-selfie-filter-2026",
     title: "Touch-Up Sunscreen Over Makeup: SPF Reapply Check",
     description: "Use Makeup Lab to compare SPF powder, spray, stick, and cushion touch-ups over makeup for shine, patchiness, pilling, and base movement.",

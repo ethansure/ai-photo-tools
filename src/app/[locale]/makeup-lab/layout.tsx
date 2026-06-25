@@ -57,6 +57,10 @@ export const metadata: Metadata = {
     "reapply sunscreen over makeup",
     "SPF powder over makeup",
     "sunscreen spray over makeup",
+    "under eye sunscreen concealer",
+    "SPF under concealer",
+    "eye sunscreen under makeup",
+    "concealer creasing over sunscreen",
   ],
   openGraph: {
     title: "Interactive Makeup Lab",
