@@ -282,7 +282,7 @@ const SPF_DECISION_HELPER = [
     issue: "Base looks good fresh, then separates",
     preset: "Wear Test",
     action: "Retake the same selfie after one hour and check nose, mouth, jawline, and forehead shine.",
-    href: "/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026",
+    href: "/blog/oily-skin-sunscreen-under-makeup-wear-test-2026",
   },
 ];
 
@@ -291,7 +291,7 @@ const SPF_FINISH_COMPARISON = [
     finish: "Matte SPF",
     bestFor: "Oil control, nose shine, and long workdays",
     risk: "Can catch on dry patches or make foundation drag if you skip skin prep.",
-    href: "/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026",
+    href: "/blog/oily-skin-sunscreen-under-makeup-wear-test-2026",
   },
   {
     finish: "Pore-blurring tinted SPF",
@@ -412,6 +412,11 @@ const FAQS = [
     question: "Should I choose matte, dewy, or tinted sunscreen under makeup?",
     answer:
       "Choose by the problem you see in daylight selfies: matte SPF for oil control, pore-blurring tinted SPF for white cast or redness, and a dewier SPF only when dry patches matter more than shine. Compare the same foundation over each finish before changing primer and powder too.",
+  },
+  {
+    question: "How should oily skin test sunscreen under makeup?",
+    answer:
+      "Take one selfie after SPF settles, one right after makeup, and one after an hour without touching up. Use Wear Test and Pilling Check to compare nose separation, forehead shine, pore texture, and powder patches before buying another matte SPF.",
   },
 ];
 
@@ -688,6 +693,12 @@ export default function MakeupLabPage() {
                 className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
               >
                 Check SPF clogged pores →
+              </Link>
+              <Link
+                href={localizedHref("/blog/oily-skin-sunscreen-under-makeup-wear-test-2026")}
+                className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
+              >
+                Run oily-skin SPF wear test →
               </Link>
               <Link
                 href={localizedHref("/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026")}
