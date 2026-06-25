@@ -286,6 +286,27 @@ const SPF_DECISION_HELPER = [
   },
 ];
 
+const SPF_FINISH_COMPARISON = [
+  {
+    finish: "Matte SPF",
+    bestFor: "Oil control, nose shine, and long workdays",
+    risk: "Can catch on dry patches or make foundation drag if you skip skin prep.",
+    href: "/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026",
+  },
+  {
+    finish: "Pore-blurring tinted SPF",
+    bestFor: "White cast, redness, and smoother no-foundation days",
+    risk: "Can turn orange, gray, or too shiny once foundation sits on top.",
+    href: "/blog/pore-blurring-tinted-sunscreen-under-makeup-selfie-filter-2026",
+  },
+  {
+    finish: "Dewy SPF",
+    bestFor: "Dry skin, glow, and flexible foundation",
+    risk: "Can separate around pores or make powder look heavy on oily zones.",
+    href: "/blog/spf-clogged-pores-under-makeup-selfie-filter-2026",
+  },
+];
+
 function hashToUnit(input: string) {
   // Simple deterministic hash -> [0,1)
   let h = 2166136261;
@@ -386,6 +407,11 @@ const FAQS = [
     question: "Can Makeup Lab help when SPF makes pores look clogged?",
     answer:
       "Yes. Start with Bare Skin Check to see whether texture comes from sunscreen, primer, or foundation, then compare Suede Skin or Wear Test for a lighter base direction. The SPF decision helper links to the clogged-pores and tinted-SPF guides for the next step.",
+  },
+  {
+    question: "Should I choose matte, dewy, or tinted sunscreen under makeup?",
+    answer:
+      "Choose by the problem you see in daylight selfies: matte SPF for oil control, pore-blurring tinted SPF for white cast or redness, and a dewier SPF only when dry patches matter more than shine. Compare the same foundation over each finish before changing primer and powder too.",
   },
 ];
 
@@ -699,6 +725,23 @@ export default function MakeupLabPage() {
                     </span>
                   </div>
                   <p className="mt-3 text-sm text-gray-300">{item.action}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 border-t border-lime-300/15 pt-6">
+            <div className="text-sm text-lime-200 mb-3">SPF finish finder</div>
+            <div className="grid md:grid-cols-3 gap-3">
+              {SPF_FINISH_COMPARISON.map((item) => (
+                <Link
+                  key={item.finish}
+                  href={localizedHref(item.href)}
+                  className="rounded-2xl border border-lime-300/15 bg-black/20 p-4 transition hover:border-lime-300/40 hover:bg-lime-500/10"
+                >
+                  <div className="font-semibold text-lime-50">{item.finish}</div>
+                  <p className="mt-2 text-sm text-gray-300">{item.bestFor}</p>
+                  <p className="mt-3 text-xs text-lime-100/75">{item.risk}</p>
                 </Link>
               ))}
             </div>
