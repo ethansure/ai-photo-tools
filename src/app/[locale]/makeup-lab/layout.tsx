@@ -53,6 +53,10 @@ export const metadata: Metadata = {
     "matte sunscreen under makeup",
     "dewy SPF under foundation",
     "sunscreen finish finder",
+    "touch up sunscreen over makeup",
+    "reapply sunscreen over makeup",
+    "SPF powder over makeup",
+    "sunscreen spray over makeup",
   ],
   openGraph: {
     title: "Interactive Makeup Lab",

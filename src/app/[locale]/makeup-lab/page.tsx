@@ -284,6 +284,12 @@ const SPF_DECISION_HELPER = [
     action: "Retake the same selfie after one hour and check nose, mouth, jawline, and forehead shine.",
     href: "/blog/oily-skin-sunscreen-under-makeup-wear-test-2026",
   },
+  {
+    issue: "SPF touch-up moves makeup",
+    preset: "Wear Test",
+    action: "Compare before-and-after selfies for powder, spray, stick, or cushion touch-ups over makeup.",
+    href: "/blog/touch-up-sunscreen-over-makeup-selfie-filter-2026",
+  },
 ];
 
 const SPF_FINISH_COMPARISON = [
@@ -417,6 +423,11 @@ const FAQS = [
     question: "How should oily skin test sunscreen under makeup?",
     answer:
       "Take one selfie after SPF settles, one right after makeup, and one after an hour without touching up. Use Wear Test and Pilling Check to compare nose separation, forehead shine, pore texture, and powder patches before buying another matte SPF.",
+  },
+  {
+    question: "How do I reapply sunscreen over makeup without ruining it?",
+    answer:
+      "Take one daylight selfie before touch-up and one after using SPF powder, spray, stick, cushion, or setting spray. Use Wear Test and Pilling Check to compare shine, patchiness, lifted concealer, nose separation, and powder texture before changing products.",
   },
 ];
 
@@ -699,6 +710,12 @@ export default function MakeupLabPage() {
                 className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
               >
                 Run oily-skin SPF wear test →
+              </Link>
+              <Link
+                href={localizedHref("/blog/touch-up-sunscreen-over-makeup-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
+              >
+                Check SPF touch-ups over makeup →
               </Link>
               <Link
                 href={localizedHref("/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026")}
