@@ -621,6 +621,12 @@ export default function MakeupLabPage() {
                 Check tinted SPF blur →
               </Link>
               <Link
+                href={localizedHref("/blog/spf-clogged-pores-under-makeup-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
+              >
+                Check SPF clogged pores →
+              </Link>
+              <Link
                 href={localizedHref("/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026")}
                 className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
               >
