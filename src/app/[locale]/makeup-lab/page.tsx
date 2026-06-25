@@ -259,6 +259,33 @@ const UNDERTONE_OPTIONS = [
   { label: "Olive / muted", swatch: "#a99b68" },
 ];
 
+const SPF_DECISION_HELPER = [
+  {
+    issue: "Foundation rolls or balls up",
+    preset: "Pilling Check",
+    action: "Reduce layer weight and wait 15-20 minutes after SPF before pressing foundation on.",
+    href: "/blog/foundation-sunscreen-pilling-check-selfie-filter-2026",
+  },
+  {
+    issue: "SPF looks greasy or gray",
+    preset: "Suede Skin",
+    action: "Compare a less shiny tinted SPF direction against your neck in daylight.",
+    href: "/blog/pore-blurring-tinted-sunscreen-under-makeup-selfie-filter-2026",
+  },
+  {
+    issue: "Pores look clogged or bumpy",
+    preset: "Bare Skin Check",
+    action: "Separate sunscreen texture from foundation texture before buying another primer.",
+    href: "/blog/spf-clogged-pores-under-makeup-selfie-filter-2026",
+  },
+  {
+    issue: "Base looks good fresh, then separates",
+    preset: "Wear Test",
+    action: "Retake the same selfie after one hour and check nose, mouth, jawline, and forehead shine.",
+    href: "/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026",
+  },
+];
+
 function hashToUnit(input: string) {
   // Simple deterministic hash -> [0,1)
   let h = 2166136261;
@@ -638,6 +665,32 @@ export default function MakeupLabPage() {
               >
                 Compare one-hour wear →
               </Link>
+            </div>
+          </div>
+
+          <div className="mt-6 border-t border-lime-300/15 pt-6">
+            <div className="text-sm text-lime-200 mb-3">SPF under makeup decision helper</div>
+            <div className="grid md:grid-cols-2 gap-3">
+              {SPF_DECISION_HELPER.map((item) => (
+                <Link
+                  key={item.issue}
+                  href={localizedHref(item.href)}
+                  className="rounded-2xl border border-lime-300/15 bg-black/20 p-4 transition hover:border-lime-300/40 hover:bg-lime-500/10"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <div className="font-semibold text-lime-50">{item.issue}</div>
+                      <div className="mt-1 text-xs uppercase tracking-wide text-lime-200/80">
+                        Try {item.preset}
+                      </div>
+                    </div>
+                    <span className="text-lime-200" aria-hidden>
+                      →
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm text-gray-300">{item.action}</p>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
