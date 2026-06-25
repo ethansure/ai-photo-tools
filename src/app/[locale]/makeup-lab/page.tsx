@@ -377,6 +377,16 @@ const FAQS = [
     answer:
       "Usually a neutral or mauve lip with medium intensity and balanced contrast. The lab surfaces ‘professionalism’ in the reasons to help you choose.",
   },
+  {
+    question: "How do I stop sunscreen from pilling under makeup?",
+    answer:
+      "Use the Pilling Check preset, keep SPF and primer layers thin, wait 15-20 minutes after sunscreen, and press foundation on instead of rubbing. If the preview still looks textured, compare the best-sunscreen and pilling guides before changing your foundation.",
+  },
+  {
+    question: "Can Makeup Lab help when SPF makes pores look clogged?",
+    answer:
+      "Yes. Start with Bare Skin Check to see whether texture comes from sunscreen, primer, or foundation, then compare Suede Skin or Wear Test for a lighter base direction. The SPF decision helper links to the clogged-pores and tinted-SPF guides for the next step.",
+  },
 ];
 
 export default function MakeupLabPage() {
