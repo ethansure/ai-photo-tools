@@ -313,6 +313,33 @@ const SPF_FINISH_COMPARISON = [
   },
 ];
 
+const UNDER_EYE_ISSUE_SELECTOR = [
+  {
+    issue: "Dry creasing or fine lines",
+    preset: "Dry Crease Check",
+    action: "Compare thinner prep, lower concealer placement, and lighter powder before buying a fuller-coverage tube.",
+    href: "/blog/dry-undereye-concealer-creasing-selfie-filter-2026",
+  },
+  {
+    issue: "Blue, purple, brown, or gray circles",
+    preset: "Color Corrector",
+    action: "Test a peach, orange, yellow, or neutral corrector direction before layering more concealer.",
+    href: "/blog/dark-circle-color-corrector-check-selfie-filter-2026",
+  },
+  {
+    issue: "Cakey dark-circle coverage",
+    preset: "Concealer Check",
+    action: "Preview a smoother non-cakey coverage direction for dark circles, dark spots, and center-face brightness.",
+    href: "/blog/non-cakey-concealer-dark-circles-dark-spots-selfie-filter-2026",
+  },
+  {
+    issue: "SPF makes concealer sting, gray, or crease",
+    preset: "Wear Test",
+    action: "Compare eye-area SPF alone, fresh concealer, and one-hour wear before changing eye sunscreen or powder.",
+    href: "/blog/under-eye-sunscreen-concealer-creasing-selfie-filter-2026",
+  },
+];
+
 function hashToUnit(input: string) {
   // Simple deterministic hash -> [0,1)
   let h = 2166136261;
@@ -433,6 +460,11 @@ const FAQS = [
     question: "How should I test under-eye sunscreen with concealer?",
     answer:
       "Take one daylight selfie after eye-area SPF settles, one after concealer and powder, and one after an hour. Use Dry Crease Check, Concealer Check, and Wear Test to compare stinging, gray cast, pilling, creasing, and powder texture before buying another eye SPF or concealer.",
+  },
+  {
+    question: "Which Makeup Lab preset should I use for under-eye makeup issues?",
+    answer:
+      "Use Dry Crease Check for fine lines and powder texture, Color Corrector for blue, purple, brown, or gray circles, Concealer Check for cakey coverage, and Wear Test when eye-area SPF changes how concealer sits after an hour.",
   },
 ];
 
@@ -845,6 +877,32 @@ export default function MakeupLabPage() {
               >
                 Check dry under-eye creasing →
               </Link>
+            </div>
+          </div>
+
+          <div className="mt-6 border-t border-pink-300/15 pt-6">
+            <div className="text-sm text-pink-200 mb-3">Under-eye issue selector</div>
+            <div className="grid md:grid-cols-2 gap-3">
+              {UNDER_EYE_ISSUE_SELECTOR.map((item) => (
+                <Link
+                  key={item.issue}
+                  href={localizedHref(item.href)}
+                  className="rounded-2xl border border-pink-300/15 bg-black/20 p-4 transition hover:border-pink-300/40 hover:bg-pink-500/10"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <div className="font-semibold text-pink-50">{item.issue}</div>
+                      <div className="mt-1 text-xs uppercase tracking-wide text-pink-200/80">
+                        Try {item.preset}
+                      </div>
+                    </div>
+                    <span className="text-pink-200" aria-hidden>
+                      →
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm text-gray-300">{item.action}</p>
+                </Link>
+              ))}
             </div>
           </div>
         </section>

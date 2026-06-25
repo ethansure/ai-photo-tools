@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Interactive Makeup Lab - Find Your Best Look",
   description:
-    "Upload a selfie and get your top makeup looks with a stylist score, lipstick tweaks, and a foundation shade-match checklist. Minimal, fast, and privacy-friendly.",
+    "Upload a selfie and get your top makeup looks with a stylist score, lipstick tweaks, foundation shade-match checklist, SPF base checks, and under-eye issue selector.",
   keywords: [
     "makeup look finder",
     "makeup analyzer",
@@ -61,11 +61,16 @@ export const metadata: Metadata = {
     "SPF under concealer",
     "eye sunscreen under makeup",
     "concealer creasing over sunscreen",
+    "under eye issue selector",
+    "dry under eye concealer check",
+    "dark circle corrector check",
+    "non cakey concealer check",
+    "under eye makeup filter",
   ],
   openGraph: {
     title: "Interactive Makeup Lab",
     description:
-      "Upload a selfie to get your top makeup looks, lipstick tweaks, and a foundation shade-match checklist.",
+      "Upload a selfie to get your top makeup looks, lipstick tweaks, SPF base checks, and an under-eye issue selector.",
     images: ["/examples/headshot-after.jpg"],
     type: "website",
   },
@@ -73,7 +78,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Interactive Makeup Lab",
     description:
-      "Upload a selfie to get your top makeup looks, lipstick tweaks, and a foundation shade-match checklist.",
+      "Upload a selfie to get your top makeup looks, lipstick tweaks, SPF base checks, and an under-eye issue selector.",
     images: ["/examples/headshot-after.jpg"],
   },
   alternates: {
