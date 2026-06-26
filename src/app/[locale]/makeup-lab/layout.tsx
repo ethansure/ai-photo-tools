@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Interactive Makeup Lab - Find Your Best Look",
   description:
-    "Upload a selfie and get your top makeup looks with a stylist score, lipstick tweaks, foundation shade-match checklist, SPF base checks, layer stack checks, and under-eye issue selector.",
+    "Upload a selfie and get your top makeup looks with a stylist score, lipstick tweaks, foundation shade-match checklist, SPF base checks, layer stack checks, oxidation checks, and under-eye issue selector.",
   keywords: [
     "makeup look finder",
     "makeup analyzer",
@@ -36,6 +36,10 @@ export const metadata: Metadata = {
     "cream blush preview",
     "foundation undertone fix",
     "foundation oxidizing orange",
+    "foundation oxidizes after sunscreen",
+    "makeup turns orange after sunscreen",
+    "cushion foundation oxidizes",
+    "foundation turns gray after SPF",
     "selfie foundation match",
     "orange foundation filter",
     "olive undertone",
@@ -62,6 +66,7 @@ export const metadata: Metadata = {
     "foundation settles into fine lines",
     "powder makes makeup textured",
     "layer stack check",
+    "oxidation check",
     "under eye sunscreen concealer",
     "SPF under concealer",
     "eye sunscreen under makeup",
@@ -75,7 +80,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Interactive Makeup Lab",
     description:
-      "Upload a selfie to get your top makeup looks, lipstick tweaks, SPF base checks, layer stack checks, and an under-eye issue selector.",
+      "Upload a selfie to get your top makeup looks, lipstick tweaks, SPF base checks, layer stack checks, oxidation checks, and an under-eye issue selector.",
     images: ["/examples/headshot-after.jpg"],
     type: "website",
   },
@@ -83,7 +88,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Interactive Makeup Lab",
     description:
-      "Upload a selfie to get your top makeup looks, lipstick tweaks, SPF base checks, layer stack checks, and an under-eye issue selector.",
+      "Upload a selfie to get your top makeup looks, lipstick tweaks, SPF base checks, layer stack checks, oxidation checks, and an under-eye issue selector.",
     images: ["/examples/headshot-after.jpg"],
   },
   alternates: {

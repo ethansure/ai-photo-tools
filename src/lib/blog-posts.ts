@@ -14,6 +14,98 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "foundation-oxidizes-orange-after-sunscreen-selfie-filter-2026",
+    title: "Foundation Oxidizes Orange After Sunscreen? Selfie Check",
+    description: "Use Makeup Lab to compare foundation fresh, after SPF, after powder, and after one hour when your base turns orange, gray, or darker.",
+    date: "2026-06-25",
+    author: "AI Photo Tools Team",
+    image: "/blog/foundation-oxidation-wear-test.jpg",
+    keywords: ["foundation oxidizes orange", "foundation oxidizes after sunscreen", "makeup turns orange after sunscreen", "cushion foundation oxidizes", "foundation turns gray after SPF", "AI makeup filter"],
+    category: "Makeup Lab",
+    faqs: [
+      {
+        question: "Can sunscreen make foundation oxidize orange?",
+        answer:
+          "Sunscreen can change how foundation dries down, especially when the SPF is very shiny, tacky, tinted, or layered over rich skincare. The color shift can also come from oil, powder, or a shade that was already too warm.",
+      },
+      {
+        question: "How do I test whether SPF or foundation is causing oxidation?",
+        answer:
+          "Take one daylight selfie after SPF settles, one right after foundation, one after powder, and one after an hour. The first step where the base turns orange, gray, or darker is the layer to simplify.",
+      },
+      {
+        question: "What should I try before buying a new foundation shade?",
+        answer:
+          "Test the same foundation over a thinner SPF layer, a less shiny SPF, and no powder before replacing the shade. If it still turns orange, compare a more neutral or muted shade direction in daylight.",
+      },
+    ],
+    content: `# Foundation Oxidizes Orange After Sunscreen? Selfie Check
+
+Foundation can match your neck when it is fresh, then turn orange, peachy, gray, or darker after sunscreen, primer, powder, or one hour of wear. This is especially frustrating with cushion foundation and SPF-heavy routines because the base may look fine indoors, then separate from the neck in a daylight selfie.
+
+Makeup Lab cannot diagnose product chemistry from a photo. It can help you compare the visible result of each step: SPF alone, foundation fresh, foundation after powder, and one-hour wear.
+
+## Why Foundation Turns Orange After SPF
+
+Foundation color can shift when pigment mixes with oil, sunscreen film, primer, powder, and skin warmth. A shiny SPF can make a foundation look deeper. A tinted sunscreen can add yellow, peach, or gray before foundation even starts. A cushion or skin tint can look neutral at first, then become warmer as it dries down. Powder can also make oxidized patches look stronger around the nose, mouth, and forehead.
+
+If the base rolls or pills instead of changing color, start with the <a href="/blog/foundation-sunscreen-pilling-check-selfie-filter-2026">foundation and sunscreen pilling check</a>. If the issue is oily separation after wear time, use the <a href="/blog/oily-skin-sunscreen-under-makeup-wear-test-2026">oily-skin SPF wear test</a>. If your bare skin looks smoother than foundation, compare the <a href="/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026">bare skin makeup check</a>. For general shade drift, use the <a href="/blog/foundation-oxidation-wear-test-selfie-filter-2026">one-hour oxidation wear-test guide</a> too.
+
+## How to Run the Oxidation Check
+
+Open Makeup Lab and use the same daylight angle for each photo. Take one selfie after SPF settles, one right after foundation, one after powder, and one after an hour before touching up. Compare Foundation Shade Match, Wear Test, Undertone Fix, Pilling Check, and Bare Skin Check.
+
+The goal is to find the first layer where the color changes. If SPF alone already looks yellow, gray, or shiny, the sunscreen finish may be changing the base. If foundation looks right fresh but orange after powder, test less powder or a different setting method. If the one-hour photo is the only problem, focus on oil, dry-down, and shade depth.
+
+## Best Selfie Setup
+
+- Use indirect daylight near a window
+- Turn off beauty filters, portrait retouching, and strong HDR
+- Include face, jawline, neck, and a little chest
+- Take one photo after SPF settles
+- Take one photo right after foundation or cushion
+- Take one photo after powder if you use it
+- Take one photo after one hour before touching up
+- Avoid bronzer or orange blush until after the base test
+
+## What the Test Usually Shows
+
+- Orange after SPF: sunscreen tint, shine, or film may be warming the base
+- Orange after foundation: the shade may be too warm, peachy, or saturated
+- Gray after SPF: mineral or tinted sunscreen may be muting the foundation
+- Darker after powder: powder may be gripping oil, SPF, or excess product unevenly
+- Orange after one hour: the formula may dry down deeper or mix with oil
+- Neck mismatch: choose the shade family that survives wear time, not only the fresh swatch
+
+## What to Try Before Replacing Foundation
+
+- Wait 15-20 minutes after sunscreen before foundation
+- Press foundation on instead of rubbing over SPF
+- Test the same foundation over a thinner sunscreen layer
+- Try one less powder layer before changing foundation shade
+- Compare a neutral, muted, or slightly lighter shade if the formula always deepens
+- Search reviews for oxidizes, turns orange, darkens, SPF, cushion, and one-hour wear
+- Use samples or minis before buying a full-size replacement
+
+## FAQ: Foundation Oxidizing After Sunscreen
+
+## Can sunscreen make foundation oxidize orange?
+
+Sunscreen can change how foundation dries down, especially when the SPF is very shiny, tacky, tinted, or layered over rich skincare. The color shift can also come from oil, powder, or a shade that was already too warm.
+
+## How do I test whether SPF or foundation is causing oxidation?
+
+Take one daylight selfie after SPF settles, one right after foundation, one after powder, and one after an hour. The first step where the base turns orange, gray, or darker is the layer to simplify.
+
+## What should I try before buying a new foundation shade?
+
+Test the same foundation over a thinner SPF layer, a less shiny SPF, and no powder before replacing the shade. If it still turns orange, compare a more neutral or muted shade direction in daylight.
+
+## The Practical Takeaway
+
+When foundation turns orange after sunscreen, isolate the step before replacing everything. Use Makeup Lab to compare SPF, fresh foundation, powder, and one-hour wear so you can decide whether the fix is a different SPF finish, less powder, a muted shade, or a true foundation replacement.`,
+  },
+  {
     slug: "splotchy-makeup-settles-fine-lines-selfie-filter-2026",
     title: "Splotchy Makeup Settling Into Fine Lines? Selfie Filter Check",
     description: "Use Makeup Lab to compare bare skin, SPF, foundation, concealer, and powder layers when makeup looks splotchy or settles into fine lines.",

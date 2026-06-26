@@ -285,6 +285,12 @@ const SPF_DECISION_HELPER = [
     href: "/blog/oily-skin-sunscreen-under-makeup-wear-test-2026",
   },
   {
+    issue: "Foundation turns orange after SPF",
+    preset: "Wear Test",
+    action: "Compare SPF-only, fresh foundation, powder, and one-hour selfies before changing shade.",
+    href: "/blog/foundation-oxidizes-orange-after-sunscreen-selfie-filter-2026",
+  },
+  {
     issue: "SPF touch-up moves makeup",
     preset: "Wear Test",
     action: "Compare before-and-after selfies for powder, spray, stick, or cushion touch-ups over makeup.",
@@ -364,6 +370,33 @@ const LAYER_STACK_CHECKS = [
     preset: "Wear Test",
     action: "Use the one-hour photo to see whether powder, oil, or movement is breaking the base down.",
     href: "/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026",
+  },
+];
+
+const OXIDATION_CHECKS = [
+  {
+    step: "SPF settled",
+    preset: "Pilling Check",
+    action: "See whether sunscreen already looks yellow, gray, shiny, or too tacky before foundation.",
+    href: "/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026",
+  },
+  {
+    step: "Fresh foundation",
+    preset: "Foundation Shade Match",
+    action: "Check whether the shade is already too warm, peachy, or disconnected from the neck.",
+    href: "/blog/foundation-shade-match-selfie-filter-2026",
+  },
+  {
+    step: "After powder",
+    preset: "Bare Skin Check",
+    action: "Compare whether powder makes orange patches, gray cast, or texture more visible.",
+    href: "/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026",
+  },
+  {
+    step: "One-hour wear",
+    preset: "Wear Test",
+    action: "Find out whether oil, dry-down, SPF, or cushion formula makes the base deepen later.",
+    href: "/blog/foundation-oxidizes-orange-after-sunscreen-selfie-filter-2026",
   },
 ];
 
@@ -497,6 +530,11 @@ const FAQS = [
     question: "How do I find which makeup layer is causing splotchy texture?",
     answer:
       "Take the same daylight selfie after skincare and SPF, after foundation, after concealer, after powder, and after one hour. Use the Layer Stack Check to spot the first step where makeup looks splotchy or settles into fine lines.",
+  },
+  {
+    question: "How do I test foundation that oxidizes orange after sunscreen?",
+    answer:
+      "Take one daylight selfie after SPF settles, one right after foundation, one after powder, and one after an hour. Use the Oxidation Check to see whether sunscreen, shade warmth, powder, or wear time is causing the orange shift.",
   },
 ];
 
@@ -799,6 +837,12 @@ export default function MakeupLabPage() {
                 Check splotchy fine-line settling →
               </Link>
               <Link
+                href={localizedHref("/blog/foundation-oxidizes-orange-after-sunscreen-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
+              >
+                Run oxidation after SPF check →
+              </Link>
+              <Link
                 href={localizedHref("/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026")}
                 className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
               >
@@ -868,6 +912,32 @@ export default function MakeupLabPage() {
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="font-semibold text-lime-50">{item.layer}</div>
+                      <div className="mt-1 text-xs uppercase tracking-wide text-lime-200/80">
+                        Try {item.preset}
+                      </div>
+                    </div>
+                    <span className="text-lime-200" aria-hidden>
+                      →
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm text-gray-300">{item.action}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 border-t border-lime-300/15 pt-6">
+            <div className="text-sm text-lime-200 mb-3">Oxidation Check</div>
+            <div className="grid md:grid-cols-2 gap-3">
+              {OXIDATION_CHECKS.map((item) => (
+                <Link
+                  key={item.step}
+                  href={localizedHref(item.href)}
+                  className="rounded-2xl border border-lime-300/15 bg-black/20 p-4 transition hover:border-lime-300/40 hover:bg-lime-500/10"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <div className="font-semibold text-lime-50">{item.step}</div>
                       <div className="mt-1 text-xs uppercase tracking-wide text-lime-200/80">
                         Try {item.preset}
                       </div>
