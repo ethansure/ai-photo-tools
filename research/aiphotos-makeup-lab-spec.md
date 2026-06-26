@@ -1,5 +1,19 @@
 # AI Photo Tools Makeup Lab Research Backlog
 
+## 2026-06-26 Trend Task: Setting Powder Over SPF Looks Cakey
+
+- Source signal: late-June Reddit makeup results show fresh discussion around sunscreen under makeup, setting powder over SPF, oily-zone powdering, and routines where powder or concealer makes SPF-layered makeup look textured, cakey, or separated. One recent thread specifically mentions concealer over sunscreen being the trouble spot; another points to stopping heavy setting powder and using lighter layer methods to avoid cakiness.
+- Proposed URL: `/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026`
+- Working title: `Setting Powder Over Sunscreen Looks Cakey? Selfie Filter Check`
+- Search targets: `setting powder over sunscreen cakey`, `powder over sunscreen makeup`, `sunscreen makes makeup cakey`, `makeup separates after powder sunscreen`, `powder makes SPF makeup textured`
+- User problem: shoppers often add powder to control SPF shine, but too much powder, the wrong powder placement, or powder over damp sunscreen can make foundation crack around the nose, emphasize pores, or turn the under-eye area dry and textured.
+- Makeup Lab angle: add a `Powder Over SPF Check` selector/card on `/makeup-lab` that compares sunscreen-only shine, foundation before powder, light T-zone powder, under-eye powder, and one-hour wear, then routes users to SPF Finish Finder, Layer Stack Check, Under-Eye SPF, and the new powder-over-sunscreen guide.
+- Internal links to add: `/makeup-lab`, `/blog/touch-up-sunscreen-over-makeup-selfie-filter-2026`, `/blog/oily-skin-sunscreen-under-makeup-wear-test-2026`, `/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026`, `/blog/under-eye-sunscreen-concealer-creasing-selfie-filter-2026`, `/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026`
+- Suggested FAQ schema:
+  - `Why does setting powder over sunscreen make makeup look cakey?`
+  - `Should I powder sunscreen before or after foundation?`
+  - `How can Makeup Lab show whether SPF, powder, or concealer is causing texture?`
+
 ## 2026-06-25 Trend Task: Foundation Oxidizes Orange After SPF
 
 - Source signal: late-June search results show active Reddit/TikTok demand around foundation or cushion shades oxidizing darker, orange, or gray after sunscreen, primer, powder, and wear time. A Reddit AsianBeauty thread from the last week specifically discusses a cushion oxidizing orange, while TikTok discovery pages surface high-volume queries for stopping foundation oxidation with sunscreen and fixing orange foundation.
