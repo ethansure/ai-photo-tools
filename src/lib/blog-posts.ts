@@ -14,6 +14,97 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "setting-spray-primer-makes-makeup-patchy-selfie-filter-2026",
+    title: "Setting Spray or Primer Makes Makeup Patchy? Selfie Check",
+    description: "Use Makeup Lab to compare SPF, primer, foundation, powder, setting spray, and one-hour wear when base makeup turns patchy or separated.",
+    date: "2026-06-26",
+    author: "AI Photo Tools Team",
+    image: "/blog/setting-spray-primer-patchy-makeup.jpg",
+    keywords: ["setting spray makes makeup patchy", "primer makes foundation patchy", "makeup separates after setting spray", "foundation patchy after primer", "setting spray separates makeup", "AI makeup filter"],
+    category: "Makeup Lab",
+    faqs: [
+      {
+        question: "Why does setting spray make makeup look patchy?",
+        answer:
+          "Setting spray can disturb powder, SPF film, or foundation that has not settled. If the spray is too wet, too close, or layered over a heavy base, it can create droplets, shine patches, or lifted concealer.",
+      },
+      {
+        question: "Can primer make foundation separate?",
+        answer:
+          "Yes. A primer can make foundation separate when it fights sunscreen, skincare, foundation finish, or powder. Testing primer on only half the face helps show whether the patchiness starts before setting spray.",
+      },
+      {
+        question: "How can Makeup Lab show whether primer or setting spray is the problem?",
+        answer:
+          "Take matching daylight selfies after SPF, primer, foundation, powder, setting spray, and one-hour wear. The first step where patchiness appears is the product or layer timing to simplify.",
+      },
+    ],
+    content: `# Setting Spray or Primer Makes Makeup Patchy? Selfie Check
+
+Primer and setting spray are supposed to make makeup last longer, but they can also make a smooth base turn patchy, shiny, separated, or textured in a selfie. The confusing part is that the problem may not be the spray or primer alone. Sunscreen, skincare, foundation, powder, application pressure, and dry-down time all decide whether the base stays even.
+
+Makeup Lab cannot identify exact product ingredients from a photo. It can help you compare the visible result of each step: SPF, primer, foundation, powder, setting spray, and one-hour wear.
+
+## Why Primer or Setting Spray Makes Makeup Patchy
+
+Primer can create a slick, grippy, or dry layer that does not match the sunscreen and foundation sitting around it. Setting spray can re-wet powder, lift concealer, or make foundation break apart if the base is already heavy. If you spray too close, use too much, or powder before the base has settled, the camera may show dots, streaks, nose separation, cheek texture, or patchy under-eyes.
+
+If the base rolls before spray, start with the <a href="/blog/foundation-sunscreen-pilling-check-selfie-filter-2026">foundation and sunscreen pilling check</a>. If powder over SPF is the first rough step, use the <a href="/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026">powder over sunscreen check</a>. If the whole layer stack looks heavy, compare the <a href="/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026">Layer Stack Check</a>. If sunscreen finish is the bigger issue, use the <a href="/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026">best sunscreen under makeup guide</a>.
+
+## How to Run the Primer and Setting Spray Check
+
+Open Makeup Lab and take the same daylight selfie after each step. Start with skincare and SPF, then primer on one side or one zone, then foundation, then powder, then setting spray, then one-hour wear. Compare Pilling Check, Powder Over SPF Check, Layer Stack Check, Wear Test, and Bare Skin Check.
+
+The goal is to find the first step where the base changes. If SPF alone already looks shiny or textured, fix SPF finish first. If primer makes one side patchier than the other, skip it or test a different texture. If powder looks good but spray creates spots, change spray distance, amount, or placement. If everything looks good fresh but breaks after one hour, focus on oil, movement, and touch-up habits.
+
+## Best Selfie Setup
+
+- Use indirect daylight near a window
+- Keep the same angle, expression, and camera distance
+- Let sunscreen settle 15-20 minutes before primer or foundation
+- Test primer on only half the face or one problem zone
+- Take one photo before setting spray and one after it dries
+- Recheck after one hour before touching up
+- Turn off beauty filters, portrait smoothing, and strong HDR
+
+## What the Check Usually Shows
+
+- SPF looks shiny before primer: choose a better sunscreen finish before adding another layer
+- Primer side looks patchy: primer may not match the SPF or foundation
+- Foundation looks smooth before powder: powder amount or placement may be the problem
+- Spray creates dots or streaks: the mist may be too wet, too close, or too heavy
+- Nose separates after one hour: oil, SPF film, primer, or powder may be breaking grip
+- Under-eyes lift after spray: concealer and powder may need less product or more dry-down time
+
+## Primer and Setting Spray Buying Checklist
+
+- Search reviews for patchy, separates, pills, setting spray, primer, SPF, and foundation
+- Test primer without setting spray before judging the whole routine
+- Test setting spray without extra powder before adding more control products
+- Hold spray farther away and use fewer pumps while testing
+- Avoid changing primer, foundation, powder, and spray in the same day
+- Compare fresh and one-hour selfies before keeping a new product
+- Use the <a href="/blog/touch-up-sunscreen-over-makeup-selfie-filter-2026">touch-up sunscreen over makeup guide</a> if SPF reapplication is what breaks the base
+
+## FAQ: Primer and Setting Spray Patchiness
+
+## Why does setting spray make makeup look patchy?
+
+Setting spray can disturb powder, SPF film, or foundation that has not settled. If the spray is too wet, too close, or layered over a heavy base, it can create droplets, shine patches, or lifted concealer.
+
+## Can primer make foundation separate?
+
+Yes. A primer can make foundation separate when it fights sunscreen, skincare, foundation finish, or powder. Testing primer on only half the face helps show whether the patchiness starts before setting spray.
+
+## How can Makeup Lab show whether primer or setting spray is the problem?
+
+Take matching daylight selfies after SPF, primer, foundation, powder, setting spray, and one-hour wear. The first step where patchiness appears is the product or layer timing to simplify.
+
+## The Practical Takeaway
+
+When primer or setting spray makes makeup patchy, isolate the layer before replacing the whole routine. Use Makeup Lab to compare SPF, primer, foundation, powder, setting spray, and one-hour wear so you can decide whether the fix is dry-down time, less powder, a different SPF finish, or skipping the extra grip layer.`,
+  },
+  {
     slug: "setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026",
     title: "Setting Powder Over Sunscreen Looks Cakey? Selfie Check",
     description: "Use Makeup Lab to compare sunscreen shine, foundation, light T-zone powder, under-eye powder, and one-hour wear when SPF makeup turns cakey.",

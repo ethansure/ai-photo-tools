@@ -302,6 +302,12 @@ const SPF_DECISION_HELPER = [
     action: "Compare sunscreen-only shine, foundation before powder, light T-zone powder, and under-eye powder.",
     href: "/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026",
   },
+  {
+    issue: "Primer or setting spray makes patches",
+    preset: "Wear Test",
+    action: "Compare SPF, primer, foundation, powder, setting spray, and one-hour wear before changing the whole routine.",
+    href: "/blog/setting-spray-primer-makes-makeup-patchy-selfie-filter-2026",
+  },
 ];
 
 const SPF_FINISH_COMPARISON = [
@@ -403,6 +409,33 @@ const POWDER_OVER_SPF_CHECKS = [
     preset: "Dry Crease Check",
     action: "Compare whether eye-area SPF, concealer, or powder is creating dry texture.",
     href: "/blog/under-eye-sunscreen-concealer-creasing-selfie-filter-2026",
+  },
+];
+
+const PRIMER_SETTING_SPRAY_CHECKS = [
+  {
+    step: "SPF before primer",
+    preset: "Pilling Check",
+    action: "See whether sunscreen is already shiny, tacky, or textured before another grip layer goes on.",
+    href: "/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026",
+  },
+  {
+    step: "Primer side test",
+    preset: "Bare Skin Check",
+    action: "Apply primer to one side or one zone so patchiness is easier to spot in daylight.",
+    href: "/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026",
+  },
+  {
+    step: "Powder before spray",
+    preset: "Dry Crease Check",
+    action: "Check whether powder already makes pores, nose edges, or under-eyes look heavy.",
+    href: "/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026",
+  },
+  {
+    step: "After setting spray",
+    preset: "Wear Test",
+    action: "Compare dots, lifted concealer, streaks, shine patches, and one-hour separation.",
+    href: "/blog/setting-spray-primer-makes-makeup-patchy-selfie-filter-2026",
   },
 ];
 
@@ -553,6 +586,11 @@ const FAQS = [
     question: "How do I stop setting powder over sunscreen from looking cakey?",
     answer:
       "Let SPF settle, press foundation on instead of rubbing, then powder only the shine zones that need it. Use the Powder Over SPF Check to compare sunscreen-only shine, foundation before powder, light T-zone powder, under-eye powder, and one-hour wear.",
+  },
+  {
+    question: "How do I know if primer or setting spray is making makeup patchy?",
+    answer:
+      "Take matching daylight selfies after SPF, primer, foundation, powder, setting spray, and one-hour wear. Use the Primer and Setting Spray Check to find the first step where dots, lifted concealer, nose separation, or patchy texture appears.",
   },
   {
     question: "How should I test under-eye sunscreen with concealer?",
@@ -875,6 +913,12 @@ export default function MakeupLabPage() {
                 Check powder over SPF cakiness →
               </Link>
               <Link
+                href={localizedHref("/blog/setting-spray-primer-makes-makeup-patchy-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
+              >
+                Check primer and setting spray →
+              </Link>
+              <Link
                 href={localizedHref("/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026")}
                 className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
               >
@@ -974,6 +1018,32 @@ export default function MakeupLabPage() {
             <div className="text-sm text-lime-200 mb-3">Powder Over SPF Check</div>
             <div className="grid md:grid-cols-2 gap-3">
               {POWDER_OVER_SPF_CHECKS.map((item) => (
+                <Link
+                  key={item.step}
+                  href={localizedHref(item.href)}
+                  className="rounded-2xl border border-lime-300/15 bg-black/20 p-4 transition hover:border-lime-300/40 hover:bg-lime-500/10"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <div className="font-semibold text-lime-50">{item.step}</div>
+                      <div className="mt-1 text-xs uppercase tracking-wide text-lime-200/80">
+                        Try {item.preset}
+                      </div>
+                    </div>
+                    <span className="text-lime-200" aria-hidden>
+                      →
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm text-gray-300">{item.action}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 border-t border-lime-300/15 pt-6">
+            <div className="text-sm text-lime-200 mb-3">Primer and Setting Spray Check</div>
+            <div className="grid md:grid-cols-2 gap-3">
+              {PRIMER_SETTING_SPRAY_CHECKS.map((item) => (
                 <Link
                   key={item.step}
                   href={localizedHref(item.href)}
