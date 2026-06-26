@@ -296,6 +296,12 @@ const SPF_DECISION_HELPER = [
     action: "Compare before-and-after selfies for powder, spray, stick, or cushion touch-ups over makeup.",
     href: "/blog/touch-up-sunscreen-over-makeup-selfie-filter-2026",
   },
+  {
+    issue: "Powder makes SPF makeup cakey",
+    preset: "Dry Crease Check",
+    action: "Compare sunscreen-only shine, foundation before powder, light T-zone powder, and under-eye powder.",
+    href: "/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026",
+  },
 ];
 
 const SPF_FINISH_COMPARISON = [
@@ -370,6 +376,33 @@ const LAYER_STACK_CHECKS = [
     preset: "Wear Test",
     action: "Use the one-hour photo to see whether powder, oil, or movement is breaking the base down.",
     href: "/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026",
+  },
+];
+
+const POWDER_OVER_SPF_CHECKS = [
+  {
+    step: "Sunscreen-only shine",
+    preset: "Suede Skin",
+    action: "Check whether SPF already looks too glossy, gray, or textured before makeup.",
+    href: "/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026",
+  },
+  {
+    step: "Foundation before powder",
+    preset: "Pilling Check",
+    action: "Find whether the base looks smooth before powder or is already catching on SPF.",
+    href: "/blog/foundation-sunscreen-pilling-check-selfie-filter-2026",
+  },
+  {
+    step: "Light T-zone powder",
+    preset: "Wear Test",
+    action: "Use less powder on nose and forehead first, then recheck after oil starts coming through.",
+    href: "/blog/oily-skin-sunscreen-under-makeup-wear-test-2026",
+  },
+  {
+    step: "Under-eye powder",
+    preset: "Dry Crease Check",
+    action: "Compare whether eye-area SPF, concealer, or powder is creating dry texture.",
+    href: "/blog/under-eye-sunscreen-concealer-creasing-selfie-filter-2026",
   },
 ];
 
@@ -515,6 +548,11 @@ const FAQS = [
     question: "How do I reapply sunscreen over makeup without ruining it?",
     answer:
       "Take one daylight selfie before touch-up and one after using SPF powder, spray, stick, cushion, or setting spray. Use Wear Test and Pilling Check to compare shine, patchiness, lifted concealer, nose separation, and powder texture before changing products.",
+  },
+  {
+    question: "How do I stop setting powder over sunscreen from looking cakey?",
+    answer:
+      "Let SPF settle, press foundation on instead of rubbing, then powder only the shine zones that need it. Use the Powder Over SPF Check to compare sunscreen-only shine, foundation before powder, light T-zone powder, under-eye powder, and one-hour wear.",
   },
   {
     question: "How should I test under-eye sunscreen with concealer?",
@@ -831,6 +869,12 @@ export default function MakeupLabPage() {
                 Check under-eye SPF with concealer →
               </Link>
               <Link
+                href={localizedHref("/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
+              >
+                Check powder over SPF cakiness →
+              </Link>
+              <Link
                 href={localizedHref("/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026")}
                 className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
               >
@@ -912,6 +956,32 @@ export default function MakeupLabPage() {
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="font-semibold text-lime-50">{item.layer}</div>
+                      <div className="mt-1 text-xs uppercase tracking-wide text-lime-200/80">
+                        Try {item.preset}
+                      </div>
+                    </div>
+                    <span className="text-lime-200" aria-hidden>
+                      →
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm text-gray-300">{item.action}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 border-t border-lime-300/15 pt-6">
+            <div className="text-sm text-lime-200 mb-3">Powder Over SPF Check</div>
+            <div className="grid md:grid-cols-2 gap-3">
+              {POWDER_OVER_SPF_CHECKS.map((item) => (
+                <Link
+                  key={item.step}
+                  href={localizedHref(item.href)}
+                  className="rounded-2xl border border-lime-300/15 bg-black/20 p-4 transition hover:border-lime-300/40 hover:bg-lime-500/10"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <div className="font-semibold text-lime-50">{item.step}</div>
                       <div className="mt-1 text-xs uppercase tracking-wide text-lime-200/80">
                         Try {item.preset}
                       </div>
