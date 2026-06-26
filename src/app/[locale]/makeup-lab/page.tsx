@@ -340,6 +340,33 @@ const UNDER_EYE_ISSUE_SELECTOR = [
   },
 ];
 
+const LAYER_STACK_CHECKS = [
+  {
+    layer: "Skincare and SPF",
+    preset: "Pilling Check",
+    action: "Find out whether texture starts before foundation or only after the base goes on.",
+    href: "/blog/foundation-sunscreen-pilling-check-selfie-filter-2026",
+  },
+  {
+    layer: "Foundation only",
+    preset: "Bare Skin Check",
+    action: "Compare full coverage against a thinner spot-conceal direction when bare skin looks smoother.",
+    href: "/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026",
+  },
+  {
+    layer: "Concealer and fine lines",
+    preset: "Dry Crease Check",
+    action: "Check whether concealer amount, placement, or powder timing is making lines sharper.",
+    href: "/blog/dry-undereye-concealer-creasing-selfie-filter-2026",
+  },
+  {
+    layer: "Powder finish",
+    preset: "Wear Test",
+    action: "Use the one-hour photo to see whether powder, oil, or movement is breaking the base down.",
+    href: "/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026",
+  },
+];
+
 function hashToUnit(input: string) {
   // Simple deterministic hash -> [0,1)
   let h = 2166136261;
@@ -465,6 +492,11 @@ const FAQS = [
     question: "Which Makeup Lab preset should I use for under-eye makeup issues?",
     answer:
       "Use Dry Crease Check for fine lines and powder texture, Color Corrector for blue, purple, brown, or gray circles, Concealer Check for cakey coverage, and Wear Test when eye-area SPF changes how concealer sits after an hour.",
+  },
+  {
+    question: "How do I find which makeup layer is causing splotchy texture?",
+    answer:
+      "Take the same daylight selfie after skincare and SPF, after foundation, after concealer, after powder, and after one hour. Use the Layer Stack Check to spot the first step where makeup looks splotchy or settles into fine lines.",
   },
 ];
 
@@ -761,6 +793,12 @@ export default function MakeupLabPage() {
                 Check under-eye SPF with concealer →
               </Link>
               <Link
+                href={localizedHref("/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026")}
+                className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
+              >
+                Check splotchy fine-line settling →
+              </Link>
+              <Link
                 href={localizedHref("/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026")}
                 className="inline-flex justify-center rounded-2xl border border-lime-400/30 px-5 py-3 text-sm font-semibold text-lime-100 hover:bg-lime-500/20 transition"
               >
@@ -813,6 +851,32 @@ export default function MakeupLabPage() {
                   <div className="font-semibold text-lime-50">{item.finish}</div>
                   <p className="mt-2 text-sm text-gray-300">{item.bestFor}</p>
                   <p className="mt-3 text-xs text-lime-100/75">{item.risk}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 border-t border-lime-300/15 pt-6">
+            <div className="text-sm text-lime-200 mb-3">Layer Stack Check</div>
+            <div className="grid md:grid-cols-2 gap-3">
+              {LAYER_STACK_CHECKS.map((item) => (
+                <Link
+                  key={item.layer}
+                  href={localizedHref(item.href)}
+                  className="rounded-2xl border border-lime-300/15 bg-black/20 p-4 transition hover:border-lime-300/40 hover:bg-lime-500/10"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <div className="font-semibold text-lime-50">{item.layer}</div>
+                      <div className="mt-1 text-xs uppercase tracking-wide text-lime-200/80">
+                        Try {item.preset}
+                      </div>
+                    </div>
+                    <span className="text-lime-200" aria-hidden>
+                      →
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm text-gray-300">{item.action}</p>
                 </Link>
               ))}
             </div>

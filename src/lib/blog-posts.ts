@@ -14,6 +14,98 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "splotchy-makeup-settles-fine-lines-selfie-filter-2026",
+    title: "Splotchy Makeup Settling Into Fine Lines? Selfie Filter Check",
+    description: "Use Makeup Lab to compare bare skin, SPF, foundation, concealer, and powder layers when makeup looks splotchy or settles into fine lines.",
+    date: "2026-06-25",
+    author: "AI Photo Tools Team",
+    image: "/blog/splotchy-makeup-fine-lines.jpg",
+    keywords: ["makeup looks splotchy", "foundation settles into fine lines", "concealer settles into fine lines", "makeup separates fine lines", "powder makes makeup textured", "AI makeup filter"],
+    category: "Makeup Lab",
+    faqs: [
+      {
+        question: "Why does my makeup look splotchy and settle into lines?",
+        answer:
+          "Splotchy makeup usually comes from one layer fighting another: rich skin prep, sunscreen, primer, foundation, concealer, or powder. Fine-line settling gets worse when too much product sits on moving areas instead of being pressed in thin layers.",
+      },
+      {
+        question: "How do I tell if sunscreen, powder, or concealer is causing texture?",
+        answer:
+          "Take one selfie after skincare and SPF, one after foundation, one after concealer, and one after powder. The step where texture first appears is the layer to simplify before buying another product.",
+      },
+      {
+        question: "Should I use less powder when foundation settles into fine lines?",
+        answer:
+          "Usually yes. Let cream products settle, tap out creases, then powder only the areas that move or shine. A full layer of powder can lock extra product into lines and make splotchy texture look stronger.",
+      },
+    ],
+    content: `# Splotchy Makeup Settling Into Fine Lines? Selfie Filter Check
+
+Splotchy makeup can make a good foundation look like the wrong foundation. The base starts smooth, then breaks into patches, gathers around fine lines, clings to powder, or looks heavier than bare skin in a daylight selfie. When that happens, the problem is often the layer stack, not one bad bottle.
+
+Makeup Lab cannot diagnose skin from a photo or tell you which exact product to buy. It can help you compare the visible result of each layer: bare skin, skincare and SPF, foundation, concealer, powder, and one-hour wear.
+
+## Why Base Makeup Turns Splotchy
+
+Foundation and concealer need a stable surface. If moisturizer is too rich, SPF is still tacky, primer is incompatible, foundation is rubbed over the film, or powder is applied before the base settles, the camera can show patchy edges and fine-line buildup. A phone selfie makes this more obvious because daylight highlights texture and contrast.
+
+If the issue starts around the under-eyes, use the <a href="/blog/dry-undereye-concealer-creasing-selfie-filter-2026">dry under-eye concealer creasing guide</a>. If tiny rolls appear when sunscreen and foundation meet, compare the <a href="/blog/foundation-sunscreen-pilling-check-selfie-filter-2026">foundation and sunscreen pilling check</a>. If your bare skin looks smoother than full coverage, use the <a href="/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026">bare skin makeup check</a>. If eye-area SPF makes concealer crease or turn gray, use the <a href="/blog/under-eye-sunscreen-concealer-creasing-selfie-filter-2026">under-eye sunscreen and concealer guide</a>.
+
+## How to Run the Layer Stack Check
+
+Open Makeup Lab and compare the same daylight angle after each step. Start with Bare Skin Check, then use Pilling Check after SPF or primer, Foundation Shade Match after foundation, Concealer Check after concealer, Dry Crease Check around fine lines, and Wear Test after one hour.
+
+The goal is to find the first layer where the base starts looking patchy. If SPF alone looks shiny and textured, simplify skincare and sunscreen first. If foundation looks smooth but powder makes lines sharper, change powder amount or placement. If everything looks good fresh but worse after one hour, focus on oil, movement, and touch-up habits.
+
+## Best Selfie Setup
+
+- Use indirect daylight near a window
+- Keep the same camera angle, expression, and distance
+- Take one photo after skincare and SPF
+- Take one photo after foundation only
+- Take one photo after concealer and before powder
+- Take one photo after powder
+- Recheck after one hour before touching up
+- Turn off portrait smoothing, beauty filters, and strong HDR
+
+## What the Layer Stack Usually Shows
+
+- Texture appears after SPF: sunscreen or skincare may be too rich, tacky, or heavy
+- Texture appears after foundation: application pressure, primer, or formula finish may be the issue
+- Lines sharpen after concealer: use less product, lower placement, or a more flexible finish
+- Powder makes patches obvious: powder may be too early, too matte, or spread too widely
+- One-hour photo looks worse: oil, movement, and layer weight are breaking the base down
+- Bare skin looks smoother: spot concealer or a thinner base may work better than full coverage
+
+## Buying Checklist Before Replacing Foundation
+
+- Test one layer change at a time instead of changing primer, SPF, foundation, and powder together
+- Wait 15-20 minutes after sunscreen before foundation
+- Press foundation on instead of rubbing over SPF or primer
+- Use less concealer directly inside fine lines
+- Powder only the areas that crease or shine
+- Compare fresh and one-hour selfies before keeping a new base product
+- Search reviews for splotchy, separates, settles into lines, powdery, and texture
+
+## FAQ: Splotchy Makeup and Fine-Line Settling
+
+## Why does my makeup look splotchy and settle into lines?
+
+Splotchy makeup usually comes from one layer fighting another: rich skin prep, sunscreen, primer, foundation, concealer, or powder. Fine-line settling gets worse when too much product sits on moving areas instead of being pressed in thin layers.
+
+## How do I tell if sunscreen, powder, or concealer is causing texture?
+
+Take one selfie after skincare and SPF, one after foundation, one after concealer, and one after powder. The step where texture first appears is the layer to simplify before buying another product.
+
+## Should I use less powder when foundation settles into fine lines?
+
+Usually yes. Let cream products settle, tap out creases, then powder only the areas that move or shine. A full layer of powder can lock extra product into lines and make splotchy texture look stronger.
+
+## The Practical Takeaway
+
+When makeup looks splotchy or settles into fine lines, isolate the first layer that changes the selfie. Use Makeup Lab to compare bare skin, SPF, foundation, concealer, powder, and one-hour wear before buying another foundation, concealer, primer, or setting powder.`,
+  },
+  {
     slug: "under-eye-sunscreen-concealer-creasing-selfie-filter-2026",
     title: "Under-Eye Sunscreen and Concealer: Crease Check",
     description: "Use Makeup Lab to compare eye-area SPF under concealer for stinging, pilling, creasing, dry texture, gray cast, and powder buildup.",
