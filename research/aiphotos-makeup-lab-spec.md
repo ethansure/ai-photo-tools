@@ -1,5 +1,19 @@
 # AI Photo Tools Makeup Lab Research Backlog
 
+## 2026-06-26 Trend Task: Makeup Flashback and SPF White Cast in Photos
+
+- Source signal: late-June search results show fresh TikTok discovery pages around editing or removing makeup flashback in photos, plus Reddit/beauty results around sunscreen white cast, foundation looking gray or ashy in photos, and SPF/primer/powder combinations making complexion products reflect light.
+- Proposed URL: `/blog/makeup-flashback-white-cast-spf-selfie-filter-2026`
+- Working title: `Makeup Flashback or SPF White Cast in Photos? Selfie Filter Check`
+- Search targets: `makeup flashback in photos`, `SPF white cast makeup photos`, `foundation looks gray in photos`, `powder flashback makeup`, `sunscreen white cast foundation selfie`
+- User problem: shoppers often look fine in the mirror but pale, gray, or ghostly in flash selfies because mineral SPF, silica powder, brightening primer, or a mismatched foundation undertone reflects camera light.
+- Makeup Lab angle: add a `Flashback and White Cast Check` selector/card on `/makeup-lab` that compares window light, front camera, flash photo, SPF-only base, and powder-finished base, then routes users to Foundation Shade Match, Oxidation Check, Powder Over SPF Check, Primer and Setting Spray Check, and the new flashback guide.
+- Internal links to add: `/makeup-lab`, `/blog/foundation-shade-match-selfie-filter-2026`, `/blog/foundation-oxidizes-orange-after-sunscreen-selfie-filter-2026`, `/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026`, `/blog/setting-spray-primer-makes-makeup-patchy-selfie-filter-2026`, `/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026`
+- Suggested FAQ schema:
+  - `Why does my makeup look white or gray in flash photos?`
+  - `Can sunscreen cause makeup flashback?`
+  - `How can Makeup Lab compare mirror makeup and flash selfies?`
+
 ## 2026-06-26 Trend Task: Setting Spray or Primer Makes Makeup Patchy
 
 - Source signal: late-June Reddit makeup results show fresh discussion around makeup looking off, textured, splotchy, or impossible to blend after primer, setting spray, sunscreen, concealer, and powder. One recent MakeupAddiction thread points to primer as the culprit even after powder and setting spray, while another SPF-with-makeup result mentions concealer over sunscreen and texture from powders.
