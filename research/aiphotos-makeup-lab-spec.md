@@ -1,5 +1,19 @@
 # AI Photo Tools Makeup Lab Research Backlog
 
+## 2026-06-25 Trend Task: Foundation Oxidizes Orange After SPF
+
+- Source signal: late-June search results show active Reddit/TikTok demand around foundation or cushion shades oxidizing darker, orange, or gray after sunscreen, primer, powder, and wear time. A Reddit AsianBeauty thread from the last week specifically discusses a cushion oxidizing orange, while TikTok discovery pages surface high-volume queries for stopping foundation oxidation with sunscreen and fixing orange foundation.
+- Proposed URL: `/blog/foundation-oxidizes-orange-after-sunscreen-selfie-filter-2026`
+- Working title: `Foundation Oxidizes Orange After Sunscreen? Selfie Filter Check`
+- Search targets: `foundation oxidizes orange`, `foundation oxidizes after sunscreen`, `makeup turns orange after sunscreen`, `cushion foundation oxidizes`, `foundation turns gray after SPF`
+- User problem: shoppers often blame the foundation shade, but the visible shift may come from sunscreen film, oily skin, powder, primer, undertone mismatch, or oxidation after five to sixty minutes of wear.
+- Makeup Lab angle: add an `Oxidation Check` selector/card on `/makeup-lab` that compares fresh foundation, five-minute oxidation, SPF-under-foundation, and one-hour wear, then routes users to Foundation Shade Match, SPF Finish Finder, Bare Skin Check, and the new oxidation guide.
+- Internal links to add: `/makeup-lab`, `/blog/foundation-shade-match-selfie-filter-2026`, `/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026`, `/blog/oily-skin-sunscreen-under-makeup-wear-test-2026`, `/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026`
+- Suggested FAQ schema:
+  - `Why does my foundation oxidize orange after sunscreen?`
+  - `How long should I wait before judging foundation oxidation?`
+  - `Can Makeup Lab help compare fresh foundation and one-hour wear?`
+
 ## 2026-06-25 Trend Task: Splotchy Makeup and Fine-Line Settling
 
 - Source signal: late-June Reddit makeup results show recurring help requests for routines where base makeup looks splotchy, settles into fine lines, or gets worse after layering moisturizer, sunscreen, concealer, powder, and primer. A related SPF-with-makeup thread points to concealer and powder texture as frequent culprits.
