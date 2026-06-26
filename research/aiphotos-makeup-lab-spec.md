@@ -1,5 +1,19 @@
 # AI Photo Tools Makeup Lab Research Backlog
 
+## 2026-06-26 Trend Task: Setting Spray or Primer Makes Makeup Patchy
+
+- Source signal: late-June Reddit makeup results show fresh discussion around makeup looking off, textured, splotchy, or impossible to blend after primer, setting spray, sunscreen, concealer, and powder. One recent MakeupAddiction thread points to primer as the culprit even after powder and setting spray, while another SPF-with-makeup result mentions concealer over sunscreen and texture from powders.
+- Proposed URL: `/blog/setting-spray-primer-makes-makeup-patchy-selfie-filter-2026`
+- Working title: `Setting Spray or Primer Makes Makeup Patchy? Selfie Filter Check`
+- Search targets: `setting spray makes makeup patchy`, `primer makes foundation patchy`, `makeup looks textured after setting spray`, `foundation impossible to blend after primer`, `setting spray separates makeup`
+- User problem: shoppers often add primer and setting spray to fix wear time, but the extra film can make foundation grip unevenly, separate around the nose, emphasize texture, or make concealer over sunscreen look worse.
+- Makeup Lab angle: add a `Primer and Setting Spray Check` selector/card on `/makeup-lab` that compares skincare plus SPF, primer only, foundation before spray, setting spray after powder, and one-hour wear, then routes users to Layer Stack Check, Pilling Check, Powder Over SPF Check, and the new primer/setting-spray guide.
+- Internal links to add: `/makeup-lab`, `/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026`, `/blog/foundation-sunscreen-pilling-check-selfie-filter-2026`, `/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026`, `/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026`
+- Suggested FAQ schema:
+  - `Why does setting spray make my makeup look patchy?`
+  - `How do I know if primer is making foundation separate?`
+  - `Can Makeup Lab compare foundation before and after setting spray?`
+
 ## 2026-06-26 Trend Task: Setting Powder Over SPF Looks Cakey
 
 - Source signal: late-June Reddit makeup results show fresh discussion around sunscreen under makeup, setting powder over SPF, oily-zone powdering, and routines where powder or concealer makes SPF-layered makeup look textured, cakey, or separated. One recent thread specifically mentions concealer over sunscreen being the trouble spot; another points to stopping heavy setting powder and using lighter layer methods to avoid cakiness.
