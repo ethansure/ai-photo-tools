@@ -1,5 +1,19 @@
 # AI Photo Tools Makeup Lab Research Backlog
 
+## 2026-06-25 Trend Task: Splotchy Makeup and Fine-Line Settling
+
+- Source signal: late-June Reddit makeup results show recurring help requests for routines where base makeup looks splotchy, settles into fine lines, or gets worse after layering moisturizer, sunscreen, concealer, powder, and primer. A related SPF-with-makeup thread points to concealer and powder texture as frequent culprits.
+- Proposed URL: `/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026`
+- Working title: `Splotchy Makeup Settling Into Fine Lines? Selfie Filter Check`
+- Search targets: `makeup looks splotchy`, `foundation settles into fine lines`, `concealer settles into fine lines`, `makeup separates fine lines`, `powder makes makeup textured`
+- User problem: shoppers keep buying new foundation when the real issue may be layer order, too much product, powder placement, sunscreen/moisturizer conflict, or rubbing instead of pressing product into texture-prone areas.
+- Makeup Lab angle: add a `Layer Stack Check` selector/card on `/makeup-lab` that compares bare skin, skincare plus SPF, foundation only, concealer only, and powder finish, then routes users to Dry Crease Check, Pilling Check, Bare Skin Check, Under-Eye SPF, and the new fine-line settling guide.
+- Internal links to add: `/makeup-lab`, `/blog/dry-undereye-concealer-creasing-selfie-filter-2026`, `/blog/foundation-sunscreen-pilling-check-selfie-filter-2026`, `/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026`, `/blog/under-eye-sunscreen-concealer-creasing-selfie-filter-2026`
+- Suggested FAQ schema:
+  - `Why does my makeup look splotchy and settle into lines?`
+  - `How do I tell if sunscreen, powder, or concealer is causing texture?`
+  - `Should I use less powder when foundation settles into fine lines?`
+
 ## 2026-06-25 Trend Task: Under-Eye Sunscreen and Concealer
 
 - Source signal: June 2026 Reddit/beauty search results show recurring complaints around SPF near the eyes, concealer sitting over sunscreen, creasing, pilling, stinging, watery eyes, powder texture, and sunscreen mists or touch-ups disturbing makeup.
