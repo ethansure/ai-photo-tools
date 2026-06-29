@@ -175,6 +175,20 @@ const LOOKS: Look[] = [
     filter: { contrast: 1.01, saturate: 1.01, hueRotateDeg: -1 },
   },
   {
+    id: "makeup-flashback-check",
+    name: "Flashback Check",
+    vibe: "Flash selfie SPF test",
+    lipstickHex: "#B16D6A",
+    filter: { contrast: 1.08, saturate: 0.96, hueRotateDeg: -3 },
+  },
+  {
+    id: "spf-white-cast-check",
+    name: "White Cast Check",
+    vibe: "Gray cast and SPF tone",
+    lipstickHex: "#A66D68",
+    filter: { contrast: 1.04, saturate: 0.94, hueRotateDeg: -5 },
+  },
+  {
     id: "bare-skin-base-check",
     name: "Bare Skin Check",
     vibe: "Less base, smoother",
@@ -270,6 +284,12 @@ const SPF_DECISION_HELPER = [
     issue: "SPF looks greasy or gray",
     preset: "Suede Skin",
     action: "Compare a less shiny tinted SPF direction against your neck in daylight.",
+    href: "/blog/pore-blurring-tinted-sunscreen-under-makeup-selfie-filter-2026",
+  },
+  {
+    issue: "Flash selfies show white cast",
+    preset: "Flashback Check",
+    action: "Compare the same base in daylight and flash before changing foundation shade.",
     href: "/blog/pore-blurring-tinted-sunscreen-under-makeup-selfie-filter-2026",
   },
   {
@@ -571,6 +591,11 @@ const FAQS = [
     question: "Should I choose matte, dewy, or tinted sunscreen under makeup?",
     answer:
       "Choose by the problem you see in daylight selfies: matte SPF for oil control, pore-blurring tinted SPF for white cast or redness, and a dewier SPF only when dry patches matter more than shine. Compare the same foundation over each finish before changing primer and powder too.",
+  },
+  {
+    question: "Can Makeup Lab help with SPF white cast or makeup flashback?",
+    answer:
+      "Yes. Use White Cast Check or Flashback Check with one daylight selfie and one flash selfie. If the face turns gray, pale, or disconnected from the neck, compare a thinner SPF layer, a tinted SPF, or less powder before changing foundation shade.",
   },
   {
     question: "How should oily skin test sunscreen under makeup?",
