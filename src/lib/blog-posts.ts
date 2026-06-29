@@ -108,7 +108,7 @@ Do not replace foundation first when a flash selfie turns white or gray. Isolate
     slug: "setting-spray-primer-makes-makeup-patchy-selfie-filter-2026",
     title: "Setting Spray or Primer Makes Makeup Patchy? Selfie Check",
     description: "Use Makeup Lab to compare SPF, primer, foundation, powder, setting spray, and one-hour wear when base makeup turns patchy or separated.",
-    date: "2026-06-26",
+    date: "2026-06-29",
     author: "AI Photo Tools Team",
     image: "/blog/setting-spray-primer-patchy-makeup.jpg",
     keywords: ["setting spray makes makeup patchy", "primer makes foundation patchy", "makeup separates after setting spray", "foundation patchy after primer", "setting spray separates makeup", "AI makeup filter"],
@@ -140,7 +140,7 @@ Makeup Lab cannot identify exact product ingredients from a photo. It can help y
 
 Primer can create a slick, grippy, or dry layer that does not match the sunscreen and foundation sitting around it. Setting spray can re-wet powder, lift concealer, or make foundation break apart if the base is already heavy. If you spray too close, use too much, or powder before the base has settled, the camera may show dots, streaks, nose separation, cheek texture, or patchy under-eyes.
 
-If the base rolls before spray, start with the <a href="/blog/foundation-sunscreen-pilling-check-selfie-filter-2026">foundation and sunscreen pilling check</a>. If powder over SPF is the first rough step, use the <a href="/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026">powder over sunscreen check</a>. If the whole layer stack looks heavy, compare the <a href="/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026">Layer Stack Check</a>. If sunscreen finish is the bigger issue, use the <a href="/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026">best sunscreen under makeup guide</a>.
+If the base rolls before spray, start with the <a href="/blog/foundation-sunscreen-pilling-check-selfie-filter-2026">foundation and sunscreen pilling check</a>. If powder over SPF is the first rough step, use the <a href="/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026">powder over sunscreen check</a>. If the whole layer stack looks heavy, compare the <a href="/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026">Layer Stack Check</a>. If the finish is smooth in daylight but pale, gray, or dusty in direct flash, run the <a href="/blog/makeup-flashback-white-cast-spf-selfie-filter-2026">makeup flashback and SPF white cast check</a>. If sunscreen finish is the bigger issue, use the <a href="/blog/best-sunscreen-under-makeup-no-pilling-selfie-filter-2026">best sunscreen under makeup guide</a>.
 
 ## How to Run the Primer and Setting Spray Check
 
