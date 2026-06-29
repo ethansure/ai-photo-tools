@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
     description: "Use Makeup Lab to compare daylight and flash selfies when sunscreen, powder, or foundation creates white cast, gray cast, or makeup flashback.",
     date: "2026-06-29",
     author: "AI Photo Tools Team",
-    image: "/blog/makeup-flashback-white-cast.jpg",
+    image: "/examples/headshot-after.jpg",
     keywords: ["makeup flashback", "SPF white cast makeup", "foundation looks gray in flash", "sunscreen white cast under makeup", "flash selfie makeup check", "AI makeup filter"],
     category: "Makeup Lab",
     faqs: [
