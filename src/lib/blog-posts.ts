@@ -14,6 +14,97 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "makeup-flashback-white-cast-spf-selfie-filter-2026",
+    title: "Makeup Flashback or SPF White Cast? Selfie Check",
+    description: "Use Makeup Lab to compare daylight and flash selfies when sunscreen, powder, or foundation creates white cast, gray cast, or makeup flashback.",
+    date: "2026-06-29",
+    author: "AI Photo Tools Team",
+    image: "/blog/makeup-flashback-white-cast.jpg",
+    keywords: ["makeup flashback", "SPF white cast makeup", "foundation looks gray in flash", "sunscreen white cast under makeup", "flash selfie makeup check", "AI makeup filter"],
+    category: "Makeup Lab",
+    faqs: [
+      {
+        question: "Why does makeup look white or gray in flash photos?",
+        answer:
+          "Flashback usually comes from reflective SPF, pale powder, bright concealer, or a foundation shade that turns ashy under direct light. A daylight photo and a flash photo help show whether the cast is from sunscreen, powder, or the base shade.",
+      },
+      {
+        question: "Can sunscreen under makeup cause flashback?",
+        answer:
+          "Yes. Mineral sunscreen, tinted SPF, shiny sunscreen film, and powder over SPF can all look different under flash than they do in daylight. Test SPF alone, then foundation, then powder before changing foundation shade.",
+      },
+      {
+        question: "How can Makeup Lab help with SPF white cast?",
+        answer:
+          "Use Flashback Check and White Cast Check to compare the same routine in daylight and flash. The preview helps you decide whether to try thinner SPF, tinted SPF, less powder, warmer base, or a simpler layer stack.",
+      },
+    ],
+    content: `# Makeup Flashback or SPF White Cast? Selfie Check
+
+Makeup flashback is the moment a base looks fine in daylight, then turns white, gray, ashy, or dusty in a flash selfie. SPF white cast can do the same thing before makeup even starts. The confusing part is that the problem is not always foundation shade. Sunscreen film, mineral filters, tinted SPF, bright concealer, setting powder, and camera flash can all change how the face reflects light.
+
+Makeup Lab cannot measure SPF protection or identify exact ingredients from one photo. It can help you compare the visible result: daylight SPF, daylight makeup, flash makeup, powder over SPF, and one-hour wear.
+
+## Why Flashback and White Cast Happen
+
+Flash hits the face directly, so reflective layers get louder. Mineral sunscreen can look pale. Translucent powder can turn dusty. Bright under-eye concealer can bounce light differently from the cheeks. A foundation that looks neutral in window light can look gray when it sits over a white sunscreen base.
+
+If the issue starts before foundation, compare the <a href="/blog/pore-blurring-tinted-sunscreen-under-makeup-selfie-filter-2026">pore-blurring tinted sunscreen guide</a> and the <a href="/blog/spf-clogged-pores-under-makeup-selfie-filter-2026">SPF clogged pores check</a>. If powder is what makes the cast obvious, use the <a href="/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026">setting powder over sunscreen check</a>. If the base turns orange or darker instead of gray, run the <a href="/blog/foundation-oxidizes-orange-after-sunscreen-selfie-filter-2026">foundation oxidation after SPF check</a>. If the whole layer stack looks heavy, use the <a href="/blog/splotchy-makeup-settles-fine-lines-selfie-filter-2026">Layer Stack Check</a>.
+
+## How to Run the Flashback Check
+
+Open Makeup Lab, upload a daylight selfie, and compare Flashback Check, White Cast Check, Foundation Shade Match, Powder Over SPF Check, and Wear Test. Take the same routine in two lighting setups: indirect daylight and direct flash. Keep angle, distance, expression, and camera settings as similar as possible.
+
+The useful question is not "does flash make skin lighter?" Flash always changes contrast. The useful question is "which layer makes the face look disconnected from the neck, chest, or ears?" If SPF-only already looks white, test a thinner or tinted sunscreen. If the daylight base is fine but flash looks dusty after powder, reduce powder or change placement. If only the under-eyes glow white, adjust concealer brightness and powder before changing foundation.
+
+## Best Selfie Setup
+
+- Take one photo after skincare and SPF, before foundation
+- Take one photo after foundation and concealer
+- Take one photo after powder or setting spray
+- Repeat the final photo with flash on
+- Include face, jawline, neck, ears, and a little chest if possible
+- Keep the same angle and distance between daylight and flash photos
+- Turn off beauty filters, portrait smoothing, and strong HDR
+
+## What the Flash Photo Usually Means
+
+- Whole face looks white: SPF film or powder may be too reflective
+- Center face looks gray: foundation undertone may be too muted over SPF
+- Under-eyes glow pale: concealer or under-eye powder may be too bright
+- Nose and forehead look dusty: powder may be sitting over sunscreen shine
+- Neck looks warmer than face: the base may need a warmer or thinner SPF layer
+- Daylight is fine but flash is harsh: keep the routine for daytime, but simplify it for flash events
+
+## Flashback and SPF Buying Checklist
+
+- Test sunscreen alone in daylight and flash before adding makeup
+- Compare tinted SPF, mineral SPF, and chemical SPF under the same foundation
+- Use less translucent powder around nose, forehead, and under-eyes
+- Match foundation to neck in daylight, then confirm with one flash photo
+- Avoid judging shade from bathroom mirror light only
+- Test event makeup at night before photos, not five minutes before leaving
+- If reapplying SPF over makeup causes the cast, use the <a href="/blog/touch-up-sunscreen-over-makeup-selfie-filter-2026">touch-up sunscreen over makeup guide</a>
+
+## FAQ: Makeup Flashback and SPF White Cast
+
+## Why does makeup look white or gray in flash photos?
+
+Flashback usually comes from reflective SPF, pale powder, bright concealer, or a foundation shade that turns ashy under direct light. A daylight photo and a flash photo help show whether the cast is from sunscreen, powder, or the base shade.
+
+## Can sunscreen under makeup cause flashback?
+
+Yes. Mineral sunscreen, tinted SPF, shiny sunscreen film, and powder over SPF can all look different under flash than they do in daylight. Test SPF alone, then foundation, then powder before changing foundation shade.
+
+## How can Makeup Lab help with SPF white cast?
+
+Use Flashback Check and White Cast Check to compare the same routine in daylight and flash. The preview helps you decide whether to try thinner SPF, tinted SPF, less powder, warmer base, or a simpler layer stack.
+
+## The Practical Takeaway
+
+Do not replace foundation first when a flash selfie turns white or gray. Isolate SPF, foundation, concealer, powder, and flash lighting one step at a time. Use Makeup Lab to compare daylight and flash selfies so you can decide whether the fix is tinted SPF, less powder, warmer base, or fewer reflective layers.`,
+  },
+  {
     slug: "setting-spray-primer-makes-makeup-patchy-selfie-filter-2026",
     title: "Setting Spray or Primer Makes Makeup Patchy? Selfie Check",
     description: "Use Makeup Lab to compare SPF, primer, foundation, powder, setting spray, and one-hour wear when base makeup turns patchy or separated.",

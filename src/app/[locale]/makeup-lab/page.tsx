@@ -290,7 +290,7 @@ const SPF_DECISION_HELPER = [
     issue: "Flash selfies show white cast",
     preset: "Flashback Check",
     action: "Compare the same base in daylight and flash before changing foundation shade.",
-    href: "/blog/pore-blurring-tinted-sunscreen-under-makeup-selfie-filter-2026",
+    href: "/blog/makeup-flashback-white-cast-spf-selfie-filter-2026",
   },
   {
     issue: "Pores look clogged or bumpy",
