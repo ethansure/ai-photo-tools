@@ -290,7 +290,7 @@ When setting powder makes sunscreen makeup look cakey, isolate the step before b
     slug: "foundation-oxidizes-orange-after-sunscreen-selfie-filter-2026",
     title: "Foundation Oxidizes Orange After Sunscreen? Selfie Check",
     description: "Use Makeup Lab to compare foundation fresh, after SPF, after powder, and after one hour when your base turns orange, gray, or darker.",
-    date: "2026-06-25",
+    date: "2026-06-29",
     author: "AI Photo Tools Team",
     image: "/blog/foundation-oxidation-wear-test.jpg",
     keywords: ["foundation oxidizes orange", "foundation oxidizes after sunscreen", "makeup turns orange after sunscreen", "cushion foundation oxidizes", "foundation turns gray after SPF", "AI makeup filter"],
@@ -322,7 +322,7 @@ Makeup Lab cannot diagnose product chemistry from a photo. It can help you compa
 
 Foundation color can shift when pigment mixes with oil, sunscreen film, primer, powder, and skin warmth. A shiny SPF can make a foundation look deeper. A tinted sunscreen can add yellow, peach, or gray before foundation even starts. A cushion or skin tint can look neutral at first, then become warmer as it dries down. Powder can also make oxidized patches look stronger around the nose, mouth, and forehead.
 
-If the base rolls or pills instead of changing color, start with the <a href="/blog/foundation-sunscreen-pilling-check-selfie-filter-2026">foundation and sunscreen pilling check</a>. If the issue is oily separation after wear time, use the <a href="/blog/oily-skin-sunscreen-under-makeup-wear-test-2026">oily-skin SPF wear test</a>. If powder makes the SPF base look dry or cracked, compare the <a href="/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026">setting powder over sunscreen check</a>. If your bare skin looks smoother than foundation, compare the <a href="/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026">bare skin makeup check</a>. For general shade drift, use the <a href="/blog/foundation-oxidation-wear-test-selfie-filter-2026">one-hour oxidation wear-test guide</a> too.
+If the base rolls or pills instead of changing color, start with the <a href="/blog/foundation-sunscreen-pilling-check-selfie-filter-2026">foundation and sunscreen pilling check</a>. If the issue is oily separation after wear time, use the <a href="/blog/oily-skin-sunscreen-under-makeup-wear-test-2026">oily-skin SPF wear test</a>. If powder makes the SPF base look dry or cracked, compare the <a href="/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026">setting powder over sunscreen check</a>. If the shade looks fine in daylight but turns pale, gray, or dusty in flash, use the <a href="/blog/makeup-flashback-white-cast-spf-selfie-filter-2026">makeup flashback and SPF white cast check</a>. If your bare skin looks smoother than foundation, compare the <a href="/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026">bare skin makeup check</a>. For general shade drift, use the <a href="/blog/foundation-oxidation-wear-test-selfie-filter-2026">one-hour oxidation wear-test guide</a> too.
 
 ## How to Run the Oxidation Check
 
