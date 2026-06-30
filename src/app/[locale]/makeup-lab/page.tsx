@@ -470,7 +470,7 @@ const OXIDATION_CHECKS = [
     step: "Fresh foundation",
     preset: "Foundation Shade Match",
     action: "Check whether the shade is already too warm, peachy, or disconnected from the neck.",
-    href: "/blog/foundation-shade-match-selfie-filter-2026",
+    href: "/blog/foundation-shade-match-selfie-undertone-2026",
   },
   {
     step: "After powder",
