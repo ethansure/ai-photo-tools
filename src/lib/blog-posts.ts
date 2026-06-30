@@ -382,7 +382,7 @@ When foundation turns orange after sunscreen, isolate the step before replacing 
     slug: "splotchy-makeup-settles-fine-lines-selfie-filter-2026",
     title: "Splotchy Makeup Settling Into Fine Lines? Selfie Filter Check",
     description: "Use Makeup Lab to compare bare skin, SPF, foundation, concealer, and powder layers when makeup looks splotchy or settles into fine lines.",
-    date: "2026-06-25",
+    date: "2026-06-29",
     author: "AI Photo Tools Team",
     image: "/blog/splotchy-makeup-fine-lines.jpg",
     keywords: ["makeup looks splotchy", "foundation settles into fine lines", "concealer settles into fine lines", "makeup separates fine lines", "powder makes makeup textured", "AI makeup filter"],
@@ -414,7 +414,7 @@ Makeup Lab cannot diagnose skin from a photo or tell you which exact product to 
 
 Foundation and concealer need a stable surface. If moisturizer is too rich, SPF is still tacky, primer is incompatible, foundation is rubbed over the film, or powder is applied before the base settles, the camera can show patchy edges and fine-line buildup. A phone selfie makes this more obvious because daylight highlights texture and contrast.
 
-If the issue starts around the under-eyes, use the <a href="/blog/dry-undereye-concealer-creasing-selfie-filter-2026">dry under-eye concealer creasing guide</a>. If tiny rolls appear when sunscreen and foundation meet, compare the <a href="/blog/foundation-sunscreen-pilling-check-selfie-filter-2026">foundation and sunscreen pilling check</a>. If powder over SPF makes the texture louder, use the <a href="/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026">setting powder over sunscreen guide</a>. If the layer stack looks smooth until primer or setting spray enters, compare the <a href="/blog/setting-spray-primer-makes-makeup-patchy-selfie-filter-2026">primer and setting spray patchiness check</a>. If your bare skin looks smoother than full coverage, use the <a href="/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026">bare skin makeup check</a>. If eye-area SPF makes concealer crease or turn gray, use the <a href="/blog/under-eye-sunscreen-concealer-creasing-selfie-filter-2026">under-eye sunscreen and concealer guide</a>.
+If the issue starts around the under-eyes, use the <a href="/blog/dry-undereye-concealer-creasing-selfie-filter-2026">dry under-eye concealer creasing guide</a>. If tiny rolls appear when sunscreen and foundation meet, compare the <a href="/blog/foundation-sunscreen-pilling-check-selfie-filter-2026">foundation and sunscreen pilling check</a>. If powder over SPF makes the texture louder, use the <a href="/blog/setting-powder-over-sunscreen-cakey-makeup-selfie-filter-2026">setting powder over sunscreen guide</a>. If the layer stack looks smooth until primer or setting spray enters, compare the <a href="/blog/setting-spray-primer-makes-makeup-patchy-selfie-filter-2026">primer and setting spray patchiness check</a>. If the base looks fine in daylight but turns pale, gray, or dusty in direct flash, run the <a href="/blog/makeup-flashback-white-cast-spf-selfie-filter-2026">makeup flashback and SPF white cast check</a>. If your bare skin looks smoother than full coverage, use the <a href="/blog/makeup-looks-worse-than-bare-skin-selfie-filter-2026">bare skin makeup check</a>. If eye-area SPF makes concealer crease or turn gray, use the <a href="/blog/under-eye-sunscreen-concealer-creasing-selfie-filter-2026">under-eye sunscreen and concealer guide</a>.
 
 ## How to Run the Layer Stack Check
 
